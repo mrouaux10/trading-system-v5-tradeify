@@ -72,10 +72,10 @@
   },
   "strategy_config": {
     "v5_optimized": {
-      "threshold_buy": 0.55,
-      "atr_multiplier": 2.2,
-      "ema_period": 30,
-      "atr_period": 12,
+      "threshold_buy": 0.58,
+      "atr_multiplier": 2.0,
+      "ema_period": 34,
+      "atr_period": 14,
       "tp_multiplier": 1.6,
       "max_trades_per_day": 6,
       "min_trade_duration": 300
