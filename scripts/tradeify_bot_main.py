@@ -20,8 +20,12 @@ from datetime import datetime, timedelta
 from typing import Dict, List, Optional
 
 # Importar componentes del sistema
-from .tradeify_compliance_system import TradeifyComplianceSystem
-from .tradovate_connector import TradovateConnector
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
+from tradeify_compliance_system import TradeifyComplianceSystem
+from tradovate_connector import TradovateConnector
 
 # Configurar logging
 logging.basicConfig(
@@ -77,8 +81,8 @@ class TradeifyBotMain:
                 "atr_period": 14
             },
             "risk_management": {
-                "stop_loss_atr": 2.0,
-                "take_profit_atr": 1.6,
+                "stop_loss": 50,
+                "take_profit": 150,
                 "max_contracts": 1,
                 "daily_loss_limit": 1250
             },
@@ -166,8 +170,8 @@ class TradeifyBotMain:
             logger.info(f"   - ATR: {self.strategy_config['indicators']['atr_period']}")
             
             logger.info("🛡️ GESTIÓN DE RIESGO:")
-            logger.info(f"   - Stop Loss: {self.strategy_config['risk_management']['stop_loss_atr']}x ATR")
-            logger.info(f"   - Take Profit: {self.strategy_config['risk_management']['take_profit_atr']}x ATR")
+            logger.info(f"   - Stop Loss: ${self.strategy_config['risk_management']['stop_loss']}")
+            logger.info(f"   - Take Profit: ${self.strategy_config['risk_management']['take_profit']}")
             logger.info(f"   - Contratos: {self.strategy_config['risk_management']['max_contracts']}")
             logger.info(f"   - Daily Loss: ${self.strategy_config['risk_management']['daily_loss_limit']}")
             

@@ -1,0 +1,582 @@
+[
+  {
+    "config_name": "Both Directions Strategy (TEST)",
+    "trade_direction": "both",
+    "time_filter": {
+      "start_hour": 9,
+      "end_hour": 16
+    },
+    "params": {
+      "rsi_max": 65,
+      "rsi_min": 30,
+      "atr_threshold_multiplier": 0.0002,
+      "volume_threshold": 0.4,
+      "min_ema_crossover_strength": 0.05,
+      "take_profit": 100,
+      "stop_loss": 50
+    },
+    "metrics": {
+      "total_trades": 13,
+      "winning_trades": 8,
+      "losing_trades": 5,
+      "win_rate": 61.53846153846154,
+      "total_pnl": 808.0,
+      "avg_win": 135.1875,
+      "avg_loss": -54.7,
+      "profit_factor": 3.954296160877514,
+      "max_drawdown": 108.25,
+      "sharpe_ratio": 0.5747101608366911
+    }
+  },
+  {
+    "config_name": "Both Directions Strategy (TEST)",
+    "trade_direction": "both",
+    "time_filter": {
+      "start_hour": 9,
+      "end_hour": 16
+    },
+    "params": {
+      "rsi_max": 65,
+      "rsi_min": 30,
+      "atr_threshold_multiplier": 0.0003,
+      "volume_threshold": 0.4,
+      "min_ema_crossover_strength": 0.05,
+      "take_profit": 100,
+      "stop_loss": 50
+    },
+    "metrics": {
+      "total_trades": 13,
+      "winning_trades": 8,
+      "losing_trades": 5,
+      "win_rate": 61.53846153846154,
+      "total_pnl": 808.0,
+      "avg_win": 135.1875,
+      "avg_loss": -54.7,
+      "profit_factor": 3.954296160877514,
+      "max_drawdown": 108.25,
+      "sharpe_ratio": 0.5747101608366911
+    }
+  },
+  {
+    "config_name": "Both Directions Strategy (TEST)",
+    "trade_direction": "both",
+    "time_filter": {
+      "start_hour": 9,
+      "end_hour": 16
+    },
+    "params": {
+      "rsi_max": 70,
+      "rsi_min": 30,
+      "atr_threshold_multiplier": 0.0003,
+      "volume_threshold": 0.4,
+      "min_ema_crossover_strength": 0.05,
+      "take_profit": 100,
+      "stop_loss": 50
+    },
+    "metrics": {
+      "total_trades": 13,
+      "winning_trades": 8,
+      "losing_trades": 5,
+      "win_rate": 61.53846153846154,
+      "total_pnl": 808.0,
+      "avg_win": 135.1875,
+      "avg_loss": -54.7,
+      "profit_factor": 3.954296160877514,
+      "max_drawdown": 108.25,
+      "sharpe_ratio": 0.5747101608366911
+    }
+  },
+  {
+    "config_name": "Both Directions Strategy (TEST)",
+    "trade_direction": "both",
+    "time_filter": {
+      "start_hour": 9,
+      "end_hour": 16
+    },
+    "params": {
+      "rsi_max": 75,
+      "rsi_min": 30,
+      "atr_threshold_multiplier": 0.0003,
+      "volume_threshold": 0.4,
+      "min_ema_crossover_strength": 0.05,
+      "take_profit": 100,
+      "stop_loss": 50
+    },
+    "metrics": {
+      "total_trades": 13,
+      "winning_trades": 8,
+      "losing_trades": 5,
+      "win_rate": 61.53846153846154,
+      "total_pnl": 808.0,
+      "avg_win": 135.1875,
+      "avg_loss": -54.7,
+      "profit_factor": 3.954296160877514,
+      "max_drawdown": 108.25,
+      "sharpe_ratio": 0.5747101608366911
+    }
+  },
+  {
+    "config_name": "Both Directions Strategy (TEST)",
+    "trade_direction": "both",
+    "time_filter": {
+      "start_hour": 9,
+      "end_hour": 16
+    },
+    "params": {
+      "rsi_max": 65,
+      "rsi_min": 30,
+      "atr_threshold_multiplier": 0.0002,
+      "volume_threshold": 0.5,
+      "min_ema_crossover_strength": 0.05,
+      "take_profit": 100,
+      "stop_loss": 50
+    },
+    "metrics": {
+      "total_trades": 13,
+      "winning_trades": 8,
+      "losing_trades": 5,
+      "win_rate": 61.53846153846154,
+      "total_pnl": 807.0,
+      "avg_win": 135.0625,
+      "avg_loss": -54.7,
+      "profit_factor": 3.950639853747715,
+      "max_drawdown": 108.25,
+      "sharpe_ratio": 0.5742279251487321
+    }
+  },
+  {
+    "config_name": "Both Directions Strategy (TEST)",
+    "trade_direction": "both",
+    "time_filter": {
+      "start_hour": 9,
+      "end_hour": 16
+    },
+    "params": {
+      "rsi_max": 65,
+      "rsi_min": 30,
+      "atr_threshold_multiplier": 0.0003,
+      "volume_threshold": 0.5,
+      "min_ema_crossover_strength": 0.05,
+      "take_profit": 100,
+      "stop_loss": 50
+    },
+    "metrics": {
+      "total_trades": 13,
+      "winning_trades": 8,
+      "losing_trades": 5,
+      "win_rate": 61.53846153846154,
+      "total_pnl": 807.0,
+      "avg_win": 135.0625,
+      "avg_loss": -54.7,
+      "profit_factor": 3.950639853747715,
+      "max_drawdown": 108.25,
+      "sharpe_ratio": 0.5742279251487321
+    }
+  },
+  {
+    "config_name": "Both Directions Strategy (TEST)",
+    "trade_direction": "both",
+    "time_filter": {
+      "start_hour": 9,
+      "end_hour": 16
+    },
+    "params": {
+      "rsi_max": 65,
+      "rsi_min": 30,
+      "atr_threshold_multiplier": 0.0002,
+      "volume_threshold": 0.4,
+      "min_ema_crossover_strength": 0.05,
+      "take_profit": 100,
+      "stop_loss": 75
+    },
+    "metrics": {
+      "total_trades": 11,
+      "winning_trades": 8,
+      "losing_trades": 3,
+      "win_rate": 72.72727272727273,
+      "total_pnl": 806.5,
+      "avg_win": 134.65625,
+      "avg_loss": -90.25,
+      "profit_factor": 3.9787626962142197,
+      "max_drawdown": 194.0,
+      "sharpe_ratio": 0.6044910882503802
+    }
+  },
+  {
+    "config_name": "Both Directions Strategy (TEST)",
+    "trade_direction": "both",
+    "time_filter": {
+      "start_hour": 9,
+      "end_hour": 16
+    },
+    "params": {
+      "rsi_max": 65,
+      "rsi_min": 30,
+      "atr_threshold_multiplier": 0.0003,
+      "volume_threshold": 0.4,
+      "min_ema_crossover_strength": 0.05,
+      "take_profit": 100,
+      "stop_loss": 75
+    },
+    "metrics": {
+      "total_trades": 11,
+      "winning_trades": 8,
+      "losing_trades": 3,
+      "win_rate": 72.72727272727273,
+      "total_pnl": 806.5,
+      "avg_win": 134.65625,
+      "avg_loss": -90.25,
+      "profit_factor": 3.9787626962142197,
+      "max_drawdown": 194.0,
+      "sharpe_ratio": 0.6044910882503802
+    }
+  },
+  {
+    "config_name": "Both Directions Strategy (TEST)",
+    "trade_direction": "both",
+    "time_filter": {
+      "start_hour": 9,
+      "end_hour": 16
+    },
+    "params": {
+      "rsi_max": 70,
+      "rsi_min": 30,
+      "atr_threshold_multiplier": 0.0003,
+      "volume_threshold": 0.4,
+      "min_ema_crossover_strength": 0.05,
+      "take_profit": 100,
+      "stop_loss": 75
+    },
+    "metrics": {
+      "total_trades": 11,
+      "winning_trades": 8,
+      "losing_trades": 3,
+      "win_rate": 72.72727272727273,
+      "total_pnl": 806.5,
+      "avg_win": 134.65625,
+      "avg_loss": -90.25,
+      "profit_factor": 3.9787626962142197,
+      "max_drawdown": 194.0,
+      "sharpe_ratio": 0.6044910882503802
+    }
+  },
+  {
+    "config_name": "Both Directions Strategy (TEST)",
+    "trade_direction": "both",
+    "time_filter": {
+      "start_hour": 9,
+      "end_hour": 16
+    },
+    "params": {
+      "rsi_max": 75,
+      "rsi_min": 30,
+      "atr_threshold_multiplier": 0.0003,
+      "volume_threshold": 0.4,
+      "min_ema_crossover_strength": 0.05,
+      "take_profit": 100,
+      "stop_loss": 75
+    },
+    "metrics": {
+      "total_trades": 11,
+      "winning_trades": 8,
+      "losing_trades": 3,
+      "win_rate": 72.72727272727273,
+      "total_pnl": 806.5,
+      "avg_win": 134.65625,
+      "avg_loss": -90.25,
+      "profit_factor": 3.9787626962142197,
+      "max_drawdown": 194.0,
+      "sharpe_ratio": 0.6044910882503802
+    }
+  },
+  {
+    "config_name": "Both Directions Strategy (TEST)",
+    "trade_direction": "both",
+    "time_filter": {
+      "start_hour": 9,
+      "end_hour": 16
+    },
+    "params": {
+      "rsi_max": 65,
+      "rsi_min": 30,
+      "atr_threshold_multiplier": 0.0002,
+      "volume_threshold": 0.5,
+      "min_ema_crossover_strength": 0.05,
+      "take_profit": 100,
+      "stop_loss": 75
+    },
+    "metrics": {
+      "total_trades": 11,
+      "winning_trades": 8,
+      "losing_trades": 3,
+      "win_rate": 72.72727272727273,
+      "total_pnl": 805.5,
+      "avg_win": 134.53125,
+      "avg_loss": -90.25,
+      "profit_factor": 3.9750692520775623,
+      "max_drawdown": 194.0,
+      "sharpe_ratio": 0.6039262442489347
+    }
+  },
+  {
+    "config_name": "Both Directions Strategy (TEST)",
+    "trade_direction": "both",
+    "time_filter": {
+      "start_hour": 9,
+      "end_hour": 16
+    },
+    "params": {
+      "rsi_max": 65,
+      "rsi_min": 30,
+      "atr_threshold_multiplier": 0.0003,
+      "volume_threshold": 0.5,
+      "min_ema_crossover_strength": 0.05,
+      "take_profit": 100,
+      "stop_loss": 75
+    },
+    "metrics": {
+      "total_trades": 11,
+      "winning_trades": 8,
+      "losing_trades": 3,
+      "win_rate": 72.72727272727273,
+      "total_pnl": 805.5,
+      "avg_win": 134.53125,
+      "avg_loss": -90.25,
+      "profit_factor": 3.9750692520775623,
+      "max_drawdown": 194.0,
+      "sharpe_ratio": 0.6039262442489347
+    }
+  },
+  {
+    "config_name": "Both Directions Strategy (TEST)",
+    "trade_direction": "both",
+    "time_filter": {
+      "start_hour": 9,
+      "end_hour": 16
+    },
+    "params": {
+      "rsi_max": 65,
+      "rsi_min": 25,
+      "atr_threshold_multiplier": 0.0003,
+      "volume_threshold": 0.4,
+      "min_ema_crossover_strength": 0.05,
+      "take_profit": 100,
+      "stop_loss": 75
+    },
+    "metrics": {
+      "total_trades": 11,
+      "winning_trades": 8,
+      "losing_trades": 3,
+      "win_rate": 72.72727272727273,
+      "total_pnl": 786.75,
+      "avg_win": 132.1875,
+      "avg_loss": -90.25,
+      "profit_factor": 3.9058171745152355,
+      "max_drawdown": 194.0,
+      "sharpe_ratio": 0.592657784437713
+    }
+  },
+  {
+    "config_name": "Both Directions Strategy (TEST)",
+    "trade_direction": "both",
+    "time_filter": {
+      "start_hour": 9,
+      "end_hour": 16
+    },
+    "params": {
+      "rsi_max": 65,
+      "rsi_min": 25,
+      "atr_threshold_multiplier": 0.0003,
+      "volume_threshold": 0.5,
+      "min_ema_crossover_strength": 0.05,
+      "take_profit": 100,
+      "stop_loss": 75
+    },
+    "metrics": {
+      "total_trades": 11,
+      "winning_trades": 8,
+      "losing_trades": 3,
+      "win_rate": 72.72727272727273,
+      "total_pnl": 786.75,
+      "avg_win": 132.1875,
+      "avg_loss": -90.25,
+      "profit_factor": 3.9058171745152355,
+      "max_drawdown": 194.0,
+      "sharpe_ratio": 0.592657784437713
+    }
+  },
+  {
+    "config_name": "Both Directions Strategy (TEST)",
+    "trade_direction": "both",
+    "time_filter": {
+      "start_hour": 9,
+      "end_hour": 16
+    },
+    "params": {
+      "rsi_max": 70,
+      "rsi_min": 25,
+      "atr_threshold_multiplier": 0.0003,
+      "volume_threshold": 0.4,
+      "min_ema_crossover_strength": 0.05,
+      "take_profit": 100,
+      "stop_loss": 75
+    },
+    "metrics": {
+      "total_trades": 11,
+      "winning_trades": 8,
+      "losing_trades": 3,
+      "win_rate": 72.72727272727273,
+      "total_pnl": 786.75,
+      "avg_win": 132.1875,
+      "avg_loss": -90.25,
+      "profit_factor": 3.9058171745152355,
+      "max_drawdown": 194.0,
+      "sharpe_ratio": 0.592657784437713
+    }
+  },
+  {
+    "config_name": "Both Directions Strategy (TEST)",
+    "trade_direction": "both",
+    "time_filter": {
+      "start_hour": 9,
+      "end_hour": 16
+    },
+    "params": {
+      "rsi_max": 70,
+      "rsi_min": 25,
+      "atr_threshold_multiplier": 0.0003,
+      "volume_threshold": 0.5,
+      "min_ema_crossover_strength": 0.05,
+      "take_profit": 100,
+      "stop_loss": 75
+    },
+    "metrics": {
+      "total_trades": 11,
+      "winning_trades": 8,
+      "losing_trades": 3,
+      "win_rate": 72.72727272727273,
+      "total_pnl": 786.75,
+      "avg_win": 132.1875,
+      "avg_loss": -90.25,
+      "profit_factor": 3.9058171745152355,
+      "max_drawdown": 194.0,
+      "sharpe_ratio": 0.592657784437713
+    }
+  },
+  {
+    "config_name": "Both Directions Strategy (TEST)",
+    "trade_direction": "both",
+    "time_filter": {
+      "start_hour": 9,
+      "end_hour": 16
+    },
+    "params": {
+      "rsi_max": 75,
+      "rsi_min": 25,
+      "atr_threshold_multiplier": 0.0003,
+      "volume_threshold": 0.4,
+      "min_ema_crossover_strength": 0.05,
+      "take_profit": 100,
+      "stop_loss": 75
+    },
+    "metrics": {
+      "total_trades": 11,
+      "winning_trades": 8,
+      "losing_trades": 3,
+      "win_rate": 72.72727272727273,
+      "total_pnl": 786.75,
+      "avg_win": 132.1875,
+      "avg_loss": -90.25,
+      "profit_factor": 3.9058171745152355,
+      "max_drawdown": 194.0,
+      "sharpe_ratio": 0.592657784437713
+    }
+  },
+  {
+    "config_name": "Both Directions Strategy (TEST)",
+    "trade_direction": "both",
+    "time_filter": {
+      "start_hour": 9,
+      "end_hour": 16
+    },
+    "params": {
+      "rsi_max": 75,
+      "rsi_min": 25,
+      "atr_threshold_multiplier": 0.0003,
+      "volume_threshold": 0.5,
+      "min_ema_crossover_strength": 0.05,
+      "take_profit": 100,
+      "stop_loss": 75
+    },
+    "metrics": {
+      "total_trades": 11,
+      "winning_trades": 8,
+      "losing_trades": 3,
+      "win_rate": 72.72727272727273,
+      "total_pnl": 786.75,
+      "avg_win": 132.1875,
+      "avg_loss": -90.25,
+      "profit_factor": 3.9058171745152355,
+      "max_drawdown": 194.0,
+      "sharpe_ratio": 0.592657784437713
+    }
+  },
+  {
+    "config_name": "Both Directions Strategy (TEST)",
+    "trade_direction": "both",
+    "time_filter": {
+      "start_hour": 9,
+      "end_hour": 16
+    },
+    "params": {
+      "rsi_max": 65,
+      "rsi_min": 25,
+      "atr_threshold_multiplier": 0.0003,
+      "volume_threshold": 0.4,
+      "min_ema_crossover_strength": 0.05,
+      "take_profit": 100,
+      "stop_loss": 50
+    },
+    "metrics": {
+      "total_trades": 14,
+      "winning_trades": 8,
+      "losing_trades": 6,
+      "win_rate": 57.14285714285714,
+      "total_pnl": 750.5,
+      "avg_win": 135.1875,
+      "avg_loss": -55.166666666666664,
+      "profit_factor": 3.2673716012084593,
+      "max_drawdown": 108.25,
+      "sharpe_ratio": 0.49328072688800617
+    }
+  },
+  {
+    "config_name": "Both Directions Strategy (TEST)",
+    "trade_direction": "both",
+    "time_filter": {
+      "start_hour": 9,
+      "end_hour": 16
+    },
+    "params": {
+      "rsi_max": 70,
+      "rsi_min": 25,
+      "atr_threshold_multiplier": 0.0003,
+      "volume_threshold": 0.4,
+      "min_ema_crossover_strength": 0.05,
+      "take_profit": 100,
+      "stop_loss": 50
+    },
+    "metrics": {
+      "total_trades": 14,
+      "winning_trades": 8,
+      "losing_trades": 6,
+      "win_rate": 57.14285714285714,
+      "total_pnl": 750.5,
+      "avg_win": 135.1875,
+      "avg_loss": -55.166666666666664,
+      "profit_factor": 3.2673716012084593,
+      "max_drawdown": 108.25,
+      "sharpe_ratio": 0.49328072688800617
+    }
+  }
+]

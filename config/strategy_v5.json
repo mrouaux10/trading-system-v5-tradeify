@@ -1,0 +1,66 @@
+{
+  "strategy_name": "V5_Optimized",
+  "version": "5.0",
+  "description": "Estrategia V5 optimizada con parámetros de máxima rentabilidad",
+  "optimization_date": "2025-08-15",
+  "backtest_period": "30 días",
+  "data_source": "MNQ datos reales 1 minuto",
+  
+  "core_parameters": {
+    "rsi_max": 60,
+    "rsi_min": 20,
+    "atr_threshold": 0.0003,
+    "volume_threshold_min": 0.3,
+    "volume_threshold_max": 0.7,
+    "ema_crossover_strength": 0.01,
+    "take_profit": 150,
+    "stop_loss": 50
+  },
+  
+  "technical_indicators": {
+    "ema_period": 34,
+    "rsi_period": 14,
+    "atr_period": 14,
+    "volume_sma_period": 20
+  },
+  
+  "trading_constraints": {
+    "max_trades_per_day": 6,
+    "min_trade_duration": 300,
+    "trading_hours_start": "09:00",
+    "trading_hours_end": "16:00",
+    "timezone": "UTC"
+  },
+  
+  "risk_management": {
+    "max_daily_loss": 1250,
+    "max_position_size": 5000,
+    "max_risk_per_trade": 250,
+    "profit_target": 3000,
+    "trailing_drawdown": 2000
+  },
+  
+  "performance_metrics": {
+    "win_rate": 77.78,
+    "total_trades": 18,
+    "winning_trades": 14,
+    "losing_trades": 4,
+    "total_pnl": 2031.00,
+    "avg_win": 161.82,
+    "avg_loss": -50.00,
+    "profit_factor": 3.24
+  },
+  
+  "compliance_rules": {
+    "microscalping_minimum": 0.5,
+    "consistency_threshold": 0.35,
+    "activity_requirement": 0.8,
+    "min_trading_days_per_week": 1,
+    "min_trading_days_to_payout": 7
+  },
+  
+  "activation_status": "READY_FOR_LIVE_TRADING",
+  "last_optimization": "2025-08-15 09:58:00",
+  "optimization_duration": "7+ horas",
+  "data_points_analyzed": 18514
+}

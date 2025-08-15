@@ -1,7 +1,7 @@
 # 🎯 **ESTRATEGIA V5 OPTIMIZADA - TRADEIFY COMPLIANT**
 
 **Estado:** ✅ **IMPLEMENTADA Y FUNCIONANDO**  
-**Versión:** V5 Optimizada con filtros V6  
+**Versión:** V5 Optimizada con parámetros validados  
 **Propósito:** Trading automatizado para Tradeify  
 
 ---
@@ -16,10 +16,10 @@
 
 ### ✅ **CARACTERÍSTICAS IMPLEMENTADAS**
 - ✅ **Estrategia V5 optimizada** con parámetros validados
-- ✅ **Filtros V6** para mejorar calidad de señales
 - ✅ **Sistema de compliance automático** para Tradeify
 - ✅ **Gestión de riesgo** basada en ATR
 - ✅ **Monitoreo en tiempo real**
+- ✅ **Validación automática** de consistencia de configuración
 
 ---
 
@@ -27,25 +27,28 @@
 
 ### 📈 **PARÁMETROS PRINCIPALES (IMPLEMENTADOS)**
 ```
-Threshold Buy: 0.58          (Señales largas)
+EMA Period: 34              (Tendencia - optimizado)
+RSI Period: 14              (Momentum)
+RSI Max: 60                 (Señales de venta)
+RSI Min: 20                 (Señales de compra)
+ATR Period: 14              (Volatilidad)
+ATR Threshold: 0.0003       (Umbral de volatilidad)
 Start Hour: 9                (09:00 UTC)
 End Hour: 16                 (16:00 UTC)
 Default Quantity: 1          (1 contrato - conservador)
-ATR Multiplier: 2.0         (Stop Loss)
-Take Profit: 1.6x ATR       (Basado en ATR)
-EMA Period: 34              (Tendencia)
-RSI Period: 14              (Momentum)
-ATR Period: 14              (Volatilidad)
+Take Profit: $150            (Take profit fijo)
+Stop Loss: $50               (Stop loss fijo)
 ```
 
 ### 🎯 **LÓGICA DE SEÑALES IMPLEMENTADA**
 ```
 SEÑALES LARGAS:
-- Condición: Precio > EMA 34 AND RSI < 70 AND Momentum positivo
-- Stop Loss: Precio entrada - (ATR × 2.0)
-- Take Profit: Precio entrada + (ATR × 1.6)
+- Condición: Precio > EMA 34 AND RSI < 60 AND ATR > 0.0003
+- Stop Loss: $50 fijo por trade
+- Take Profit: $150 fijo por trade
 - Horario: 09:00-16:00 UTC únicamente
 - Compliance: Verificación automática antes de ejecutar
+- Volumen: Verificación de volumen mínimo
 ```
 
 ---
@@ -53,21 +56,24 @@ SEÑALES LARGAS:
 ## 🚀 **IMPLEMENTACIÓN ACTUAL**
 
 ### ✅ **ARCHIVOS FUNCIONANDO:**
-1. **`tradeify_v5_optimized.py`** - Estrategia V5 principal
+1. **`tradeify_bot_main.py`** - Bot principal integrado
 2. **`tradeify_compliance_system.py`** - Sistema de compliance
-3. **`tradeify_v5_tradovate_bot.py`** - Bot integrado
-4. **`demo_compliance_tradeify.py`** - Demostración en vivo
+3. **`tradovate_connector.py`** - Conector a Tradovate
+4. **`activate_strategy_v5.py`** - Activación de estrategia V5
 
 ### 🎯 **EJECUCIÓN:**
 ```bash
-# Demostración de compliance
-python3 scripts/demo_compliance_tradeify.py
-
 # Bot principal
-python3 scripts/tradeify_v5_tradovate_bot.py
+python3 scripts/tradeify_bot_main.py
+
+# Activación de estrategia V5
+python3 scripts/activate_strategy_v5.py
+
+# Validación de configuración
+python3 scripts/validate_config_consistency.py
 
 # Windows
-start_tradeify_bot.bat
+startup/start_tradeify_bot.bat
 ```
 
 ---
@@ -85,32 +91,32 @@ start_tradeify_bot.bat
 
 ### 🔍 **VERIFICACIÓN EN VIVO:**
 ```bash
-python3 scripts/demo_compliance_tradeify.py
+python3 scripts/tradeify_bot_main.py
 ```
 **Esto muestra que todas las reglas se cumplen automáticamente**
 
 ---
 
-## 📊 **FILTROS V6 IMPLEMENTADOS**
+## 📊 **SISTEMA DE VALIDACIÓN IMPLEMENTADO**
 
 ### 🎯 **MEJORAS DE CALIDAD:**
-1. **Volume Filter:** Solo entra con volumen alto
-2. **Momentum Filter:** Solo entra con momentum positivo
-3. **ADX Filter:** Solo entra con tendencia clara
-4. **Volatility Filter:** Solo entra con volatilidad controlada
+1. **Config Validation:** Verificación automática de consistencia
+2. **Parameter Validation:** Validación de parámetros críticos
+3. **Compliance Check:** Verificación automática de reglas Tradeify
+4. **Risk Management:** Gestión automática de riesgo
 
 ### ✅ **RESULTADO:**
-- **Señales más limpias** y de mayor calidad
-- **Menos falsos positivos** en entradas
-- **Mejor win rate** en trades ejecutados
+- **Configuración 100% consistente** en todos los archivos
+- **Parámetros validados** automáticamente
+- **Mejor mantenimiento** del sistema
 
 ---
 
 ## 💰 **GESTIÓN DE RIESGO**
 
 ### 🛡️ **PROTECCIÓN AUTOMÁTICA:**
-- **Stop Loss:** 2.0x ATR (ajuste automático)
-- **Take Profit:** 1.6x ATR (ajuste automático)
+- **Stop Loss:** $50 fijo por trade
+- **Take Profit:** $150 fijo por trade
 - **Posición:** 1 contrato (control de exposición)
 - **Compliance:** Verificación automática antes de cada trade
 
@@ -126,7 +132,7 @@ python3 scripts/demo_compliance_tradeify.py
 ### ✅ **FUNCIONANDO PERFECTAMENTE:**
 - **Estrategia V5:** 100% implementada
 - **Sistema de compliance:** 100% funcional
-- **Filtros V6:** 100% integrados
+- **Sistema de validación:** 100% integrado
 - **Gestión de riesgo:** 100% automática
 - **Monitoreo:** 100% en tiempo real
 
@@ -140,4 +146,6 @@ python3 scripts/demo_compliance_tradeify.py
 
 **⚠️ IMPORTANTE:** Esta es la estrategia que realmente está implementada y funcionando. Los parámetros están optimizados para Tradeify y el sistema de compliance está completamente funcional.
 
-**🎯 OBJETIVO:** Maximizar ganancias respetando estrictamente todas las reglas de Tradeify. 
+**🎯 OBJETIVO:** Maximizar ganancias respetando estrictamente todas las reglas de Tradeify.
+
+**🔧 VALIDACIÓN:** El sistema incluye validación automática de consistencia de configuración para mantener la integridad del proyecto. 

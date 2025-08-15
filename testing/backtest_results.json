@@ -1,0 +1,292 @@
+{
+  "config": {
+    "trading": {
+      "contracts": 1,
+      "instrument": "MNQ",
+      "timeframe": "1min"
+    },
+    "strategy": {
+      "name": "Optimized EMA Crossover + RSI + ATR + Volume",
+      "ema_period": 34,
+      "rsi_period": 14,
+      "atr_period": 14,
+      "volume_sma_period": 20,
+      "rsi_max_long": 60,
+      "rsi_min_short": 40,
+      "atr_threshold_multiplier": 0.0003,
+      "volume_threshold": 0.3,
+      "min_ema_crossover_strength": 0.01
+    },
+    "risk_management": {
+      "stop_loss": 50,
+      "take_profit": 150,
+      "max_position_time": 4,
+      "max_daily_loss": 500,
+      "max_drawdown": 1000
+    },
+    "trading_hours": {
+      "start_hour": 9,
+      "end_hour": 16,
+      "timezone": "America/New_York"
+    },
+    "compliance": {
+      "min_trade_duration": 5,
+      "max_trades_per_day": 10,
+      "require_volume_confirmation": true
+    }
+  },
+  "trades": [
+    {
+      "entry_time": "2025-07-15 11:56:00",
+      "exit_time": "2025-07-15 12:48:00",
+      "entry_price": 22871.5,
+      "exit_price": 23169.0,
+      "position_type": "long",
+      "pnl": 297.5,
+      "exit_reason": "TP",
+      "contracts": 1
+    },
+    {
+      "entry_time": "2025-07-15 13:37:00",
+      "exit_time": "2025-07-15 14:01:00",
+      "entry_price": 23184.25,
+      "exit_price": 23127.25,
+      "position_type": "long",
+      "pnl": -57.0,
+      "exit_reason": "SL",
+      "contracts": 1
+    },
+    {
+      "entry_time": "2025-07-15 14:07:00",
+      "exit_time": "2025-07-15 14:57:00",
+      "entry_price": 23162.25,
+      "exit_price": 23103.5,
+      "position_type": "long",
+      "pnl": -58.75,
+      "exit_reason": "SL",
+      "contracts": 1
+    },
+    {
+      "entry_time": "2025-07-15 15:09:00",
+      "exit_time": "2025-07-16 09:00:00",
+      "entry_price": 23137.0,
+      "exit_price": 23002.25,
+      "position_type": "long",
+      "pnl": -134.75,
+      "exit_reason": "SL",
+      "contracts": 1
+    },
+    {
+      "entry_time": "2025-07-16 13:31:00",
+      "exit_time": "2025-07-16 15:22:00",
+      "entry_price": 23066.5,
+      "exit_price": 22909.75,
+      "position_type": "short",
+      "pnl": 156.75,
+      "exit_reason": "TP",
+      "contracts": 1
+    },
+    {
+      "entry_time": "2025-07-16 15:31:00",
+      "exit_time": "2025-07-16 15:56:00",
+      "entry_price": 22943.5,
+      "exit_price": 23005.0,
+      "position_type": "short",
+      "pnl": -61.5,
+      "exit_reason": "SL",
+      "contracts": 1
+    },
+    {
+      "entry_time": "2025-07-16 16:12:00",
+      "exit_time": "2025-07-17 09:00:00",
+      "entry_price": 22987.5,
+      "exit_price": 23104.0,
+      "position_type": "long",
+      "pnl": 116.5,
+      "exit_reason": "TIME",
+      "contracts": 1
+    },
+    {
+      "entry_time": "2025-07-17 13:42:00",
+      "exit_time": "2025-07-17 16:24:00",
+      "entry_price": 23113.5,
+      "exit_price": 23265.5,
+      "position_type": "long",
+      "pnl": 152.0,
+      "exit_reason": "TP",
+      "contracts": 1
+    },
+    {
+      "entry_time": "2025-07-18 13:37:00",
+      "exit_time": "2025-07-20 14:41:00",
+      "entry_price": 23273.0,
+      "exit_price": 23228.75,
+      "position_type": "short",
+      "pnl": 44.25,
+      "exit_reason": "TIME",
+      "contracts": 1
+    },
+    {
+      "entry_time": "2025-07-22 14:17:00",
+      "exit_time": "2025-07-23 09:00:00",
+      "entry_price": 23185.5,
+      "exit_price": 23279.5,
+      "position_type": "short",
+      "pnl": -94.0,
+      "exit_reason": "SL",
+      "contracts": 1
+    },
+    {
+      "entry_time": "2025-07-23 13:31:00",
+      "exit_time": "2025-07-23 15:57:00",
+      "entry_price": 23223.75,
+      "exit_price": 23281.25,
+      "position_type": "short",
+      "pnl": -57.5,
+      "exit_reason": "SL",
+      "contracts": 1
+    },
+    {
+      "entry_time": "2025-07-24 13:01:00",
+      "exit_time": "2025-07-25 09:00:00",
+      "entry_price": 23353.5,
+      "exit_price": 23375.0,
+      "position_type": "short",
+      "pnl": -21.5,
+      "exit_reason": "TIME",
+      "contracts": 1
+    },
+    {
+      "entry_time": "2025-07-25 13:34:00",
+      "exit_time": "2025-07-27 16:44:00",
+      "entry_price": 23368.25,
+      "exit_price": 23447.25,
+      "position_type": "long",
+      "pnl": 79.0,
+      "exit_reason": "TIME",
+      "contracts": 1
+    },
+    {
+      "entry_time": "2025-07-28 13:31:00",
+      "exit_time": "2025-07-29 09:00:00",
+      "entry_price": 23487.75,
+      "exit_price": 23582.5,
+      "position_type": "long",
+      "pnl": 94.75,
+      "exit_reason": "TIME",
+      "contracts": 1
+    },
+    {
+      "entry_time": "2025-07-29 14:14:00",
+      "exit_time": "2025-07-30 09:00:00",
+      "entry_price": 23578.5,
+      "exit_price": 23483.25,
+      "position_type": "short",
+      "pnl": 95.25,
+      "exit_reason": "TIME",
+      "contracts": 1
+    },
+    {
+      "entry_time": "2025-07-30 13:35:00",
+      "exit_time": "2025-07-31 09:00:00",
+      "entry_price": 23486.75,
+      "exit_price": 23799.75,
+      "position_type": "long",
+      "pnl": 313.0,
+      "exit_reason": "TP",
+      "contracts": 1
+    },
+    {
+      "entry_time": "2025-07-31 12:33:00",
+      "exit_time": "2025-07-31 13:46:00",
+      "entry_price": 23776.25,
+      "exit_price": 23618.25,
+      "position_type": "short",
+      "pnl": 158.0,
+      "exit_reason": "TP",
+      "contracts": 1
+    },
+    {
+      "entry_time": "2025-07-31 13:55:00",
+      "exit_time": "2025-07-31 15:11:00",
+      "entry_price": 23682.0,
+      "exit_price": 23530.0,
+      "position_type": "short",
+      "pnl": 152.0,
+      "exit_reason": "TP",
+      "contracts": 1
+    },
+    {
+      "entry_time": "2025-07-31 16:43:00",
+      "exit_time": "2025-08-01 09:00:00",
+      "entry_price": 23600.25,
+      "exit_price": 23114.25,
+      "position_type": "long",
+      "pnl": -486.0,
+      "exit_reason": "SL",
+      "contracts": 1
+    },
+    {
+      "entry_time": "2025-08-01 12:25:00",
+      "exit_time": "2025-08-01 12:35:00",
+      "entry_price": 23122.5,
+      "exit_price": 23060.75,
+      "position_type": "long",
+      "pnl": -61.75,
+      "exit_reason": "SL",
+      "contracts": 1
+    },
+    {
+      "entry_time": "2025-08-01 12:38:00",
+      "exit_time": "2025-08-01 12:42:00",
+      "entry_price": 23103.0,
+      "exit_price": 23159.75,
+      "position_type": "short",
+      "pnl": -56.75,
+      "exit_reason": "SL",
+      "contracts": 1
+    },
+    {
+      "entry_time": "2025-08-01 12:47:00",
+      "exit_time": "2025-08-01 13:00:00",
+      "entry_price": 23124.75,
+      "exit_price": 23069.0,
+      "position_type": "long",
+      "pnl": -55.75,
+      "exit_reason": "SL",
+      "contracts": 1
+    },
+    {
+      "entry_time": "2025-08-01 13:31:00",
+      "exit_time": "2025-08-01 13:49:00",
+      "entry_price": 23041.25,
+      "exit_price": 22878.5,
+      "position_type": "short",
+      "pnl": 162.75,
+      "exit_reason": "TP",
+      "contracts": 1
+    },
+    {
+      "entry_time": "2025-08-01 14:11:00",
+      "exit_time": "2025-08-01 16:59:00",
+      "entry_price": 22909.5,
+      "exit_price": 22882.5,
+      "position_type": "long",
+      "pnl": -27.0,
+      "exit_reason": "END",
+      "contracts": 1
+    }
+  ],
+  "metrics": {
+    "total_trades": 24,
+    "winning_trades": 12,
+    "losing_trades": 12,
+    "win_rate": 50.0,
+    "total_pnl": 649.5,
+    "avg_win": 151.8125,
+    "avg_loss": -97.6875,
+    "profit_factor": 1.5540626999360205,
+    "max_drawdown": 660.25
+  },
+  "timestamp": "2025-08-15T10:39:55.043140"
+}

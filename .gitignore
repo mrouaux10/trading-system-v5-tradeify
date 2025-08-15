@@ -4,6 +4,8 @@ config/tradeify_real_config.json
 # Logs
 logs/
 *.log
+bot_*.log
+demo_*.log
 
 # Python
 __pycache__/
@@ -50,7 +52,7 @@ Thumbs.db
 !config/*.json
 !requirements.txt
 !README.md
-!PROJECT_ORGANIZATION.md
+!testing/*.json
 
 # Archivos temporales
 *.tmp

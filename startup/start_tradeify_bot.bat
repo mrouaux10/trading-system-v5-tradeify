@@ -17,9 +17,9 @@ echo ==================================================
 echo.
 
 REM Verificar que Python esté instalado
-python --version >nul 2>&1
+python3 --version >nul 2>&1
 if errorlevel 1 (
-    echo ❌ ERROR: Python no está instalado o no está en el PATH
+    echo ❌ ERROR: Python3 no está instalado o no está en el PATH
     echo Por favor, instala Python 3.8+ y agrégalo al PATH
     pause
     exit /b 1
@@ -55,10 +55,10 @@ echo.
 
 REM Verificar dependencias de Python
 echo 🔍 Verificando dependencias de Python...
-python -c "import json, logging, datetime, typing" >nul 2>&1
+python3 -c "import json, logging, datetime, typing" >nul 2>&1
 if errorlevel 1 (
     echo ❌ ERROR: Faltan dependencias básicas de Python
-    echo Ejecuta: pip install -r requirements.txt
+    echo Ejecuta: pip3 install -r requirements.txt
     pause
     exit /b 1
 )
@@ -71,7 +71,7 @@ echo 🚀 INICIANDO BOT PRINCIPAL...
 echo ==================================================
 echo.
 
-python scripts\tradeify_bot_main.py
+python3 scripts\tradeify_bot_main.py
 
 REM Verificar el resultado
 if errorlevel 1 (

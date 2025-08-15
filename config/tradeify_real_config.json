@@ -5,21 +5,21 @@
     "account_size": 50000,
     "currency": "USD"
   },
-      "api_connection": {
-      "base_url": "https://live.tradovate.com",
-      "chart_url": "https://app-f.tradeify.co/",
-      "websocket_url": "wss://live.tradovate.com/ws",
+  "api_connection": {
+    "base_url": "https://live.tradovate.com",
+    "chart_url": "https://app-f.tradeify.co/",
+    "websocket_url": "wss://live.tradovate.com/ws",
     "api_version": "v1",
     "timeout": 30,
     "max_retries": 5
   },
-      "account_credentials": {
-      "api_key": "TRADOVATE_NO_REQUIERE_API_KEY",
-      "api_secret": "TRADOVATE_NO_REQUIERE_API_SECRET",
-      "account_id": "TRADOVATE_ACCOUNT",
-      "username": "TDY030574",
-      "password": "Q87323b3+6cca241622"
-    },
+  "account_credentials": {
+    "api_key": "TRADOVATE_NO_REQUIERE_API_KEY",
+    "api_secret": "TRADOVATE_NO_REQUIERE_API_SECRET",
+    "account_id": "TRADOVATE_ACCOUNT",
+    "username": "TDY030574",
+    "password": "Q87323b3+6cca241622"
+  },
   "trading_parameters": {
     "instrument": "MNQ",
     "contract_type": "Micro E-mini NASDAQ",
@@ -27,11 +27,11 @@
     "max_contracts": 5,
     "min_contracts": 1,
     "contract_size": 2.0,
-    "tick_value": 0.50
+    "tick_value": 0.5
   },
   "trading_hours": {
     "start": "09:00",
-    "end": "16:59",
+    "end": "16:00",
     "timezone": "UTC",
     "close_deadline": "16:59",
     "market_close": "17:00"
@@ -72,13 +72,23 @@
   },
   "strategy_config": {
     "v5_optimized": {
-      "threshold_buy": 0.58,
-      "atr_multiplier": 2.0,
+      "rsi_max": 60,
+      "rsi_min": 20,
+      "atr_threshold": 0.0003,
+      "volume_threshold_min": 0.3,
+      "volume_threshold_max": 0.7,
+      "ema_crossover_strength": 0.01,
+      "take_profit": 150,
+      "stop_loss": 50,
       "ema_period": 34,
+      "rsi_period": 14,
       "atr_period": 14,
-      "tp_multiplier": 1.6,
+      "volume_sma_period": 20,
       "max_trades_per_day": 6,
-      "min_trade_duration": 300
+      "min_trade_duration": 300,
+      "trading_hours_start": "09:00",
+      "trading_hours_end": "16:00",
+      "max_position_time": 3600
     }
   },
   "monitoring": {

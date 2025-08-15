@@ -1,0 +1,49 @@
+{
+  "strategy_config": {
+    "v5_optimized": {
+      "ema_period": 34,
+      "rsi_period": 14,
+      "rsi_max": 60,
+      "rsi_min": 20,
+      "atr_threshold": 0.0003,
+      "volume_threshold_min": 0.3,
+      "volume_threshold_max": 0.7,
+      "ema_crossover_strength": 0.01,
+      "stop_loss": 50,
+      "take_profit": 150,
+      "max_position_time": 3600,
+      "trading_hours_start": "09:00",
+      "trading_hours_end": "16:00",
+      "max_trades_per_day": 6,
+      "min_trade_duration": 300
+    }
+  },
+  "api_connection": {
+    "base_url": "demo.tradovateapi.com",
+    "api_key": "DEMO_KEY",
+    "secret_key": "DEMO_SECRET"
+  },
+  "trading_parameters": {
+    "instrument": "MNQ",
+    "contract_type": "Micro E-mini NASDAQ",
+    "default_contracts": 1,
+    "max_contracts": 1,
+    "min_contracts": 1,
+    "contract_size": 2.0,
+    "tick_value": 0.5
+  },
+  "risk_management": {
+    "daily_loss_limit": 1250,
+    "trailing_drawdown": 2000,
+    "max_position_size": 5000,
+    "max_risk_per_trade": 250,
+    "profit_target": 3000
+  },
+  "compliance_rules": {
+    "microscalping_minimum": 0.5,
+    "consistency_threshold": 0.35,
+    "activity_requirement": 0.8,
+    "min_trading_days_per_week": 1,
+    "min_trading_days_to_payout": 7
+  }
+}

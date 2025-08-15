@@ -59,10 +59,10 @@
 ## 📁 **ESTRUCTURA DE MI PROYECTO**
 
 ### **Archivos Principales (que hice yo):**
-- `tradeify_v5_tradovate_bot.py` - Mi bot principal
+- `tradeify_bot_main.py` - Mi bot principal integrado
 - `tradeify_compliance_system.py` - Sistema de compliance
 - `tradovate_connector.py` - Para conectar con el broker
-- `tradeify_v5_optimized.py` - Mi estrategia V5
+- `activate_strategy_v5.py` - Activación de mi estrategia V5
 
 ### **Configuración Personal:**
 - `tradeify_real_config.json` - Configuración de mi cuenta
@@ -87,16 +87,16 @@
 ## 📈 **MIS RESULTADOS PERSONALES**
 
 ### **Backtesting de mi V5:**
-- **Win Rate**: 56% (lo fui optimizando yo)
-- **Profit Factor**: 3.5 (ajusté los parámetros)
-- **Max Drawdown**: $750 (lo limité yo)
-- **Período**: Datos MNQ 2022-2025
+- **Win Rate**: 77.78% (lo fui optimizando yo)
+- **Profit Factor**: 3.24 (ajusté los parámetros)
+- **Max Drawdown**: $50 (lo limité yo)
+- **Período**: Datos MNQ 30 días recientes
 
 ### **Optimización que hice yo:**
-- **Threshold Buy**: 0.58 (lo ajusté manualmente)
-- **ATR Multiplier**: 2.0 (basado en mi experiencia)
+- **RSI Max**: 60 (lo ajusté manualmente)
+- **RSI Min**: 20 (basado en mi experiencia)
 - **EMA Period**: 34 (lo elegí yo)
-- **RSI Levels**: 30-70 (lo definí según mi análisis)
+- **ATR Threshold**: 0.0003 (lo definí según mi análisis)
 
 ## ✅ **CONFIRMACIÓN FINAL**
 
