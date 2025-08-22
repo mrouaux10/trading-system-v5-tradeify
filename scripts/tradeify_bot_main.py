@@ -70,21 +70,33 @@ class TradeifyBotMain:
             raise
     
     def setup_strategy(self):
-        """Configurar estrategia V5"""
+        """Configurar estrategia Lightning 50K"""
+        # Cargar configuración Lightning 50K
+        config_path = os.path.join(os.path.dirname(__file__), '..', 'config', 'lightning_50k_final_config.json')
+        
+        try:
+            with open(config_path, 'r') as f:
+                self.config = json.load(f)
+            logger.info(f"🎯 Configuración Lightning 50K cargada: {self.config['strategy_name']} v{self.config['version']}")
+        except FileNotFoundError:
+            logger.error("❌ CRÍTICO: lightning_50k_final_config.json no encontrado")
+            raise FileNotFoundError("Configuración Lightning 50K requerida")
+        
         self.strategy_config = {
-            "instrument": "MNQ",
+            "instrument": self.config['account_settings']['symbol'],
             "timeframe": "1min",
-            "direction": "LONG_ONLY",
+            "direction": "BIDIRECTIONAL",
             "indicators": {
-                "ema_period": 34,
-                "rsi_period": 14,
-                "atr_period": 14
+                "ma_short": self.config['strategy_parameters']['ma_short'],
+                "ma_long": self.config['strategy_parameters']['ma_long'],
+                "rsi_period": self.config['strategy_parameters']['rsi_period'],
+                "rsi_oversold": self.config['strategy_parameters']['rsi_oversold'],
+                "rsi_overbought": self.config['strategy_parameters']['rsi_overbought']
             },
             "risk_management": {
-                "stop_loss": 50,
-                "take_profit": 150,
-                "max_contracts": 1,
-                "daily_loss_limit": 1250
+                "max_drawdown": self.config['risk_management']['max_drawdown'],
+                "daily_loss_limit": self.config['risk_management']['daily_loss_limit'],
+                "max_contracts": self.config['position_sizing']['pre_lock_max_contracts']
             },
             "trading_hours": {
                 "start": "09:00",

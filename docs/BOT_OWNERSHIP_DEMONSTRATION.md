@@ -41,7 +41,7 @@
 - **Posición**: Controla el tamaño automáticamente
 - **Exposición**: No deja que me exponga demasiado
 
-### **Mi Estrategia V5 Optimizada**
+### **Mi Estrategia Lightning 50K Optimizada**
 - **Indicadores**: EMA 34, RSI 14, ATR 14
 - **Señales**: Se generan cuando se cumplen mis condiciones
 - **Filtros**: Sistema V6 para mejorar la calidad
@@ -62,10 +62,10 @@
 - `tradeify_bot_main.py` - Mi bot principal integrado
 - `tradeify_compliance_system.py` - Sistema de compliance
 - `tradovate_connector.py` - Para conectar con el broker
-- `activate_strategy_v5.py` - Activación de mi estrategia V5
+- `activate_lightning_50k.py` - Activación de mi estrategia V5
 
 ### **Configuración Personal:**
-- `tradeify_real_config.json` - Configuración de mi cuenta
+- `lightning_50k_final_config.json` - Configuración de mi cuenta
 - `start_tradeify_bot.bat` - Script para iniciar mi bot
 - `docs/tradeify_analysis.md` - Análisis que hice de las reglas
 

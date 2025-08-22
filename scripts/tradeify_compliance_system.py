@@ -15,6 +15,7 @@ Este script implementa TODAS las reglas de Tradeify que me enviaste:
 
 import json
 import logging
+import os
 from datetime import datetime, timedelta
 from typing import Dict, List, Optional, Tuple
 from pathlib import Path
@@ -27,8 +28,11 @@ logger = logging.getLogger(__name__)
 class TradeifyComplianceSystem:
     """Sistema completo de compliance para Tradeify"""
     
-    def __init__(self, config_file: str = "config/tradeify_real_config.json"):
+    def __init__(self, config_file: str = None):
         """Inicializar sistema de compliance"""
+        if config_file is None:
+            # Ruta absoluta al archivo de configuración Lightning 50K
+            config_file = os.path.join(os.path.dirname(__file__), '..', 'config', 'lightning_50k_final_config.json')
         self.config = self.load_config(config_file)
         self.trades_history = []
         self.daily_stats = {}
@@ -43,6 +47,10 @@ class TradeifyComplianceSystem:
         }
         
         logger.info("TradeifyComplianceSystem inicializado")
+    
+    def get_compliance_status(self) -> dict:
+        """Obtener estado actual de compliance"""
+        return self.compliance_status.copy()
     
     def load_config(self, config_file: str) -> dict:
         """Cargar configuración de Tradeify"""

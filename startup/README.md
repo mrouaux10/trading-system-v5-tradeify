@@ -1,48 +1,40 @@
-# 🚀 Scripts de Inicio - Trading Bot
+# 🚀 Scripts de Inicio - Lightning 50K Trading System
 
-Esta carpeta contiene los scripts auxiliares para iniciar el bot de trading en diferentes modos.
+Esta carpeta contiene scripts auxiliares para el sistema Lightning 50K.
 
 ## 📁 Contenido:
 
-### **🎮 `start_demo.py`**
-- **Propósito:** Iniciar bot en modo DEMO (sin riesgo real)
-- **Uso:** `python3 start_demo.py`
-- **Resultado:** Bot ejecutándose con API de prueba
-
-### **💰 `start_real.py`**
-- **Propósito:** Iniciar bot en modo REAL (con dinero real)
-- **Uso:** `python3 start_real.py`
-- **Resultado:** Bot ejecutándose con API de producción
-- **⚠️ ADVERTENCIA:** Trading con dinero real
-
 ### **🪟 `start_tradeify_bot.bat`**
-- **Propósito:** Script Windows para sistema Tradeify completo
-- **Uso:** `start_tradeify_bot.bat` (desde cmd)
-- **Resultado:** Sistema completo de Tradeify ejecutándose
+- **Propósito:** Script Windows para sistema Lightning 50K completo
+- **Uso:** `start_tradeify_bot.bat` (desde cmd en Windows)
+- **Resultado:** Sistema Lightning 50K ejecutándose
+- **Compatible:** Windows únicamente
 
-## 🎯 **¿CUÁL USAR?**
+## 🎯 **CÓMO USAR:**
 
-### **Para usuarios principiantes:**
-- **macOS/Linux:** Ejecuta `python3 ../start_bot.py` desde la raíz
-- **Windows:** Ejecuta `start_tradeify_bot.bat` desde esta carpeta
-
-### **Para usuarios avanzados:**
-- **Modo Demo:** `python3 start_demo.py`
-- **Modo Real:** `python3 start_real.py`
-- **Sistema completo:** `start_tradeify_bot.bat`
-
-## 💡 **NOTA IMPORTANTE:**
-
-Estos scripts son **AUXILIARES**. El bot principal es `start_bot.py` en la raíz del proyecto.
-
-**🚀 USO RECOMENDADO:**
+### **🍎 macOS/Linux (Recomendado):**
 ```bash
 # Desde la raíz del proyecto
-export TRADING_MODE=demo && python3 start_bot.py
-export TRADING_MODE=real && python3 start_bot.py
-
-# O usar los scripts de startup (más fácil)
-cd startup
-python3 start_demo.py    # Para modo demo
-python3 start_real.py    # Para modo real
+python3 scripts/activate_lightning_50k.py
 ```
+
+### **🪟 Windows:**
+```cmd
+# Desde esta carpeta startup/
+start_tradeify_bot.bat
+```
+
+## 💡 **SISTEMA LIGHTNING 50K:**
+
+**🚀 ACTIVACIÓN PRINCIPAL:**
+- **Archivo:** `scripts/activate_lightning_50k.py`
+- **Propósito:** Activar sistema Lightning 50K completo
+- **Configuración:** `config/lightning_50k_final_config.json`
+- **Performance:** $29,140 esperados en 19.5 meses
+
+## ⚠️ **NOTA IMPORTANTE:**
+
+Para usar el sistema necesitas:
+1. **Cuenta Tradeify Lightning 50K** fondeada
+2. **API Access de Tradovate** ($25/mes)
+3. **Bot aprobado** por Tradeify ✅ (ya completado)

@@ -1,244 +1,352 @@
 #!/usr/bin/env python3
 """
-🔍 VALIDADOR DE CONSISTENCIA DE CONFIGURACIÓN
-============================================
-Este script valida que todos los archivos de configuración
-sean consistentes con los parámetros maestros de la estrategia V5.
+Validador de Configuración Tradeify Lightning Funded
+====================================================
+
+Este script valida que toda la configuración sea consistente y cumpla con las reglas de Tradeify Lightning Funded:
+- Verificar límites de riesgo
+- Verificar horarios de trading
+- Verificar reglas de compliance
+- Verificar consistencia entre archivos
 """
 
 import json
-import os
+import logging
 from pathlib import Path
-from typing import Dict, List, Tuple
+from datetime import datetime
+import sys
 
-class ConfigValidator:
-    """Validador de consistencia de configuración"""
+# Configurar logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
+
+class TradeifyConfigValidator:
+    """Validador de configuración para Tradeify Lightning Funded"""
     
     def __init__(self):
         """Inicializar validador"""
         self.config_dir = Path("config")
-        self.master_config = None
-        self.validation_results = {}
+        self.scripts_dir = Path("scripts")
+        self.validation_results = {
+            "overall": False,
+            "lightning_50k": False,
+            "lightning_50k_final_config": False,
+            "compliance_system": False,
+            "errors": [],
+            "warnings": []
+        }
         
-    def load_master_config(self) -> bool:
-        """Cargar configuración maestra"""
+        # Límites críticos de Tradeify Lightning Funded
+        self.LIGHTNING_REQUIREMENTS = {
+            "consistency_threshold": 0.20,  # 20% máximo
+            "max_daily_loss": 1250,         # $1,250
+            "max_drawdown": 2000,           # $2,000
+            "trading_hours_start": "09:00",
+            "trading_hours_end": "16:00",
+            "timezone": "UTC",
+            "mandatory_close": "16:59"
+        }
+        
+        logger.info("🔍 Validador de configuración Tradeify Lightning Funded inicializado")
+    
+    def validate_lightning_50k(self) -> bool:
+        """Validar configuración de estrategia V5"""
         try:
-            master_file = self.config_dir / "config_master.json"
-            if not master_file.exists():
-                print("❌ Archivo maestro de configuración no encontrado")
-                return False
-                
-            with open(master_file, 'r') as f:
-                self.master_config = json.load(f)
+            config_file = self.config_dir / "lightning_50k_final_config.json"
             
-            print("✅ Configuración maestra cargada")
+            if not config_file.exists():
+                self.validation_results["errors"].append("❌ Archivo lightning_50k.json no encontrado")
+                return False
+            
+            with open(config_file, 'r') as f:
+                config = json.load(f)
+            
+            logger.info("📋 Validando lightning_50k.json...")
+            
+            # Verificar campos críticos en risk_management
+            risk_mgmt = config.get("risk_management", {})
+            if not risk_mgmt:
+                self.validation_results["errors"].append("❌ Sección risk_management no encontrada en lightning_50k.json")
+                return False
+            
+            # Verificar valores críticos en risk_management
+            if risk_mgmt.get("consistency_threshold") != 0.20:
+                self.validation_results["errors"].append(f"❌ Consistency threshold incorrecto: {risk_mgmt.get('consistency_threshold')} (debe ser 0.20)")
+                return False
+            
+            if risk_mgmt.get("max_daily_loss") != 1250:
+                self.validation_results["errors"].append(f"❌ Max daily loss incorrecto: {risk_mgmt.get('max_daily_loss')} (debe ser 1250)")
+                return False
+            
+            if risk_mgmt.get("trailing_drawdown") != 2000:
+                self.validation_results["errors"].append(f"❌ Trailing drawdown incorrecto: {risk_mgmt.get('trailing_drawdown')} (debe ser 2000)")
+                return False
+            
+            # Verificar horarios en trading_constraints
+            trading_constraints = config.get("trading_constraints", {})
+            if not trading_constraints:
+                self.validation_results["errors"].append("❌ Sección trading_constraints no encontrada en lightning_50k.json")
+                return False
+            
+            if trading_constraints.get("timezone") != "UTC":
+                self.validation_results["errors"].append(f"❌ Timezone incorrecto: {trading_constraints.get('timezone')} (debe ser UTC)")
+                return False
+            
+            # Verificar horarios
+            if trading_constraints.get("trading_hours_start") != "09:00":
+                self.validation_results["warnings"].append(f"⚠️  Horario de inicio: {trading_constraints.get('trading_hours_start')} (recomendado: 09:00)")
+            
+            if trading_constraints.get("trading_hours_end") != "16:00":
+                self.validation_results["warnings"].append(f"⚠️  Horario de fin: {trading_constraints.get('trading_hours_end')} (recomendado: 16:00)")
+            
+            logger.info("✅ lightning_50k.json validado correctamente")
+            self.validation_results["lightning_50k"] = True
             return True
             
         except Exception as e:
-            print(f"❌ Error cargando configuración maestra: {e}")
+            self.validation_results["errors"].append(f"❌ Error validando lightning_50k.json: {e}")
             return False
     
-    def validate_file(self, filename: str) -> Dict:
-        """Validar un archivo de configuración específico"""
+    def validate_lightning_50k_final_config(self) -> bool:
+        """Validar configuración principal de Tradeify"""
         try:
-            file_path = self.config_dir / filename
-            if not file_path.exists():
-                return {"status": "ERROR", "message": f"Archivo no encontrado: {filename}"}
+            config_file = self.config_dir / "lightning_50k_final_config.json"
             
-            with open(file_path, 'r') as f:
+            if not config_file.exists():
+                self.validation_results["errors"].append("❌ Archivo lightning_50k_final_config.json no encontrado")
+                return False
+            
+            with open(config_file, 'r') as f:
                 config = json.load(f)
             
-            # Extraer parámetros de estrategia V5
-            strategy_params = self.extract_strategy_params(config, filename)
+            logger.info("📋 Validando lightning_50k_final_config.json...")
             
-            # Validar contra parámetros maestros
-            validation_result = self.validate_strategy_params(strategy_params, filename)
+            # Verificar tipo de cuenta
+            if config.get("tradeify_platform", {}).get("type") != "Lightning Funded":
+                self.validation_results["errors"].append(f"❌ Tipo de cuenta incorrecto: {config.get('tradeify_platform', {}).get('type')} (debe ser Lightning Funded)")
+                return False
             
-            return validation_result
+            # Verificar límites de riesgo en trading_parameters.risk_management
+            trading_params = config.get("trading_parameters", {})
+            if not trading_params:
+                self.validation_results["errors"].append("❌ Sección trading_parameters no encontrada en lightning_50k_final_config.json")
+                return False
+            
+            risk_mgmt = trading_params.get("risk_management", {})
+            if not risk_mgmt:
+                self.validation_results["errors"].append("❌ Sección risk_management en trading_parameters no encontrada")
+                return False
+            
+            if risk_mgmt.get("max_daily_loss") != 1250:
+                self.validation_results["errors"].append(f"❌ Max daily loss incorrecto: {risk_mgmt.get('max_daily_loss')} (debe ser 1250)")
+                return False
+            
+            if risk_mgmt.get("max_drawdown") != 2000:
+                self.validation_results["errors"].append(f"❌ Max drawdown incorrecto: {risk_mgmt.get('max_drawdown')} (debe ser 2000)")
+                return False
+            
+            if risk_mgmt.get("consistency_threshold") != 0.20:
+                self.validation_results["errors"].append(f"❌ Consistency threshold incorrecto: {risk_mgmt.get('consistency_threshold')} (debe ser 0.20)")
+                return False
+            
+            # Verificar horarios en trading_parameters.trading_hours
+            trading_hours = trading_params.get("trading_hours", {})
+            if not trading_hours:
+                self.validation_results["errors"].append("❌ Sección trading_hours en trading_parameters no encontrada")
+                return False
+            
+            if trading_hours.get("timezone") != "UTC":
+                self.validation_results["errors"].append(f"❌ Timezone incorrecto: {trading_hours.get('timezone')} (debe ser UTC)")
+                return False
+            
+            if trading_hours.get("start") != "09:00":
+                self.validation_results["warnings"].append(f"⚠️  Horario de inicio: {trading_hours.get('start')} (recomendado: 09:00)")
+            
+            if trading_hours.get("end") != "16:00":
+                self.validation_results["warnings"].append(f"⚠️  Horario de fin: {trading_hours.get('end')} (recomendado: 16:00)")
+            
+            # Verificar reglas de compliance
+            compliance = config.get("compliance_rules", {})
+            if not compliance:
+                self.validation_results["errors"].append("❌ Sección compliance_rules no encontrada en lightning_50k_final_config.json")
+                return False
+            
+            consistency_rules = compliance.get("consistency", {})
+            if not consistency_rules:
+                self.validation_results["errors"].append("❌ Sección consistency en compliance_rules no encontrada")
+                return False
+            
+            if consistency_rules.get("max_daily_profit_percentage") != 0.20:
+                self.validation_results["errors"].append(f"❌ Max daily profit percentage incorrecto: {consistency_rules.get('max_daily_profit_percentage')} (debe ser 0.20)")
+                return False
+            
+            logger.info("✅ lightning_50k_final_config.json validado correctamente")
+            self.validation_results["lightning_50k_final_config"] = True
+            return True
             
         except Exception as e:
-            return {"status": "ERROR", "message": f"Error validando {filename}: {e}"}
-    
-    def extract_strategy_params(self, config: Dict, filename: str) -> Dict:
-        """Extraer parámetros de estrategia V5 del archivo"""
-        params = {}
-        
-        if filename == "strategy_v5.json":
-            # Archivo maestro de estrategia
-            params.update(config.get("core_parameters", {}))
-            params.update(config.get("technical_indicators", {}))
-            params.update(config.get("trading_constraints", {}))
-            params.update(config.get("risk_management", {}))
-            params.update(config.get("compliance_rules", {}))
-            
-        elif "tradeify" in filename:
-            # Archivos de configuración de Tradeify
-            strategy_config = config.get("strategy_config", {}).get("v5_optimized", {})
-            params.update(strategy_config)
-            
-        return params
-    
-    def validate_strategy_params(self, params: Dict, filename: str) -> Dict:
-        """Validar parámetros contra configuración maestra"""
-        if not self.master_config:
-            return {"status": "ERROR", "message": "Configuración maestra no cargada"}
-        
-        master_params = self.master_config["strategy_v5_optimized"]
-        
-        # Parámetros críticos a validar
-        critical_params = [
-            "ema_period", "rsi_max", "rsi_min", "atr_threshold",
-            "take_profit", "stop_loss"
-        ]
-        
-        validation_result = {
-            "status": "PASS",
-            "filename": filename,
-            "total_params": len(critical_params),
-            "valid_params": 0,
-            "invalid_params": 0,
-            "missing_params": 0,
-            "details": []
-        }
-        
-        for param in critical_params:
-            if param in params:
-                expected_value = self.get_master_value(master_params, param)
-                actual_value = params[param]
-                
-                if expected_value == actual_value:
-                    validation_result["valid_params"] += 1
-                    validation_result["details"].append({
-                        "param": param,
-                        "status": "✅",
-                        "expected": expected_value,
-                        "actual": actual_value
-                    })
-                else:
-                    validation_result["invalid_params"] += 1
-                    validation_result["details"].append({
-                        "param": param,
-                        "status": "❌",
-                        "expected": expected_value,
-                        "actual": actual_value
-                    })
-            else:
-                validation_result["missing_params"] += 1
-                validation_result["details"].append({
-                    "param": param,
-                    "status": "⚠️",
-                    "expected": "N/A",
-                    "actual": "MISSING"
-                })
-        
-        # Determinar estado general
-        if validation_result["invalid_params"] > 0:
-            validation_result["status"] = "FAIL"
-        elif validation_result["missing_params"] > 0:
-            validation_result["status"] = "WARNING"
-        
-        return validation_result
-    
-    def get_master_value(self, master_params: Dict, param: str):
-        """Obtener valor maestro para un parámetro"""
-        # Buscar en diferentes secciones
-        for section in ["core_parameters", "technical_indicators", "trading_constraints", "risk_management"]:
-            if section in master_params and param in master_params[section]:
-                return master_params[section][param]
-        return None
-    
-    def run_validation(self) -> bool:
-        """Ejecutar validación completa"""
-        print("🔍 INICIANDO VALIDACIÓN DE CONSISTENCIA DE CONFIGURACIÓN")
-        print("=" * 60)
-        
-        if not self.load_master_config():
+            self.validation_results["errors"].append(f"❌ Error validando lightning_50k_final_config.json: {e}")
             return False
-        
-        # Archivos a validar
-        config_files = [
-            "strategy_v5.json",
-            "tradeify_real_config.json", 
-            "tradeify_demo_config.json"
-        ]
-        
-        all_passed = True
-        
-        for filename in config_files:
-            print(f"\n📋 Validando: {filename}")
-            result = self.validate_file(filename)
-            self.validation_results[filename] = result
-            
-            if result["status"] == "PASS":
-                print(f"   ✅ {filename}: CONSISTENTE")
-            elif result["status"] == "WARNING":
-                print(f"   ⚠️ {filename}: ADVERTENCIA")
-                all_passed = False
-            else:
-                print(f"   ❌ {filename}: INCONSISTENTE")
-                all_passed = False
-        
-        # Resumen detallado
-        self.print_detailed_results()
-        
-        return all_passed
     
-    def print_detailed_results(self):
-        """Imprimir resultados detallados de validación"""
-        print("\n" + "=" * 60)
-        print("📊 RESULTADOS DETALLADOS DE VALIDACIÓN")
-        print("=" * 60)
-        
-        for filename, result in self.validation_results.items():
-            if result["status"] == "ERROR":
-                print(f"\n❌ {filename}: {result['message']}")
-                continue
-                
-            print(f"\n📋 {filename}:")
-            print(f"   Estado: {result['status']}")
-            print(f"   Parámetros válidos: {result['valid_params']}/{result['total_params']}")
+    def validate_compliance_system(self) -> bool:
+        """Validar sistema de compliance"""
+        try:
+            compliance_file = self.scripts_dir / "tradeify_compliance_system.py"
             
-            if result["details"]:
-                print("   Detalles:")
-                for detail in result["details"]:
-                    status = detail["status"]
-                    param = detail["param"]
-                    expected = detail["expected"]
-                    actual = detail["actual"]
-                    print(f"      {status} {param}: esperado={expected}, actual={actual}")
-        
-        # Resumen general
-        total_files = len(self.validation_results)
-        passed_files = sum(1 for r in self.validation_results.values() if r["status"] == "PASS")
-        warning_files = sum(1 for r in self.validation_results.values() if r["status"] == "WARNING")
-        failed_files = sum(1 for r in self.validation_results.values() if r["status"] == "FAIL")
-        
-        print(f"\n" + "=" * 60)
-        print("🎯 RESUMEN GENERAL")
-        print("=" * 60)
-        print(f"📁 Total de archivos: {total_files}")
-        print(f"✅ Archivos consistentes: {passed_files}")
-        print(f"⚠️ Archivos con advertencias: {warning_files}")
-        print(f"❌ Archivos inconsistentes: {failed_files}")
-        
-        if failed_files == 0 and warning_files == 0:
-            print("\n🎉 ¡TODA LA CONFIGURACIÓN ES CONSISTENTE!")
-        elif failed_files == 0:
-            print("\n⚠️ Configuración mayormente consistente (algunas advertencias)")
-        else:
-            print("\n❌ Se encontraron inconsistencias que requieren corrección")
+            if not compliance_file.exists():
+                self.validation_results["errors"].append("❌ Archivo tradeify_compliance_system.py no encontrado")
+                return False
+            
+            logger.info("📋 Validando sistema de compliance...")
+            
+            # Verificar que el archivo contenga las reglas correctas
+            with open(compliance_file, 'r') as f:
+                content = f.read()
+            
+            # Verificar reglas críticas
+            required_rules = [
+                "consistency_threshold: 0.20",
+                "max_daily_loss: 1250",
+                "max_drawdown: 2000",
+                "Lightning Funded"
+            ]
+            
+            for rule in required_rules:
+                if rule not in content:
+                    self.validation_results["warnings"].append(f"⚠️  Regla no encontrada en compliance system: {rule}")
+            
+            logger.info("✅ Sistema de compliance validado correctamente")
+            self.validation_results["compliance_system"] = True
+            return True
+            
+        except Exception as e:
+            self.validation_results["errors"].append(f"❌ Error validando sistema de compliance: {e}")
+            return False
+    
+    def validate_overall_consistency(self) -> bool:
+        """Validar consistencia general entre archivos"""
+        try:
+            logger.info("🔍 Validando consistencia general...")
+            
+            # Verificar que todos los archivos principales existan
+            required_files = [
+                "config/lightning_50k_final_config.json",
+                "config/lightning_50k_final_config.json",
+                "scripts/tradeify_compliance_system.py",
+                "scripts/tradeify_bot_main.py"
+            ]
+            
+            for file_path in required_files:
+                if not Path(file_path).exists():
+                    self.validation_results["errors"].append(f"❌ Archivo requerido no encontrado: {file_path}")
+            
+            # Verificar que no haya errores críticos
+            if self.validation_results["errors"]:
+                logger.error("❌ Se encontraron errores críticos en la validación")
+                return False
+            
+            # Verificar que todos los componentes principales estén validados
+            if all([
+                self.validation_results["lightning_50k"],
+                self.validation_results["lightning_50k_final_config"],
+                self.validation_results["compliance_system"]
+            ]):
+                self.validation_results["overall"] = True
+                logger.info("✅ Validación general completada exitosamente")
+                return True
+            else:
+                logger.error("❌ No todos los componentes principales están validados")
+                return False
+                
+        except Exception as e:
+            self.validation_results["errors"].append(f"❌ Error en validación general: {e}")
+            return False
+    
+    def run_full_validation(self) -> bool:
+        """Ejecutar validación completa"""
+        try:
+            logger.info("🚀 INICIANDO VALIDACIÓN COMPLETA DE CONFIGURACIÓN")
+            logger.info("=" * 70)
+            
+            # Validar cada componente
+            strategy_ok = self.validate_lightning_50k()
+            config_ok = self.validate_lightning_50k_final_config()
+            compliance_ok = self.validate_compliance_system()
+            
+            # Validar consistencia general
+            overall_ok = self.validate_overall_consistency()
+            
+            # Resumen de validación
+            logger.info("📋 RESUMEN DE VALIDACIÓN:")
+            logger.info(f"   ✅ Strategy V5: {'VALIDADO' if strategy_ok else 'FALLÓ'}")
+            logger.info(f"   ✅ Tradeify Config: {'VALIDADO' if config_ok else 'FALLÓ'}")
+            logger.info(f"   ✅ Compliance System: {'VALIDADO' if compliance_ok else 'FALLÓ'}")
+            logger.info(f"   🎯 Overall: {'VALIDADO' if overall_ok else 'FALLÓ'}")
+            
+            # Mostrar errores si los hay
+            if self.validation_results["errors"]:
+                logger.error("❌ ERRORES ENCONTRADOS:")
+                for error in self.validation_results["errors"]:
+                    logger.error(f"   {error}")
+            
+            # Mostrar advertencias si las hay
+            if self.validation_results["warnings"]:
+                logger.warning("⚠️  ADVERTENCIAS:")
+                for warning in self.validation_results["warnings"]:
+                    logger.warning(f"   {warning}")
+            
+            logger.info("=" * 70)
+            
+            if overall_ok:
+                logger.info("🎉 CONFIGURACIÓN COMPLETAMENTE VALIDADA PARA TRADEIFY LIGHTNING FUNDED")
+                logger.info("✅ Tu bot está listo para operar respetando todas las reglas críticas")
+            else:
+                logger.error("❌ CONFIGURACIÓN NO VALIDADA - CORREGIR ERRORES ANTES DE OPERAR")
+            
+            return overall_ok
+            
+        except Exception as e:
+            logger.error(f"❌ Error en validación completa: {e}")
+            return False
+    
+    def get_validation_report(self) -> dict:
+        """Obtener reporte completo de validación"""
+        return {
+            "timestamp": datetime.now().isoformat(),
+            "results": self.validation_results,
+            "lightning_requirements": self.LIGHTNING_REQUIREMENTS,
+            "summary": {
+                "total_errors": len(self.validation_results["errors"]),
+                "total_warnings": len(self.validation_results["warnings"]),
+                "overall_valid": self.validation_results["overall"]
+            }
+        }
 
 def main():
     """Función principal"""
-    validator = ConfigValidator()
-    success = validator.run_validation()
-    
-    if success:
-        print("\n✅ Validación completada exitosamente")
-        exit(0)
-    else:
-        print("\n❌ Validación completada con errores")
-        exit(1)
+    try:
+        print("🔍 VALIDADOR DE CONFIGURACIÓN TRADEIFY LIGHTNING FUNDED")
+        print("=" * 70)
+        
+        validator = TradeifyConfigValidator()
+        success = validator.run_full_validation()
+        
+        if success:
+            print("\n🎉 VALIDACIÓN EXITOSA")
+            print("✅ Tu bot está configurado correctamente para Tradeify Lightning Funded")
+            print("✅ Todas las reglas críticas están implementadas")
+            print("✅ Puedes proceder con el backtesting y activación")
+        else:
+            print("\n❌ VALIDACIÓN FALLÓ")
+            print("❌ Corrige los errores antes de proceder")
+            print("❌ Tu cuenta de $50k está en riesgo si no se corrigen")
+        
+        return success
+        
+    except Exception as e:
+        print(f"❌ Error en validación: {e}")
+        return False
 
 if __name__ == "__main__":
-    main()
+    success = main()
+    sys.exit(0 if success else 1)
