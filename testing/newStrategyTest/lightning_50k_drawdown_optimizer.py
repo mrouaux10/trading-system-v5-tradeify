@@ -253,7 +253,7 @@ def round_numbers_strategy_backtest(df, params):
 def optimize_parameters(df):
     """Optimizar parámetros para reducir drawdown"""
     
-    logger.info("🔍 INICIANDO OPTIMIZACIÓN DE DRAWDOWN...")
+    logger.info("INICIANDO OPTIMIZACIÓN DE DRAWDOWN...")
     
     # Parámetros base actuales
     base_params = {
@@ -284,7 +284,7 @@ def optimize_parameters(df):
     param_values = list(param_ranges.values())
     combinations = list(itertools.product(*param_values))
     
-    logger.info(f"🔬 Evaluando {len(combinations)} combinaciones de parámetros...")
+    logger.info(f"Testing: Evaluando {len(combinations)} combinaciones de parámetros...")
     
     results = []
     
@@ -325,31 +325,31 @@ def optimize_parameters(df):
                 
                 # Logging cada 20 combinaciones
                 if i % 20 == 0:
-                    logger.info(f"🔬 Progreso: {i+1}/{len(combinations)} - Mejor drawdown: ${min([r['max_drawdown'] for r in results]):.2f}")
+                    logger.info(f"Testing: Progreso: {i+1}/{len(combinations)} - Mejor drawdown: ${min([r['max_drawdown'] for r in results]):.2f}")
         
         except Exception as e:
-            logger.warning(f"⚠️ Error en combinación {i+1}: {e}")
+            logger.warning(f"Error en combinación {i+1}: {e}")
             continue
     
     if not results:
-        logger.error("❌ No se encontraron resultados válidos")
+        logger.error("No se encontraron resultados válidos")
         return None
     
     # Ordenar por score combinado
     results.sort(key=lambda x: x['combined_score'], reverse=True)
     
     # Mostrar top 5 mejores
-    logger.info("\n🏆 TOP 5 MEJORES CONFIGURACIONES:")
+    logger.info("\nBest: TOP 5 MEJORES CONFIGURACIONES:")
     logger.info("=" * 100)
     
     for i, result in enumerate(results[:5]):
         logger.info(f"\n#{i+1} CONFIGURACIÓN:")
-        logger.info(f"  📊 Drawdown: ${result['max_drawdown']:.2f} ({2000-result['max_drawdown']:.2f} margen)")
-        logger.info(f"  💰 PnL: ${result['total_pnl']:.2f}")
-        logger.info(f"  🔢 Trades: {result['total_trades']:,}")
-        logger.info(f"  🏆 Win Rate: {result['win_rate']:.1f}%")
-        logger.info(f"  📈 Score: {result['combined_score']:.2f}")
-        logger.info(f"  ⚙️ Parámetros:")
+        logger.info(f"  Drawdown: ${result['max_drawdown']:.2f} ({2000-result['max_drawdown']:.2f} margen)")
+        logger.info(f"  PnL: ${result['total_pnl']:.2f}")
+        logger.info(f"  Trades: Trades: {result['total_trades']:,}")
+        logger.info(f"  Best: Win Rate: {result['win_rate']:.1f}%")
+        logger.info(f"  Score: {result['combined_score']:.2f}")
+        logger.info(f"  Config: Parámetros:")
         for param, value in result['params'].items():
             logger.info(f"    {param}: {value}")
     
@@ -357,22 +357,22 @@ def optimize_parameters(df):
     best_result = results[0]
     
     logger.info("\n" + "=" * 80)
-    logger.info("🎯 CONFIGURACIÓN SELECCIONADA:")
+    logger.info("CONFIGURACIÓN SELECCIONADA:")
     logger.info("=" * 80)
-    logger.info(f"📊 Drawdown actual: $1,812.75")
-    logger.info(f"📊 Drawdown optimizado: ${best_result['max_drawdown']:.2f}")
-    logger.info(f"📈 Mejora en drawdown: ${1812.75 - best_result['max_drawdown']:.2f}")
-    logger.info(f"💰 PnL actual: $135,804.50")
-    logger.info(f"💰 PnL optimizado: ${best_result['total_pnl']:.2f}")
-    logger.info(f"📊 Trades actual: 14,078")
-    logger.info(f"📊 Trades optimizado: {best_result['total_trades']:,}")
+    logger.info(f"Drawdown actual: $1,812.75")
+    logger.info(f"Drawdown optimizado: ${best_result['max_drawdown']:.2f}")
+    logger.info(f"Mejora en drawdown: ${1812.75 - best_result['max_drawdown']:.2f}")
+    logger.info(f"PnL actual: $135,804.50")
+    logger.info(f"PnL optimizado: ${best_result['total_pnl']:.2f}")
+    logger.info(f"Trades actual: 14,078")
+    logger.info(f"Trades optimizado: {best_result['total_trades']:,}")
     
     improvement = 1812.75 - best_result['max_drawdown']
     if improvement > 100:
-        logger.info(f"\n✅ OPTIMIZACIÓN EXITOSA: Reducción de ${improvement:.2f} en drawdown")
+        logger.info(f"\nOPTIMIZACIÓN EXITOSA: Reducción de ${improvement:.2f} en drawdown")
         return best_result
     else:
-        logger.info(f"\n⚠️ MEJORA MARGINAL: Solo ${improvement:.2f} de reducción")
+        logger.info(f"\nMEJORA MARGINAL: Solo ${improvement:.2f} de reducción")
         return None
 
 def main():
@@ -381,7 +381,7 @@ def main():
     # Cargar datos consolidados
     data_file = "/Users/matiasrouaux/Documents/projects/My trading system/backtesting/historical/MNQ_consolidated_2024-2025.csv"
     
-    logger.info(f"📥 Cargando archivo: {data_file}")
+    logger.info(f"Loading: Cargando archivo: {data_file}")
     df = pd.read_csv(data_file)
     
     # Convertir datetime
@@ -391,21 +391,21 @@ def main():
     # Filtrar solo días de trading (lunes-viernes)
     df = df[df.index.dayofweek < 5]  # 0=Monday, 4=Friday
     
-    logger.info(f"✅ Datos cargados: {len(df):,} barras")
-    logger.info(f"📅 Período: {df.index.min()} → {df.index.max()}")
+    logger.info(f"Datos cargados: {len(df):,} barras")
+    logger.info(f"Período: {df.index.min()} → {df.index.max()}")
     
     # Reset index para trabajar con datetime como columna
     df = df.reset_index()
     
     # Detectar señales
-    logger.info("🔍 Detectando señales de trading...")
+    logger.info("Detectando señales de trading...")
     df = detect_signals(df)
     
     # Ejecutar optimización
     best_result = optimize_parameters(df)
     
     if best_result:
-        logger.info("\n🚀 APLICANDO PARÁMETROS OPTIMIZADOS...")
+        logger.info("\nAPLICANDO PARÁMETROS OPTIMIZADOS...")
         
         # Crear archivo con los nuevos parámetros
         optimized_config = {
@@ -431,12 +431,12 @@ def main():
         with open(config_file, 'w') as f:
             json.dump(optimized_config, f, indent=2)
         
-        logger.info(f"💾 Configuración guardada: {config_file}")
+        logger.info(f"File: Configuración guardada: {config_file}")
         
         return best_result
     else:
-        logger.info("\n⚠️ No se encontró una mejora significativa en el drawdown")
-        logger.info("💡 Recomendación: Mantener parámetros actuales")
+        logger.info("\nNo se encontró una mejora significativa en el drawdown")
+        logger.info("Recomendación: Mantener parámetros actuales")
         return None
 
 if __name__ == "__main__":

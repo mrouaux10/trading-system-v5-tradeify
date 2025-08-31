@@ -83,10 +83,10 @@ class TradeifyComplianceSystem:
             self.update_daily_stats(trade_data)
             self.update_weekly_stats(trade_data)
             
-            logger.info(f"✅ Trade agregado para compliance: {trade_data.get('signal', 'N/A')} @ {trade_data.get('entry_price', 'N/A')}")
+            logger.info(f"Trade agregado para compliance: {trade_data.get('signal', 'N/A')} @ {trade_data.get('entry_price', 'N/A')}")
             
         except Exception as e:
-            logger.error(f"❌ Error agregando trade: {e}")
+            logger.error(f"Error agregando trade: {e}")
     
     def update_daily_stats(self, trade_data: Dict):
         """Actualizar estadísticas diarias"""
@@ -121,7 +121,7 @@ class TradeifyComplianceSystem:
                     self.daily_stats[today_str]['max_loss'] = min(self.daily_stats[today_str]['max_loss'], pnl)
             
         except Exception as e:
-            logger.error(f"❌ Error actualizando estadísticas diarias: {e}")
+            logger.error(f"Error actualizando estadísticas diarias: {e}")
     
     def update_weekly_stats(self, trade_data: Dict):
         """Actualizar estadísticas semanales"""
@@ -149,7 +149,7 @@ class TradeifyComplianceSystem:
                 self.weekly_stats[week_str]['total_pnl'] += pnl
                 
         except Exception as e:
-            logger.error(f"❌ Error actualizando estadísticas semanales: {e}")
+            logger.error(f"Error actualizando estadísticas semanales: {e}")
     
     def check_microscalping_compliance(self) -> Tuple[bool, float]:
         """Verificar compliance de microscalping (mínimo 50%)"""
@@ -177,12 +177,12 @@ class TradeifyComplianceSystem:
             microscalping_percentage = microscalping_trades / total_trades
             is_compliant = microscalping_percentage >= self.config['compliance_rules']['microscalping_minimum']
             
-            logger.info(f"📊 Microscalping: {microscalping_percentage*100:.1f}% (requerido: {self.config['compliance_rules']['microscalping_minimum']*100}%)")
+            logger.info(f"Microscalping: {microscalping_percentage*100:.1f}% (requerido: {self.config['compliance_rules']['microscalping_minimum']*100}%)")
             
             return is_compliant, microscalping_percentage
             
         except Exception as e:
-            logger.error(f"❌ Error verificando microscalping: {e}")
+            logger.error(f"Error verificando microscalping: {e}")
             return False, 0.0
     
     def check_consistency_compliance(self) -> Tuple[bool, float]:
@@ -206,12 +206,12 @@ class TradeifyComplianceSystem:
             
             is_compliant = consistency_percentage <= (self.config['compliance_rules']['consistency_threshold'] * 100)
             
-            logger.info(f"📊 Consistency: {consistency_percentage:.1f}% (máximo: {self.config['compliance_rules']['consistency_threshold']*100}%)")
+            logger.info(f"Consistency: {consistency_percentage:.1f}% (máximo: {self.config['compliance_rules']['consistency_threshold']*100}%)")
             
             return is_compliant, consistency_percentage / 100
             
         except Exception as e:
-            logger.error(f"❌ Error verificando consistency: {e}")
+            logger.error(f"Error verificando consistency: {e}")
             return False, 1.0
     
     def check_daily_loss_compliance(self) -> Tuple[bool, float]:
@@ -230,12 +230,12 @@ class TradeifyComplianceSystem:
             is_compliant = daily_loss <= max_allowed_loss
             loss_percentage = daily_loss / max_allowed_loss
             
-            logger.info(f"📊 Daily Loss: ${daily_loss:.2f} (límite: ${max_allowed_loss})")
+            logger.info(f"Daily Loss: ${daily_loss:.2f} (límite: ${max_allowed_loss})")
             
             return is_compliant, loss_percentage
             
         except Exception as e:
-            logger.error(f"❌ Error verificando daily loss: {e}")
+            logger.error(f"Error verificando daily loss: {e}")
             return False, 1.0
     
     def check_drawdown_compliance(self) -> Tuple[bool, float]:
@@ -258,12 +258,12 @@ class TradeifyComplianceSystem:
             is_compliant = drawdown <= max_allowed_drawdown
             drawdown_percentage = drawdown / max_allowed_drawdown
             
-            logger.info(f"📊 Drawdown: ${drawdown:.2f} (límite: ${max_allowed_drawdown})")
+            logger.info(f"Drawdown: ${drawdown:.2f} (límite: ${max_allowed_drawdown})")
             
             return is_compliant, drawdown_percentage
             
         except Exception as e:
-            logger.error(f"❌ Error verificando drawdown: {e}")
+            logger.error(f"Error verificando drawdown: {e}")
             return False, 1.0
     
     def check_activity_compliance(self) -> Tuple[bool, float]:
@@ -284,12 +284,12 @@ class TradeifyComplianceSystem:
             is_compliant = trading_days >= min_required_days
             activity_percentage = trading_days / min_required_days
             
-            logger.info(f"📊 Trading Days: {trading_days} (mínimo: {min_required_days})")
+            logger.info(f"Trading Days: {trading_days} (mínimo: {min_required_days})")
             
             return is_compliant, activity_percentage
             
         except Exception as e:
-            logger.error(f"❌ Error verificando actividad: {e}")
+            logger.error(f"Error verificando actividad: {e}")
             return False, 0.0
     
     def check_trading_hours(self) -> bool:
@@ -309,17 +309,17 @@ class TradeifyComplianceSystem:
             elif current_hour == end_hour and current_minute <= end_minute:
                 return True
             
-            logger.warning(f"⚠️  Fuera de horario de trading: {current_hour:02d}:{current_minute:02d} (permitido: {start_hour:02d}:00-{end_hour:02d}:{end_minute:02d})")
+            logger.warning(f"Fuera de horario de trading: {current_hour:02d}:{current_minute:02d} (permitido: {start_hour:02d}:00-{end_hour:02d}:{end_minute:02d})")
             return False
             
         except Exception as e:
-            logger.error(f"❌ Error verificando horario: {e}")
+            logger.error(f"Error verificando horario: {e}")
             return False
     
     def run_compliance_check(self) -> Dict:
         """Ejecutar verificación completa de compliance"""
         try:
-            logger.info("🔍 EJECUTANDO VERIFICACIÓN COMPLETA DE COMPLIANCE")
+            logger.info("EJECUTANDO VERIFICACIÓN COMPLETA DE COMPLIANCE")
             logger.info("=" * 60)
             
             # Verificar horario de trading
@@ -343,20 +343,20 @@ class TradeifyComplianceSystem:
             }
             
             # Resumen de compliance
-            logger.info("📋 RESUMEN DE COMPLIANCE:")
-            logger.info(f"   ✅ Microscalping: {'COMPLIANT' if microscalping_ok else 'VIOLATION'}")
-            logger.info(f"   ✅ Consistency: {'COMPLIANT' if consistency_ok else 'VIOLATION'}")
-            logger.info(f"   ✅ Daily Loss: {'COMPLIANT' if daily_loss_ok else 'VIOLATION'}")
-            logger.info(f"   ✅ Drawdown: {'COMPLIANT' if drawdown_ok else 'VIOLATION'}")
-            logger.info(f"   ✅ Activity: {'COMPLIANT' if activity_ok else 'VIOLATION'}")
-            logger.info(f"   ✅ Trading Hours: {'COMPLIANT' if trading_hours_ok else 'VIOLATION'}")
+            logger.info("RESUMEN DE COMPLIANCE:")
+            logger.info(f"   Microscalping: {'COMPLIANT' if microscalping_ok else 'VIOLATION'}")
+            logger.info(f"   Consistency: {'COMPLIANT' if consistency_ok else 'VIOLATION'}")
+            logger.info(f"   Daily Loss: {'COMPLIANT' if daily_loss_ok else 'VIOLATION'}")
+            logger.info(f"   Drawdown: {'COMPLIANT' if drawdown_ok else 'VIOLATION'}")
+            logger.info(f"   Activity: {'COMPLIANT' if activity_ok else 'VIOLATION'}")
+            logger.info(f"   Trading Hours: {'COMPLIANT' if trading_hours_ok else 'VIOLATION'}")
             logger.info("=" * 60)
-            logger.info(f"🎯 OVERALL COMPLIANCE: {'✅ COMPLIANT' if self.compliance_status['overall'] else '❌ VIOLATION'}")
+            logger.info(f"OVERALL COMPLIANCE: {'COMPLIANT' if self.compliance_status['overall'] else 'VIOLATION'}")
             
             return self.compliance_status
             
         except Exception as e:
-            logger.error(f"❌ Error ejecutando compliance check: {e}")
+            logger.error(f"Error ejecutando compliance check: {e}")
             return {"overall": False}
     
     def get_compliance_report(self) -> Dict:
@@ -370,7 +370,7 @@ class TradeifyComplianceSystem:
                 "last_check": datetime.now().isoformat()
             }
         except Exception as e:
-            logger.error(f"❌ Error generando reporte: {e}")
+            logger.error(f"Error generando reporte: {e}")
             return {}
 
 # Función de prueba
@@ -379,7 +379,7 @@ def test_compliance_system():
     try:
         compliance = TradeifyComplianceSystem()
         
-        print("🔍 Probando sistema de compliance...")
+        print("Probando sistema de compliance...")
         
         # Simular algunos trades
         test_trades = [
@@ -408,14 +408,14 @@ def test_compliance_system():
         # Ejecutar compliance check
         result = compliance.run_compliance_check()
         
-        print(f"✅ Compliance check completado: {result['overall']}")
+        print(f"Compliance check completado: {result['overall']}")
         
         # Obtener reporte
         report = compliance.get_compliance_report()
-        print(f"📊 Total trades: {report['total_trades']}")
+        print(f"Total trades: {report['total_trades']}")
         
     except Exception as e:
-        print(f"❌ Error: {e}")
+        print(f"Error: {e}")
 
 if __name__ == "__main__":
     test_compliance_system()

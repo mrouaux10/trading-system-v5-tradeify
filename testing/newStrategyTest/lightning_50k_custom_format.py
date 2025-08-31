@@ -39,9 +39,9 @@ def detect_signals(df):
 def round_numbers_strategy_backtest(df):
     """Ejecutar backtest completo con Break Even Protection optimizado"""
     
-    logger.info("🚀 INICIANDO LIGHTNING 50K BACKTEST - FORMATO PERSONALIZADO")
-    logger.info(f"📊 Barras totales: {len(df):,}")
-    logger.info(f"📅 Período: {df.datetime.min()} → {df.datetime.max()}")
+    logger.info("INICIANDO LIGHTNING 50K BACKTEST - FORMATO PERSONALIZADO")
+    logger.info(f"Barras totales: {len(df):,}")
+    logger.info(f"Período: {df.datetime.min()} → {df.datetime.max()}")
     
     # Configuración Lightning 50K
     initial_balance = 50000
@@ -213,9 +213,9 @@ def round_numbers_strategy_backtest(df):
                 position = None
                 
                 if exit_reason == 'Round Number':
-                    logger.info(f"💰 RN: {direction} @ {entry_price} → {exit_price} = ${net_pnl:.2f}")
+                    logger.info(f"RN: {direction} @ {entry_price} → {exit_price} = ${net_pnl:.2f}")
                 elif exit_reason == 'Break Even':
-                    logger.info(f"🛡️ BE: {direction} @ {entry_price} → {exit_price} = ${net_pnl:.2f}")
+                    logger.info(f"BE: {direction} @ {entry_price} → {exit_price} = ${net_pnl:.2f}")
         
         # Buscar nuevas entradas si no hay posición
         if position is None:
@@ -257,7 +257,7 @@ def round_numbers_strategy_backtest(df):
         
         # Progress cada 10,000 barras
         if i % 10000 == 0:
-            logger.info(f"📊 Progreso: {i:,}/{len(df):,} barras ({i/len(df)*100:.1f}%)")
+            logger.info(f"Progreso: {i:,}/{len(df):,} barras ({i/len(df)*100:.1f}%)")
     
     return trades, balance, max_drawdown
 
@@ -340,7 +340,7 @@ def main():
     # Cargar datos consolidados
     data_file = "/Users/matiasrouaux/Documents/projects/My trading system/backtesting/historical/MNQ_consolidated_2024-2025.csv"
     
-    logger.info(f"📥 Cargando archivo: {data_file}")
+    logger.info(f"Loading: Cargando archivo: {data_file}")
     df = pd.read_csv(data_file)
     
     # Convertir datetime
@@ -350,22 +350,22 @@ def main():
     # Filtrar solo días de trading (lunes-viernes)
     df = df[df.index.dayofweek < 5]  # 0=Monday, 4=Friday
     
-    logger.info(f"✅ Datos cargados: {len(df):,} barras")
-    logger.info(f"📅 Período: {df.index.min()} → {df.index.max()}")
+    logger.info(f"Datos cargados: {len(df):,} barras")
+    logger.info(f"Período: {df.index.min()} → {df.index.max()}")
     
     # Reset index para trabajar con datetime como columna
     df = df.reset_index()
     
     # Detectar señales
-    logger.info("🔍 Detectando señales de trading...")
+    logger.info("Detectando señales de trading...")
     df = detect_signals(df)
     
     # Ejecutar backtest
-    logger.info("🚀 Ejecutando Lightning 50K con Break Even Protection...")
+    logger.info("Ejecutando Lightning 50K con Break Even Protection...")
     trades, final_balance, max_drawdown = round_numbers_strategy_backtest(df)
     
     # Convertir al formato personalizado del usuario
-    logger.info("📝 Formateando CSV personalizado...")
+    logger.info("Format: Formateando CSV personalizado...")
     custom_trades = format_custom_csv(trades)
     custom_df = pd.DataFrame(custom_trades)
     
@@ -384,7 +384,7 @@ def main():
     for old_file in old_files:
         if Path(old_file).exists():
             Path(old_file).unlink()
-            logger.info(f"🗑️ Eliminado: {old_file}")
+            logger.info(f"Deleted: Eliminado: {old_file}")
     
     # Guardar CSV con formato personalizado
     output_file = 'results/Lightning_50K_Optimized_Complete.csv'
@@ -406,30 +406,30 @@ def main():
         close_reasons = trade_rows['Close Reason'].value_counts()
         
     logger.info("=" * 80)
-    logger.info("📊 LIGHTNING 50K - FORMATO CSV PERSONALIZADO")
+    logger.info("LIGHTNING 50K - FORMATO CSV PERSONALIZADO")
     logger.info("=" * 80)
-    logger.info(f"📅 Período: {df.datetime.min()} → {df.datetime.max()}")
-    logger.info(f"📊 Barras procesadas: {len(df):,}")
-    logger.info(f"🔢 Total trades: {total_trades:,}")
-    logger.info(f"💰 PnL total: ${total_pnl:,.2f}")
-    logger.info(f"📈 Balance final: ${final_balance:,.2f}")
-    logger.info(f"🏆 Win Rate: {win_rate:.1f}%")
-    logger.info(f"📊 Max Drawdown: ${max_drawdown:.2f}")
+    logger.info(f"Período: {df.datetime.min()} → {df.datetime.max()}")
+    logger.info(f"Barras procesadas: {len(df):,}")
+    logger.info(f"Trades: Total trades: {total_trades:,}")
+    logger.info(f"PnL total: ${total_pnl:,.2f}")
+    logger.info(f"Balance final: ${final_balance:,.2f}")
+    logger.info(f"Best: Win Rate: {win_rate:.1f}%")
+    logger.info(f"Max Drawdown: ${max_drawdown:.2f}")
     logger.info("")
-    logger.info("📊 ANÁLISIS POR TIPO DE CIERRE:")
+    logger.info("ANÁLISIS POR TIPO DE CIERRE:")
     for reason, count in close_reasons.items():
         logger.info(f"  {reason}: {count} trades")
     logger.info("")
     
     # Verificación Lightning 50K
     lightning_compliant = max_drawdown <= 2000
-    logger.info("⚡ VERIFICACIÓN LIGHTNING 50K:")
-    logger.info(f"📊 Max Drawdown: ${max_drawdown:.2f} / $2,000 {'✅' if lightning_compliant else '❌'}")
-    logger.info(f"🏆 Compliance Status: {'COMPLIANT' if lightning_compliant else 'VIOLATION'}")
+    logger.info("VERIFICACIÓN LIGHTNING 50K:")
+    logger.info(f"Max Drawdown: ${max_drawdown:.2f} / $2,000 {'OK' if lightning_compliant else 'FAIL'}")
+    logger.info(f"Best: Compliance Status: {'COMPLIANT' if lightning_compliant else 'VIOLATION'}")
     logger.info("")
     
-    logger.info(f"💾 Archivo guardado: {output_file}")
-    logger.info(f"📋 Formato de columnas:")
+    logger.info(f"File: Archivo guardado: {output_file}")
+    logger.info(f"Formato de columnas:")
     for col in custom_df.columns:
         logger.info(f"   - {col}")
     
@@ -438,10 +438,10 @@ def main():
     total_trade_rows = len(custom_df) - separator_rows
     
     logger.info("")
-    logger.info(f"📊 ESTRUCTURA DEL CSV:")
-    logger.info(f"   🔢 Filas de trades: {total_trade_rows:,}")
-    logger.info(f"   📅 Filas separadoras: {separator_rows:,}")
-    logger.info(f"   📋 Total filas: {len(custom_df):,}")
+    logger.info(f"ESTRUCTURA DEL CSV:")
+    logger.info(f"   Trades: Filas de trades: {total_trade_rows:,}")
+    logger.info(f"   Filas separadoras: {separator_rows:,}")
+    logger.info(f"   Total filas: {len(custom_df):,}")
     
     # Mostrar ejemplo de Daily P&L y Balance diario
     if len(custom_df) > 0:
@@ -459,7 +459,7 @@ def main():
             daily_balances[date] = daily_balance
         
         logger.info("")
-        logger.info("📅 PRIMEROS 5 DÍAS - DAILY P&L Y BALANCE:")
+        logger.info("PRIMEROS 5 DÍAS - DAILY P&L Y BALANCE:")
         for i, (date, daily_pnl) in enumerate(list(daily_totals.items())[:5]):
             daily_balance = daily_balances[date]
             logger.info(f"   {date}: Daily P&L ${daily_pnl:.2f} → Balance ${daily_balance:,.2f}")

@@ -1,5 +1,5 @@
 """
-🔌 TRADOVATE CONNECTOR - CONECTOR COMPLETO PARA API DE TRADOVATE
+TRADOVATE CONNECTOR - CONECTOR COMPLETO PARA API DE TRADOVATE
 Implementación completa basada en la documentación oficial de la API v1.0.0
 """
 
@@ -70,7 +70,7 @@ class TradovateConnector:
         self.contracts_cache = {}
         self.accounts_cache = {}
         
-        logger.info("🔌 Conector Tradovate inicializado")
+        logger.info("Conector Tradovate inicializado")
     
     def load_config(self, config_file: str) -> Dict:
         """Cargar configuración desde archivo"""
@@ -78,7 +78,7 @@ class TradovateConnector:
             with open(config_file, 'r') as f:
                 return json.load(f)
         except Exception as e:
-            logger.error(f"❌ Error cargando configuración: {e}")
+            logger.error(f"Error cargando configuración: {e}")
             raise
     
     def setup_credentials(self) -> TradovateCredentials:
@@ -127,7 +127,7 @@ class TradovateConnector:
                 "sec": self.credentials.sec
             }
             
-            logger.info(f"🔐 Autenticando con Tradovate: {self.credentials.name}")
+            logger.info(f"Autenticando con Tradovate: {self.credentials.name}")
             
             response = self.session.post(
                 auth_url, 
@@ -148,17 +148,17 @@ class TradovateConnector:
                         'Content-Type': 'application/json'
                     })
                     
-                    logger.info("✅ Autenticación exitosa con Tradovate")
+                    logger.info("Autenticación exitosa con Tradovate")
                     return True
                 else:
-                    logger.error(f"❌ Respuesta de autenticación inválida: {auth_response}")
+                    logger.error(f"Respuesta de autenticación inválida: {auth_response}")
                     return False
             else:
-                logger.error(f"❌ Error de autenticación: {response.status_code} - {response.text}")
+                logger.error(f"Error de autenticación: {response.status_code} - {response.text}")
                 return False
                 
         except Exception as e:
-            logger.error(f"❌ Error durante autenticación: {e}")
+            logger.error(f"Error durante autenticación: {e}")
             return False
     
     def renew_access_token(self) -> bool:
@@ -168,7 +168,7 @@ class TradovateConnector:
         """
         try:
             if not self.access_token:
-                logger.warning("⚠️ No hay token para renovar")
+                logger.warning("No hay token para renovar")
                 return False
             
             renew_url = self.get_api_url("auth/renewAccessToken")
@@ -191,17 +191,17 @@ class TradovateConnector:
                         'Authorization': f'Bearer {self.access_token}'
                     })
                     
-                    logger.info("🔄 Token de acceso renovado")
+                    logger.info("Token de acceso renovado")
                     return True
                 else:
-                    logger.error("❌ Respuesta de renovación inválida")
+                    logger.error("Respuesta de renovación inválida")
                     return False
             else:
-                logger.error(f"❌ Error renovando token: {response.status_code}")
+                logger.error(f"Error renovando token: {response.status_code}")
                 return False
                 
         except Exception as e:
-            logger.error(f"❌ Error renovando token: {e}")
+            logger.error(f"Error renovando token: {e}")
             return False
     
     def check_token_validity(self) -> bool:
@@ -211,7 +211,7 @@ class TradovateConnector:
         
         # Renovar si expira en menos de 1 hora
         if datetime.now() + timedelta(hours=1) >= self.token_expiry:
-            logger.info("🔄 Token próximo a expirar, renovando...")
+            logger.info("Token próximo a expirar, renovando...")
             return self.renew_access_token()
         
         return True
@@ -232,14 +232,14 @@ class TradovateConnector:
             if response.status_code == 200:
                 accounts = response.json()
                 self.accounts_cache = {acc['id']: acc for acc in accounts}
-                logger.info(f"✅ Obtenidas {len(accounts)} cuentas")
+                logger.info(f"Obtenidas {len(accounts)} cuentas")
                 return accounts
             else:
-                logger.error(f"❌ Error obteniendo cuentas: {response.status_code}")
+                logger.error(f"Error obteniendo cuentas: {response.status_code}")
                 return []
                 
         except Exception as e:
-            logger.error(f"❌ Error obteniendo cuentas: {e}")
+            logger.error(f"Error obteniendo cuentas: {e}")
             return []
     
     def get_cash_balance_snapshot(self, account_id: int) -> Optional[Dict]:
@@ -258,14 +258,14 @@ class TradovateConnector:
             
             if response.status_code == 200:
                 balance = response.json()
-                logger.info(f"✅ Balance obtenido para cuenta {account_id}")
+                logger.info(f"Balance obtenido para cuenta {account_id}")
                 return balance
             else:
-                logger.error(f"❌ Error obteniendo balance: {response.status_code}")
+                logger.error(f"Error obteniendo balance: {response.status_code}")
                 return None
                 
         except Exception as e:
-            logger.error(f"❌ Error obteniendo balance: {e}")
+            logger.error(f"Error obteniendo balance: {e}")
             return None
     
     def get_margin_snapshot(self, account_id: int) -> Optional[Dict]:
@@ -284,14 +284,14 @@ class TradovateConnector:
             
             if response.status_code == 200:
                 margin = response.json()
-                logger.info(f"✅ Margen obtenido para cuenta {account_id}")
+                logger.info(f"Margen obtenido para cuenta {account_id}")
                 return margin
             else:
-                logger.error(f"❌ Error obteniendo margen: {response.status_code}")
+                logger.error(f"Error obteniendo margen: {response.status_code}")
                 return None
                 
         except Exception as e:
-            logger.error(f"❌ Error obteniendo margen: {e}")
+            logger.error(f"Error obteniendo margen: {e}")
             return None
     
     def get_positions(self, account_id: int) -> List[Dict]:
@@ -310,14 +310,14 @@ class TradovateConnector:
             
             if response.status_code == 200:
                 positions = response.json()
-                logger.info(f"✅ Obtenidas {len(positions)} posiciones")
+                logger.info(f"Obtenidas {len(positions)} posiciones")
                 return positions
             else:
-                logger.error(f"❌ Error obteniendo posiciones: {response.status_code}")
+                logger.error(f"Error obteniendo posiciones: {response.status_code}")
                 return []
                 
         except Exception as e:
-            logger.error(f"❌ Error obteniendo posiciones: {e}")
+            logger.error(f"Error obteniendo posiciones: {e}")
             return []
     
     def find_contract(self, contract_name: str) -> Optional[Dict]:
@@ -338,17 +338,17 @@ class TradovateConnector:
                 contract = response.json()
                 if contract:
                     self.contracts_cache[contract['id']] = contract
-                    logger.info(f"✅ Contrato encontrado: {contract_name}")
+                    logger.info(f"Contrato encontrado: {contract_name}")
                     return contract
                 else:
-                    logger.warning(f"⚠️ Contrato no encontrado: {contract_name}")
+                    logger.warning(f"Contrato no encontrado: {contract_name}")
                     return None
             else:
-                logger.error(f"❌ Error buscando contrato: {response.status_code}")
+                logger.error(f"Error buscando contrato: {response.status_code}")
                 return None
                 
         except Exception as e:
-            logger.error(f"❌ Error buscando contrato: {e}")
+            logger.error(f"Error buscando contrato: {e}")
             return None
     
     def place_order(self, order_data: Dict) -> Optional[Dict]:
@@ -366,7 +366,7 @@ class TradovateConnector:
             
             order_url = self.get_api_url("order/placeorder")
             
-            logger.info(f"📤 Colocando orden: {order_data}")
+            logger.info(f"Placing: Colocando orden: {order_data}")
             
             response = self.session.post(
                 order_url,
@@ -376,14 +376,14 @@ class TradovateConnector:
             
             if response.status_code == 200:
                 order_response = response.json()
-                logger.info(f"✅ Orden colocada exitosamente: {order_response}")
+                logger.info(f"Orden colocada exitosamente: {order_response}")
                 return order_response
             else:
-                logger.error(f"❌ Error colocando orden: {response.status_code} - {response.text}")
+                logger.error(f"Error colocando orden: {response.status_code} - {response.text}")
                 return None
                 
         except Exception as e:
-            logger.error(f"❌ Error colocando orden: {e}")
+            logger.error(f"Error colocando orden: {e}")
             return None
     
     def cancel_order(self, order_id: int) -> bool:
@@ -405,14 +405,14 @@ class TradovateConnector:
             )
             
             if response.status_code == 200:
-                logger.info(f"✅ Orden {order_id} cancelada")
+                logger.info(f"Orden {order_id} cancelada")
                 return True
             else:
-                logger.error(f"❌ Error cancelando orden: {response.status_code}")
+                logger.error(f"Error cancelando orden: {response.status_code}")
                 return False
                 
         except Exception as e:
-            logger.error(f"❌ Error cancelando orden: {e}")
+            logger.error(f"Error cancelando orden: {e}")
             return False
     
     def modify_order(self, order_id: int, modifications: Dict) -> bool:
@@ -437,14 +437,14 @@ class TradovateConnector:
             )
             
             if response.status_code == 200:
-                logger.info(f"✅ Orden {order_id} modificada")
+                logger.info(f"Orden {order_id} modificada")
                 return True
             else:
-                logger.error(f"❌ Error modificando orden: {response.status_code}")
+                logger.error(f"Error modificando orden: {response.status_code}")
                 return False
                 
         except Exception as e:
-            logger.error(f"❌ Error modificando orden: {e}")
+            logger.error(f"Error modificando orden: {e}")
             return False
     
     def liquidate_position(self, position_id: int) -> bool:
@@ -466,14 +466,14 @@ class TradovateConnector:
             )
             
             if response.status_code == 200:
-                logger.info(f"✅ Posición {position_id} liquidada")
+                logger.info(f"Posición {position_id} liquidada")
                 return True
             else:
-                logger.error(f"❌ Error liquidando posición: {response.status_code}")
+                logger.error(f"Error liquidando posición: {response.status_code}")
                 return False
                 
         except Exception as e:
-            logger.error(f"❌ Error liquidando posición: {e}")
+            logger.error(f"Error liquidando posición: {e}")
             return False
     
     def get_orders(self, account_id: int) -> List[Dict]:
@@ -492,14 +492,14 @@ class TradovateConnector:
             
             if response.status_code == 200:
                 orders = response.json()
-                logger.info(f"✅ Obtenidas {len(orders)} órdenes")
+                logger.info(f"Obtenidas {len(orders)} órdenes")
                 return orders
             else:
-                logger.error(f"❌ Error obteniendo órdenes: {response.status_code}")
+                logger.error(f"Error obteniendo órdenes: {response.status_code}")
                 return []
                 
         except Exception as e:
-            logger.error(f"❌ Error obteniendo órdenes: {e}")
+            logger.error(f"Error obteniendo órdenes: {e}")
             return []
     
     def get_execution_reports(self, account_id: int) -> List[Dict]:
@@ -518,14 +518,14 @@ class TradovateConnector:
             
             if response.status_code == 200:
                 reports = response.json()
-                logger.info(f"✅ Obtenidos {len(reports)} reportes de ejecución")
+                logger.info(f"Obtenidos {len(reports)} reportes de ejecución")
                 return reports
             else:
-                logger.error(f"❌ Error obteniendo reportes: {response.status_code}")
+                logger.error(f"Error obteniendo reportes: {response.status_code}")
                 return []
                 
         except Exception as e:
-            logger.error(f"❌ Error obteniendo reportes: {e}")
+            logger.error(f"Error obteniendo reportes: {e}")
             return []
     
     def get_fills(self, account_id: int) -> List[Dict]:
@@ -544,14 +544,14 @@ class TradovateConnector:
             
             if response.status_code == 200:
                 fills = response.json()
-                logger.info(f"✅ Obtenidos {len(fills)} fills")
+                logger.info(f"Obtenidos {len(fills)} fills")
                 return fills
             else:
-                logger.error(f"❌ Error obteniendo fills: {response.status_code}")
+                logger.error(f"Error obteniendo fills: {response.status_code}")
                 return []
                 
         except Exception as e:
-            logger.error(f"❌ Error obteniendo fills: {e}")
+            logger.error(f"Error obteniendo fills: {e}")
             return []
     
     def get_account_risk_status(self, account_id: int) -> Optional[Dict]:
@@ -571,17 +571,17 @@ class TradovateConnector:
             if response.status_code == 200:
                 risk_status = response.json()
                 if risk_status:
-                    logger.info(f"✅ Estado de riesgo obtenido para cuenta {account_id}")
+                    logger.info(f"Estado de riesgo obtenido para cuenta {account_id}")
                     return risk_status[0]  # Retornar el primero
                 else:
-                    logger.warning(f"⚠️ No hay estado de riesgo para cuenta {account_id}")
+                    logger.warning(f"No hay estado de riesgo para cuenta {account_id}")
                     return None
             else:
-                logger.error(f"❌ Error obteniendo estado de riesgo: {response.status_code}")
+                logger.error(f"Error obteniendo estado de riesgo: {response.status_code}")
                 return None
                 
         except Exception as e:
-            logger.error(f"❌ Error obteniendo estado de riesgo: {e}")
+            logger.error(f"Error obteniendo estado de riesgo: {e}")
             return None
     
     def get_chart_data(self, contract_id: int, chart_type: str = "Tick", 
@@ -610,21 +610,21 @@ class TradovateConnector:
             
             if response.status_code == 200:
                 chart_data = response.json()
-                logger.info(f"✅ Datos de chart obtenidos para contrato {contract_id}")
+                logger.info(f"Datos de chart obtenidos para contrato {contract_id}")
                 return chart_data
             else:
-                logger.error(f"❌ Error obteniendo chart: {response.status_code}")
+                logger.error(f"Error obteniendo chart: {response.status_code}")
                 return None
                 
         except Exception as e:
-            logger.error(f"❌ Error obteniendo chart: {e}")
+            logger.error(f"Error obteniendo chart: {e}")
             return None
     
     def connect_websocket(self) -> bool:
         """Conectar al WebSocket de Tradovate para datos en tiempo real"""
         try:
             if self.websocket_connected:
-                logger.info("🔌 WebSocket ya conectado")
+                logger.info("WebSocket ya conectado")
                 return True
             
             # Crear conexión WebSocket
@@ -648,19 +648,19 @@ class TradovateConnector:
                 time.sleep(0.1)
             
             if self.websocket_connected:
-                logger.info("🔌 WebSocket conectado exitosamente")
+                logger.info("WebSocket conectado exitosamente")
                 return True
             else:
-                logger.error("❌ Timeout conectando WebSocket")
+                logger.error("Timeout conectando WebSocket")
                 return False
                 
         except Exception as e:
-            logger.error(f"❌ Error conectando WebSocket: {e}")
+            logger.error(f"Error conectando WebSocket: {e}")
             return False
     
     def on_websocket_open(self, ws):
         """Callback cuando se abre la conexión WebSocket"""
-        logger.info("🔌 Conexión WebSocket abierta")
+        logger.info("Conexión WebSocket abierta")
         self.websocket_connected = True
         
         # Enviar heartbeat inicial
@@ -672,18 +672,18 @@ class TradovateConnector:
             data = json.loads(message)
             self.process_websocket_message(data)
         except json.JSONDecodeError:
-            logger.warning(f"⚠️ Mensaje WebSocket no válido: {message}")
+            logger.warning(f"Mensaje WebSocket no válido: {message}")
         except Exception as e:
-            logger.error(f"❌ Error procesando mensaje WebSocket: {e}")
+            logger.error(f"Error procesando mensaje WebSocket: {e}")
     
     def on_websocket_error(self, ws, error):
         """Callback cuando hay error en WebSocket"""
-        logger.error(f"❌ Error en WebSocket: {error}")
+        logger.error(f"Error en WebSocket: {error}")
         self.websocket_connected = False
     
     def on_websocket_close(self, ws, close_status_code, close_msg):
         """Callback cuando se cierra la conexión WebSocket"""
-        logger.info("🔌 Conexión WebSocket cerrada")
+        logger.info("Conexión WebSocket cerrada")
         self.websocket_connected = False
     
     def send_websocket_heartbeat(self):
@@ -692,7 +692,7 @@ class TradovateConnector:
             try:
                 self.websocket.send("[]")
             except Exception as e:
-                logger.error(f"❌ Error enviando heartbeat: {e}")
+                logger.error(f"Error enviando heartbeat: {e}")
     
     def process_websocket_message(self, message: Dict):
         """Procesar mensaje recibido del WebSocket"""
@@ -707,10 +707,10 @@ class TradovateConnector:
             elif 'props' in message:
                 self.process_props_message(message['props'])
             else:
-                logger.debug(f"📨 Mensaje WebSocket no procesado: {message}")
+                logger.debug(f"Message: Mensaje WebSocket no procesado: {message}")
                 
         except Exception as e:
-            logger.error(f"❌ Error procesando mensaje WebSocket: {e}")
+            logger.error(f"Error procesando mensaje WebSocket: {e}")
     
     def process_market_data(self, market_data: Dict):
         """Procesar datos de mercado del WebSocket"""
@@ -728,7 +728,7 @@ class TradovateConnector:
                         callback(dom)
                         
         except Exception as e:
-            logger.error(f"❌ Error procesando datos de mercado: {e}")
+            logger.error(f"Error procesando datos de mercado: {e}")
     
     def process_chart_data(self, chart_data: Dict):
         """Procesar datos de chart del WebSocket"""
@@ -736,21 +736,21 @@ class TradovateConnector:
             for callback in self.chart_callbacks:
                 callback(chart_data)
         except Exception as e:
-            logger.error(f"❌ Error procesando datos de chart: {e}")
+            logger.error(f"Error procesando datos de chart: {e}")
     
     def process_clock_message(self, clock_data: Dict):
         """Procesar mensaje de reloj del WebSocket"""
         try:
             logger.debug(f"🕐 Mensaje de reloj: {clock_data}")
         except Exception as e:
-            logger.error(f"❌ Error procesando mensaje de reloj: {e}")
+            logger.error(f"Error procesando mensaje de reloj: {e}")
     
     def process_props_message(self, props_data: Dict):
         """Procesar mensaje de propiedades del WebSocket"""
         try:
-            logger.debug(f"⚙️ Mensaje de propiedades: {props_data}")
+            logger.debug(f"Config: Mensaje de propiedades: {props_data}")
         except Exception as e:
-            logger.error(f"❌ Error procesando mensaje de propiedades: {e}")
+            logger.error(f"Error procesando mensaje de propiedades: {e}")
     
     def subscribe_quote(self, symbol: str, callback: callable):
         """Suscribirse a quotes en tiempo real"""
@@ -766,11 +766,11 @@ class TradovateConnector:
             subscription_request = f"md/subscribeQuote\n0\n{{\"symbol\":\"{symbol}\"}}\n"
             self.websocket.send(subscription_request)
             
-            logger.info(f"📊 Suscrito a quotes para {symbol}")
+            logger.info(f"Suscrito a quotes para {symbol}")
             return True
             
         except Exception as e:
-            logger.error(f"❌ Error suscribiéndose a quotes: {e}")
+            logger.error(f"Error suscribiéndose a quotes: {e}")
             return False
     
     def subscribe_dom(self, symbol: str, callback: callable):
@@ -787,11 +787,11 @@ class TradovateConnector:
             subscription_request = f"md/subscribeDOM\n0\n{{\"symbol\":\"{symbol}\"}}\n"
             self.websocket.send(subscription_request)
             
-            logger.info(f"📊 Suscrito a DOM para {symbol}")
+            logger.info(f"Suscrito a DOM para {symbol}")
             return True
             
         except Exception as e:
-            logger.error(f"❌ Error suscribiéndose a DOM: {e}")
+            logger.error(f"Error suscribiéndose a DOM: {e}")
             return False
     
     def subscribe_chart(self, symbol: str, callback: callable):
@@ -808,11 +808,11 @@ class TradovateConnector:
             subscription_request = f"md/subscribeChart\n0\n{{\"symbol\":\"{symbol}\"}}\n"
             self.websocket.send(subscription_request)
             
-            logger.info(f"📊 Suscrito a chart para {symbol}")
+            logger.info(f"Suscrito a chart para {symbol}")
             return True
             
         except Exception as e:
-            logger.error(f"❌ Error suscribiéndose a chart: {e}")
+            logger.error(f"Error suscribiéndose a chart: {e}")
             return False
     
     def disconnect_websocket(self):
@@ -821,9 +821,9 @@ class TradovateConnector:
             if self.websocket:
                 self.websocket.close()
                 self.websocket_connected = False
-                logger.info("🔌 WebSocket desconectado")
+                logger.info("WebSocket desconectado")
         except Exception as e:
-            logger.error(f"❌ Error desconectando WebSocket: {e}")
+            logger.error(f"Error desconectando WebSocket: {e}")
     
     def get_account_summary(self, account_id: int) -> Dict:
         """Obtener resumen completo de la cuenta"""
@@ -857,11 +857,11 @@ class TradovateConnector:
             # Obtener estado de riesgo
             summary['risk_status'] = self.get_account_risk_status(account_id)
             
-            logger.info(f"✅ Resumen de cuenta {account_id} obtenido")
+            logger.info(f"Resumen de cuenta {account_id} obtenido")
             return summary
             
         except Exception as e:
-            logger.error(f"❌ Error obteniendo resumen de cuenta: {e}")
+            logger.error(f"Error obteniendo resumen de cuenta: {e}")
             return {}
     
     def create_mnq_order(self, side: str, quantity: int, price: float = None, 
@@ -879,13 +879,13 @@ class TradovateConnector:
             # Buscar contrato MNQ
             contract = self.find_contract("MNQ")
             if not contract:
-                logger.error("❌ Contrato MNQ no encontrado")
+                logger.error("Contrato MNQ no encontrado")
                 return None
             
             # Obtener primera cuenta
             accounts = self.get_accounts()
             if not accounts:
-                logger.error("❌ No hay cuentas disponibles")
+                logger.error("No hay cuentas disponibles")
                 return None
             
             account_id = accounts[0]['id']
@@ -906,7 +906,7 @@ class TradovateConnector:
             return self.place_order(order_data)
             
         except Exception as e:
-            logger.error(f"❌ Error creando orden MNQ: {e}")
+            logger.error(f"Error creando orden MNQ: {e}")
             return None
     
     def get_trading_status(self) -> Dict:
@@ -923,7 +923,7 @@ class TradovateConnector:
             return status
             
         except Exception as e:
-            logger.error(f"❌ Error obteniendo estado de trading: {e}")
+            logger.error(f"Error obteniendo estado de trading: {e}")
             return {}
     
     def cleanup(self):
@@ -936,10 +936,10 @@ class TradovateConnector:
             if self.session:
                 self.session.close()
             
-            logger.info("🧹 Recursos del conector limpiados")
+            logger.info("Recursos del conector limpiados")
             
         except Exception as e:
-            logger.error(f"❌ Error limpiando recursos: {e}")
+            logger.error(f"Error limpiando recursos: {e}")
     
     def __del__(self):
         """Destructor para limpiar recursos"""
@@ -952,12 +952,12 @@ def demo_authentication():
     try:
         connector = TradovateConnector()
         if connector.authenticate():
-            print("✅ Autenticación exitosa")
+            print("Autenticación exitosa")
             print(f"Token: {connector.access_token[:20]}...")
         else:
-            print("❌ Autenticación fallida")
+            print("Autenticación fallida")
     except Exception as e:
-        print(f"❌ Error en demo: {e}")
+        print(f"Error en demo: {e}")
 
 def demo_account_info():
     """Demostrar obtención de información de cuenta"""
@@ -968,15 +968,15 @@ def demo_account_info():
             if accounts:
                 account_id = accounts[0]['id']
                 summary = connector.get_account_summary(account_id)
-                print(f"✅ Resumen de cuenta obtenido: {len(summary)} elementos")
+                print(f"Resumen de cuenta obtenido: {len(summary)} elementos")
                 print(f"Posiciones: {len(summary['positions'])}")
                 print(f"Órdenes: {len(summary['orders'])}")
             else:
-                print("❌ No se pudieron obtener cuentas")
+                print("No se pudieron obtener cuentas")
         else:
-            print("❌ Autenticación fallida")
+            print("Autenticación fallida")
     except Exception as e:
-        print(f"❌ Error en demo: {e}")
+        print(f"Error en demo: {e}")
 
 def demo_contract_search():
     """Demostrar búsqueda de contratos"""
@@ -985,17 +985,17 @@ def demo_contract_search():
         if connector.authenticate():
             contract = connector.find_contract("MNQ")
             if contract:
-                print(f"✅ Contrato encontrado: {contract}")
+                print(f"Contrato encontrado: {contract}")
             else:
-                print("❌ Contrato no encontrado")
+                print("Contrato no encontrado")
         else:
-            print("❌ Autenticación fallida")
+            print("Autenticación fallida")
     except Exception as e:
-        print(f"❌ Error en demo: {e}")
+        print(f"Error en demo: {e}")
 
 if __name__ == "__main__":
     # Ejecutar demos
-    print("🚀 DEMO TRADOVATE CONNECTOR")
+    print("DEMO TRADOVATE CONNECTOR")
     print("=" * 50)
     
     demo_authentication()

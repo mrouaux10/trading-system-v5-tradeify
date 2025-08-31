@@ -19,20 +19,20 @@ logger = logging.getLogger(__name__)
 def create_complete_excel_with_daily_summary():
     """Crear Excel completo con tabla principal y resumen diario"""
     
-    logger.info("📊 Creando Excel COMPLETO con tabla diaria...")
+    logger.info("Creando Excel COMPLETO con tabla diaria...")
     
     # Cargar el CSV optimizado
     csv_file = 'results/Lightning_50K_Optimized_Complete.csv'
     df = pd.read_csv(csv_file)
     
-    logger.info(f"📥 CSV cargado: {len(df):,} filas")
+    logger.info(f"Loading: CSV cargado: {len(df):,} filas")
     
     # Filtrar trades y separadores por separado
     trades_df = df[~df['Date'].str.contains('Final P&L Day:', na=False)].copy()
     separators_df = df[df['Date'].str.contains('Final P&L Day:', na=False)].copy()
     
-    logger.info(f"🔢 Trades: {len(trades_df):,}")
-    logger.info(f"📅 Días: {len(separators_df):,}")
+    logger.info(f"Trades: Trades: {len(trades_df):,}")
+    logger.info(f"Días: {len(separators_df):,}")
     
     # Convertir Net P&L a numérico para trades
     trades_df['Net P&L'] = pd.to_numeric(trades_df['Net P&L'].astype(str).str.replace('$', '').str.replace(',', ''), errors='coerce')
@@ -54,7 +54,7 @@ def create_complete_excel_with_daily_summary():
         'Daily P&L': daily_pnl_data
     })
     
-    logger.info(f"📊 Tabla diaria creada: {len(daily_table)} días")
+    logger.info(f"Tabla diaria creada: {len(daily_table)} días")
     
     # Crear workbook de Excel
     wb = Workbook()
@@ -72,7 +72,7 @@ def create_complete_excel_with_daily_summary():
     )
     
     # TABLA PRINCIPAL COMPLETA (Columnas A-J)
-    logger.info("📋 Escribiendo tabla principal completa...")
+    logger.info("Escribiendo tabla principal completa...")
     
     # Headers tabla principal
     main_headers = ['Date', 'Time', 'MNQ Price', 'Operation type', 'Contracts', 'Trade duration', 'Close Reason', 'Net P&L', 'Daily P&L', 'Balance']
@@ -85,7 +85,7 @@ def create_complete_excel_with_daily_summary():
         cell.border = thin_border
     
     # Escribir TODOS los datos (trades + separadores) de forma eficiente
-    logger.info("✍️ Escribiendo todos los datos...")
+    logger.info("Writing: Escribiendo todos los datos...")
     
     # Usar pandas para escribir datos más eficientemente
     for row_idx, (_, row) in enumerate(df.iterrows(), 2):
@@ -107,10 +107,10 @@ def create_complete_excel_with_daily_summary():
                 if col_idx in [8, 9, 10]:  # Columnas de dinero
                     cell.alignment = Alignment(horizontal='right')
     
-    logger.info(f"✅ Tabla principal escrita: {len(df)} filas")
+    logger.info(f"Tabla principal escrita: {len(df)} filas")
     
     # TABLA RESUMEN DIARIO (Columnas L-M)
-    logger.info("📊 Escribiendo tabla resumen diario...")
+    logger.info("Escribiendo tabla resumen diario...")
     
     # Headers tabla resumen
     daily_headers = ['Day', 'Daily P&L']
@@ -221,13 +221,13 @@ def create_complete_excel_with_daily_summary():
     excel_file = 'results/Lightning_50K_Complete_With_Daily_Summary.xlsx'
     wb.save(excel_file)
     
-    logger.info(f"✅ Excel completo generado: {excel_file}")
-    logger.info("📊 Estructura:")
-    logger.info("   📋 Columnas A-J: TODOS los trades y separadores")
-    logger.info("   📊 Columnas L-M: Tabla resumen diario completa")
-    logger.info(f"   📅 {len(daily_table)} días de trading")
-    logger.info(f"   🔢 {len(trades_df):,} trades totales")
-    logger.info(f"   📋 {len(df):,} filas totales en Excel")
+    logger.info(f"Excel completo generado: {excel_file}")
+    logger.info("Estructura:")
+    logger.info("   Columnas A-J: TODOS los trades y separadores")
+    logger.info("   Columnas L-M: Tabla resumen diario completa")
+    logger.info(f"   {len(daily_table)} días de trading")
+    logger.info(f"   Trades: {len(trades_df):,} trades totales")
+    logger.info(f"   {len(df):,} filas totales en Excel")
     
     return excel_file, daily_table
 
@@ -236,19 +236,19 @@ def main():
     try:
         excel_file, daily_summary = create_complete_excel_with_daily_summary()
         
-        logger.info(f"\n🎉 ¡Archivo Excel COMPLETO creado exitosamente!")
-        logger.info(f"📂 Ubicación: {excel_file}")
-        logger.info(f"\n📈 RESUMEN ESTADÍSTICO:")
-        logger.info(f"   💰 Total P&L: ${daily_summary['Daily P&L'].sum():.2f}")
-        logger.info(f"   📅 Total días: {len(daily_summary)}")
-        logger.info(f"   🟢 Días ganadores: {len(daily_summary[daily_summary['Daily P&L'] > 0])}")
-        logger.info(f"   🔴 Días perdedores: {len(daily_summary[daily_summary['Daily P&L'] < 0])}")
-        logger.info(f"   📊 Win rate diario: {len(daily_summary[daily_summary['Daily P&L'] > 0]) / len(daily_summary) * 100:.1f}%")
-        logger.info(f"   🏆 Mejor día: ${daily_summary['Daily P&L'].max():.2f}")
-        logger.info(f"   📉 Peor día: ${daily_summary['Daily P&L'].min():.2f}")
+        logger.info(f"\n¡Archivo Excel COMPLETO creado exitosamente!")
+        logger.info(f"Location: Ubicación: {excel_file}")
+        logger.info(f"\nRESUMEN ESTADÍSTICO:")
+        logger.info(f"   Total P&L: ${daily_summary['Daily P&L'].sum():.2f}")
+        logger.info(f"   Total días: {len(daily_summary)}")
+        logger.info(f"   WIN: Días ganadores: {len(daily_summary[daily_summary['Daily P&L'] > 0])}")
+        logger.info(f"   LOSS: Días perdedores: {len(daily_summary[daily_summary['Daily P&L'] < 0])}")
+        logger.info(f"   Win rate diario: {len(daily_summary[daily_summary['Daily P&L'] > 0]) / len(daily_summary) * 100:.1f}%")
+        logger.info(f"   Best: Mejor día: ${daily_summary['Daily P&L'].max():.2f}")
+        logger.info(f"   Worst: Peor día: ${daily_summary['Daily P&L'].min():.2f}")
         
     except Exception as e:
-        logger.error(f"❌ Error: {e}")
+        logger.error(f"Error: {e}")
         import traceback
         traceback.print_exc()
         return None

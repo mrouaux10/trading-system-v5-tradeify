@@ -22,14 +22,14 @@ class MNQDataConsolidator:
         
     def load_all_mnq_files(self):
         """Cargar todos los archivos MNQ y consolidarlos"""
-        logger.info("🔄 Iniciando consolidación de archivos MNQ...")
+        logger.info("Iniciando consolidación de archivos MNQ...")
         
         # Buscar todos los archivos MNQ
         pattern = os.path.join(self.data_dir, "MNQ*.txt")
         files = glob.glob(pattern)
         files.sort()  # Ordenar por nombre
         
-        logger.info(f"📁 Archivos encontrados: {len(files)}")
+        logger.info(f"Archivos encontrados: {len(files)}")
         for file in files:
             logger.info(f"  - {os.path.basename(file)}")
         
@@ -37,7 +37,7 @@ class MNQDataConsolidator:
         total_bars = 0
         
         for file_path in files:
-            logger.info(f"📊 Procesando: {os.path.basename(file_path)}")
+            logger.info(f"Procesando: {os.path.basename(file_path)}")
             
             try:
                 # Leer archivo con formato: YYYYMMDD HHMMSS;O;H;L;C;V
@@ -68,21 +68,21 @@ class MNQDataConsolidator:
                 ]
                 
                 bars_loaded = len(df_filtered)
-                logger.info(f"  ✅ Barras cargadas: {bars_loaded:,}")
+                logger.info(f"  Barras cargadas: {bars_loaded:,}")
                 
                 if bars_loaded > 0:
                     all_data.append(df_filtered)
                     total_bars += bars_loaded
                 
             except Exception as e:
-                logger.error(f"  ❌ Error procesando {file_path}: {e}")
+                logger.error(f"  Error procesando {file_path}: {e}")
                 continue
         
         if not all_data:
             raise ValueError("No se pudieron cargar datos válidos")
         
         # Consolidar todos los dataframes
-        logger.info("🔄 Consolidando datasets...")
+        logger.info("Consolidando datasets...")
         consolidated = pd.concat(all_data, ignore_index=True)
         
         # Ordenar por datetime y eliminar duplicados
@@ -91,9 +91,9 @@ class MNQDataConsolidator:
         # Seleccionar columnas finales
         self.consolidated_data = consolidated[['datetime', 'open', 'high', 'low', 'close', 'volume']].reset_index(drop=True)
         
-        logger.info(f"✅ Consolidación completada:")
-        logger.info(f"  📊 Total de barras: {len(self.consolidated_data):,}")
-        logger.info(f"  📅 Período: {self.consolidated_data['datetime'].min()} - {self.consolidated_data['datetime'].max()}")
+        logger.info(f"Consolidación completada:")
+        logger.info(f"  Total de barras: {len(self.consolidated_data):,}")
+        logger.info(f"  Período: {self.consolidated_data['datetime'].min()} - {self.consolidated_data['datetime'].max()}")
         
         return self.consolidated_data
     
@@ -104,7 +104,7 @@ class MNQDataConsolidator:
         
         output_path = os.path.join(self.data_dir, output_file)
         self.consolidated_data.to_csv(output_path, index=False)
-        logger.info(f"💾 Datos guardados en: {output_path}")
+        logger.info(f"Datos guardados en: {output_path}")
         
         return output_path
     
@@ -131,7 +131,7 @@ class MNQDataConsolidator:
 
 def main():
     """Función principal"""
-    logger.info("🚀 Iniciando consolidador MNQ...")
+    logger.info("Iniciando consolidador MNQ...")
     
     consolidator = MNQDataConsolidator()
     
@@ -146,20 +146,20 @@ def main():
         summary = consolidator.get_data_summary()
         
         logger.info("\n" + "="*50)
-        logger.info("📈 RESUMEN DE DATOS CONSOLIDADOS:")
+        logger.info("RESUMEN DE DATOS CONSOLIDADOS:")
         logger.info("="*50)
-        logger.info(f"📊 Total de barras: {summary['total_bars']:,}")
-        logger.info(f"📅 Período: {summary['start_date']} - {summary['end_date']}")
-        logger.info(f"🗓️  Días de trading: {summary['trading_days']:,}")
-        logger.info(f"📈 Rango de precios: ${summary['price_range']['min']:.2f} - ${summary['price_range']['max']:.2f}")
-        logger.info(f"📊 Volumen promedio: {summary['avg_volume']:.0f}")
-        logger.info(f"💾 Archivo guardado: {output_file}")
+        logger.info(f"Total de barras: {summary['total_bars']:,}")
+        logger.info(f"Período: {summary['start_date']} - {summary['end_date']}")
+        logger.info(f"Días de trading: {summary['trading_days']:,}")
+        logger.info(f"Rango de precios: ${summary['price_range']['min']:.2f} - ${summary['price_range']['max']:.2f}")
+        logger.info(f"Volumen promedio: {summary['avg_volume']:.0f}")
+        logger.info(f"Archivo guardado: {output_file}")
         logger.info("="*50)
         
-        logger.info("✅ Consolidación completada exitosamente!")
+        logger.info("Consolidación completada exitosamente!")
         
     except Exception as e:
-        logger.error(f"❌ Error en consolidación: {e}")
+        logger.error(f"Error en consolidación: {e}")
         raise
 
 if __name__ == "__main__":

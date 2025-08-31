@@ -1,38 +1,38 @@
-# 🔌 **TRADOVATE API - DOCUMENTACIÓN COMPLETA**
+# **TRADOVATE API - DOCUMENTACIÓN COMPLETA**
 
-**Estado:** ⚠️ **REQUIERE CORRECCIONES CRÍTICAS POR VALIDACIÓN TRADEIFY**  
+**Estado:** **REQUIERE CORRECCIONES CRÍTICAS POR VALIDACIÓN TRADEIFY**  
 **Versión:** API v1.0.0  
 **Propósito:** Documentación completa para integración del bot de trading  
 **Última actualización:** 21 de agosto de 2025  
 
-## 🚨 **VALIDACIÓN CRÍTICA POR IA TRADEIFY - AGOSTO 2025**
+## **VALIDACIÓN CRÍTICA POR IA TRADEIFY - AGOSTO 2025**
 
-**⚠️ IMPORTANTE:** Esta documentación fue validada por IA oficial de Tradeify y se encontraron **ERRORES CRÍTICOS**:
+**IMPORTANTE:** Esta documentación fue validada por IA oficial de Tradeify y se encontraron **ERRORES CRÍTICOS**:
 
-### **✅ CONFIRMACIONES CORRECTAS:**
-- ✅ Autenticación y tokens
-- ✅ Estructura de la API  
-- ✅ WebSockets
-- ✅ Requisitos API Access ($25/mes + $1,000 mínimo)
-- ✅ Bot trading permitido con propiedad exclusiva
+### **CONFIRMACIONES CORRECTAS:**
+- Autenticación y tokens
+- Estructura de la API  
+- WebSockets
+- Requisitos API Access ($25/mes + $1,000 mínimo)
+- Bot trading permitido con propiedad exclusiva
 
-### **❌ ERRORES CRÍTICOS IDENTIFICADOS:**
+### **ERRORES CRÍTICOS IDENTIFICADOS:**
 1. **🔴 Plataformas soportadas:** Tradeify soporta **Tradovate, TradingView Y NinjaTrader** (no solo Tradovate)
 2. **🔴 Instrumentos disponibles:** Hay muchos más: **ES, NQ, YM, RTY, productos agrícolas, divisas, contratos EUREX**
 3. **🔴 Verificación de propiedad:** Debes **probar propiedad exclusiva + proporcionar video en vivo** del bot funcionando
 4. **🔴 Restricciones HFT:** **Bots HFT prohibidos**, trades de **menos de 5 segundos son monitoreados**
 
-### **⚠️ INFORMACIÓN NO VERIFICABLE:**
+### **INFORMACIÓN NO VERIFICABLE:**
 - **Detalles técnicos específicos** de endpoints requieren verificación para cuentas Tradeify
 - Muchos detalles parecen ser de **documentación general Tradovate**, no específicos para Tradeify
 
-**🚨 ACCIÓN REQUERIDA:** Verificar todos los endpoints y parámetros específicamente para cuentas Tradeify antes de implementar
+**ACCIÓN REQUERIDA:** Verificar todos los endpoints y parámetros específicamente para cuentas Tradeify antes de implementar
 
 ---
 
-## 📋 **ÍNDICE DE CONTENIDO**
+## **ÍNDICE DE CONTENIDO**
 
-### **🔐 AUTENTICACIÓN Y SESIÓN**
+### **AUTENTICACIÓN Y SESIÓN**
 - [x] Endpoints de autenticación
 - [x] Gestión de tokens
 - [x] Renovación de sesiones
@@ -40,14 +40,14 @@
 - [x] OAuth flow
 - [x] Gestión de sesiones concurrentes
 
-### **💰 GESTIÓN DE CUENTA**
+### **GESTIÓN DE CUENTA**
 - [x] Información de cuenta
 - [x] Saldos y balances
 - [x] Margen disponible
 - [x] P&L en tiempo real
 - [x] Datos de usuario
 
-### **📊 DATOS DE MERCADO**
+### **DATOS DE MERCADO**
 - [x] Precios en tiempo real
 - [x] Histórico de precios
 - [x] Volumen y liquidez
@@ -57,19 +57,19 @@
 - [x] Histogramas
 - [x] Charts y Tick Charts
 
-### **📈 GESTIÓN DE ÓRDENES**
+### **GESTIÓN DE ÓRDENES**
 - [x] Colocar órdenes
 - [x] Modificar órdenes
 - [x] Cancelar órdenes
 - [x] Tipos de órdenes
 
-### **🎯 GESTIÓN DE POSICIONES**
+### **GESTIÓN DE POSICIONES**
 - [x] Estado de posiciones
 - [x] Abrir posiciones
 - [x] Cerrar posiciones
 - [x] Modificar posiciones
 
-### **🔌 WEBSOCKETS Y STREAMING**
+### **WEBSOCKETS Y STREAMING**
 - [x] Conexiones en tiempo real
 - [x] Suscripciones a datos
 - [x] Manejo de eventos
@@ -78,7 +78,7 @@
 - [x] Client Requests
 - [x] Heartbeats
 
-### **⚠️ MANEJO DE ERRORES**
+### **MANEJO DE ERRORES**
 - [x] Códigos de error
 - [x] Mensajes de error
 - [x] Estrategias de retry
@@ -97,7 +97,7 @@
 - [x] Control de velocidad
 - [x] Sincronización de reloj
 
-### **📚 CONTRACT LIBRARY**
+### **CONTRACT LIBRARY**
 - [x] Contratos y vencimientos
 - [x] Búsqueda por nombre
 - [x] Dependencias de contratos
@@ -106,20 +106,20 @@
 - [x] Product sessions
 - [x] Spread definitions
 
-### **📋 ORDERS Y FILL MANAGEMENT**
+### **ORDERS Y FILL MANAGEMENT**
 - [x] Command endpoints
 - [x] Execution reports
 - [x] Fill management
 - [x] Order strategies
 - [x] Position management
 
-### **💰 ACCOUNTING Y GESTIÓN DE CUENTA**
+### **ACCOUNTING Y GESTIÓN DE CUENTA**
 - [x] Account management
 - [x] Cash balance
 - [x] Margin snapshots
 - [x] Trading permissions
 
-### **⚠️ GESTIÓN DE RIESGO**
+### **GESTIÓN DE RIESGO**
 - [x] Account risk status
 - [x] Position limits
 - [x] Auto-liquidation
@@ -148,30 +148,30 @@
 
 ---
 
-## 🚀 **ENDPOINTS CRÍTICOS PARA EL BOT**
+## **ENDPOINTS CRÍTICOS PARA EL BOT**
 
-### **🎯 PRIORIDAD ALTA (Implementación inmediata):**
-1. **Autenticación** - Login y tokens ✅
-2. **Saldos** - Ver balance de cuenta ✅
-3. **Órdenes** - Comprar/vender MNQ ✅
-4. **Posiciones** - Estado actual ✅
+### **PRIORIDAD ALTA (Implementación inmediata):**
+1. **Autenticación** - Login y tokens OK
+2. **Saldos** - Ver balance de cuenta OK
+3. **Órdenes** - Comprar/vender MNQ OK
+4. **Posiciones** - Estado actual OK
 
-### **🎯 PRIORIDAD MEDIA (Implementación posterior):**
-1. **Datos en tiempo real** - Websockets ✅
-2. **Histórico** - Backtesting ✅
+### **PRIORIDAD MEDIA (Implementación posterior):**
+1. **Datos en tiempo real** - Websockets OK
+2. **Histórico** - Backtesting OK
 3. **Gestión avanzada** - Órdenes complejas
 
 ---
 
 ## 📝 **NOTAS DE IMPLEMENTACIÓN**
 
-### **🔧 Integración con código actual:**
+### **Integración con código actual:**
 - **Archivo:** `scripts/tradovate_connector.py`
 - **Clase:** `TradovateConnector`
 - **Métodos:** `authenticate()`, `get_balance()`, `place_order()`
 
-### **🎯 Estrategia Lightning 50K:**
-- **Instrumento:** MNQ (Micro E-mini NASDAQ) - ⚠️ **NOTA:** Tradeify soporta muchos más instrumentos
+### **Estrategia Lightning 50K:**
+- **Instrumento:** MNQ (Micro E-mini NASDAQ) - **NOTA:** Tradeify soporta muchos más instrumentos
 - **Instrumentos disponibles:** ES, NQ, YM, RTY, productos agrícolas, divisas, contratos EUREX
 - **Contratos:** 1 (conservador)
 - **Stop Loss:** $50
@@ -179,14 +179,14 @@
 
 ---
 
-## 📚 **CONTENIDO DE LA API**
+## **CONTENIDO DE LA API**
 
-### **🔐 AUTENTICACIÓN Y ACCESO COMPLETO:**
+### **AUTENTICACIÓN Y ACCESO COMPLETO:**
 
 #### **Requisitos Previos:**
-- ✅ Cuenta LIVE con más de $1,000 en equity
-- ✅ Suscripción a API Access
-- ✅ API Key generada (cid y sec)
+- Cuenta LIVE con más de $1,000 en equity
+- Suscripción a API Access
+- API Key generada (cid y sec)
 - 🔴 **CRÍTICO:** Probar propiedad exclusiva del código
 - 🔴 **CRÍTICO:** Proporcionar video en vivo del bot funcionando en tu PC
 - 🔴 **RESTRICCIÓN:** Bots HFT prohibidos (trades <5 segundos monitoreados)
@@ -394,7 +394,7 @@ setInterval(async () => {
 }, 120 * 60000) // Cada 2 minutos
 ```
 
-#### **⚠️ IMPORTANTE - Gestión de Sesiones:**
+#### **IMPORTANTE - Gestión de Sesiones:**
 
 ##### **Límites de Sesión:**
 - **Máximo 2 sesiones concurrentes** por usuario
@@ -450,7 +450,7 @@ Authorization: Bearer <access_token>
   - `/order/cancelorder` - Cancelar orden
   - `/position/deps` - Posiciones dependientes
 
-### **📊 OPERACIONES DE CONSULTA (GET):**
+### **OPERACIONES DE CONSULTA (GET):**
 
 #### **1. Consulta por ID:**
 ```
@@ -593,13 +593,13 @@ const response = await fetch(URL + '/order/placeorder', {
 const json = await response.json() // { orderId: 0000000 }
 ```
 
-#### **⚠️ IMPORTANTE - Órdenes Automatizadas:**
+#### **IMPORTANTE - Órdenes Automatizadas:**
 - **`isAutomated: true`** es OBLIGATORIO para bots
 - **Por defecto es `false`** (órdenes humanas)
 - **El exchange es muy estricto** con este requisito
 - **Faltar puede violar** políticas del exchange
 
-### **⚠️ MANEJO DE ERRORES:**
+### **MANEJO DE ERRORES:**
 
 #### **Dos Caminos de Error:**
 
@@ -614,7 +614,7 @@ const json = await response.json() // { orderId: 0000000 }
    - **Request exitoso en HTTP pero rechazado por lógica**
    - **Descripción textual** del problema
 
-### **🔌 WEBSOCKETS COMPLETOS:**
+### **WEBSOCKETS COMPLETOS:**
 
 #### **URL de Conexión:**
 ```
@@ -839,7 +839,7 @@ GET /v1/replay/checkReplaySession
 - **Verificar** si fecha/hora está permitida
 - **Depende de entitlements** del cliente
 
-### **📊 MARKET DATA API COMPLETO:**
+### **MARKET DATA API COMPLETO:**
 
 #### **Flujo Típico:**
 
@@ -1073,7 +1073,7 @@ md/cancelChart
 }
 ```
 
-### **📈 TICK CHARTS:**
+### **TICK CHARTS:**
 
 #### **Requesting Tick Charts:**
 ```json
@@ -1180,7 +1180,7 @@ function processTickChartMessage(msg) {
 }
 ```
 
-### **📚 CONTRACT LIBRARY:**
+### **CONTRACT LIBRARY:**
 
 #### **Contract Dependents:**
 ```
@@ -1359,7 +1359,7 @@ GET /v1/spreadDefinition/list
 
 ---
 
-### **📋 ORDERS Y FILL MANAGEMENT:**
+### **ORDERS Y FILL MANAGEMENT:**
 
 #### **Command Endpoints:**
 ```
@@ -1477,7 +1477,7 @@ GET /v1/fillPair/list
 
 ---
 
-### **💰 ACCOUNTING Y GESTIÓN DE CUENTA:**
+### **ACCOUNTING Y GESTIÓN DE CUENTA:**
 
 #### **Account Management:**
 ```
@@ -1534,7 +1534,7 @@ GET /v1/tradingPermission/list
 
 ---
 
-### **⚠️ GESTIÓN DE RIESGO:**
+### **GESTIÓN DE RIESGO:**
 
 #### **Account Risk Status:**
 ```
@@ -1875,32 +1875,32 @@ GET /v1/chatMessage/list
 
 ---
 
-## 🔧 **IMPLEMENTACIÓN EN EL BOT**
+## **IMPLEMENTACIÓN EN EL BOT**
 
-### **📁 Archivos a Modificar:**
+### **Archivos a Modificar:**
 1. **`scripts/tradovate_connector.py`** - Conector principal
 2. **`config/lightning_50k_final_config.json`** - Configuración de API
 3. **`scripts/tradeify_bot_main.py`** - Integración principal
 
-### **🎯 Próximos Pasos:**
-1. ✅ Documentación completa de autenticación
-2. ✅ Endpoints de cuenta y órdenes
-3. ✅ Gestión de riesgo y posiciones
-4. ✅ Estructura completa de la API
-5. ✅ WebSockets y Market Data
-6. ✅ Market Replay
-7. ✅ Tick Charts y Contract Library
-8. ✅ Orders y Fill Management
-9. ✅ Accounting y Risk Management
-10. ✅ Fees y Subscriptions
-11. ✅ Alerts y Configuration
-12. ✅ User Management y Chat
+### **Próximos Pasos:**
+1. Documentación completa de autenticación
+2. Endpoints de cuenta y órdenes
+3. Gestión de riesgo y posiciones
+4. Estructura completa de la API
+5. WebSockets y Market Data
+6. Market Replay
+7. Tick Charts y Contract Library
+8. Orders y Fill Management
+9. Accounting y Risk Management
+10. Fees y Subscriptions
+11. Alerts y Configuration
+12. User Management y Chat
 13. ⏳ Implementación en código
 14. ⏳ Pruebas de integración
 
 ---
 
-## 📋 **PROCESO DE SUSCRIPCIÓN Y CONFIGURACIÓN**
+## **PROCESO DE SUSCRIPCIÓN Y CONFIGURACIÓN**
 
 ### **🔑 REQUISITOS PREVIOS COMPLETOS:**
 - **Cuenta de Tradovate "en vivo" y fondeada**
@@ -1909,7 +1909,7 @@ GET /v1/chatMessage/list
 - 🔴 **NUEVO:** **Verificación de propiedad exclusiva del código del bot**
 - 🔴 **NUEVO:** **Video en vivo demostrando el bot funcionando en tu PC**
 - 🔴 **RESTRICCIÓN:** **Bots HFT prohibidos - trades de menos de 5 segundos monitoreados**
-- ⚠️ **PLATAFORMAS:** Tradeify soporta **Tradovate, TradingView Y NinjaTrader**
+- **PLATAFORMAS:** Tradeify soporta **Tradovate, TradingView Y NinjaTrader**
 
 ### **📱 PROCESO DE SUSCRIPCIÓN PASO A PASO:**
 
@@ -1931,7 +1931,7 @@ GET /v1/chatMessage/list
 - **Restricción:** Si no tienes cuenta fondeada, el botón estará deshabilitado (gris)
 - **Botón "API Docs":** Disponible en azul para consultar documentación
 
-### **🔐 GENERACIÓN DE API KEY:**
+### **GENERACIÓN DE API KEY:**
 
 #### **1. Volver a Application Settings > API Access:**
 - Después de suscribirte, regresar a la pestaña
@@ -1954,7 +1954,7 @@ GET /v1/chatMessage/list
 #### **6. Click en "Generate":**
 - **Confirmación:** Proceso de generación de la API Key
 
-#### **7. ⚠️ IMPORTANTE - API Key se muestra UNA SOLA VEZ:**
+#### **7. IMPORTANTE - API Key se muestra UNA SOLA VEZ:**
 - **Copiar inmediatamente** la API Key generada
 - **Guardar en lugar seguro** (no se puede recuperar después)
 - **Configurar en el bot** antes de cerrar la ventana
@@ -1987,7 +1987,7 @@ GET /v1/chatMessage/list
 - **Autenticación fallida:** Verificar credenciales y tokens
 - **WebSocket desconectado:** Verificar conexión y heartbeats
 
-### **🔧 INTEGRACIÓN CON SISTEMA DE TRADING:**
+### **INTEGRACIÓN CON SISTEMA DE TRADING:**
 
 #### **Esta documentación será utilizada para:**
 - **Configurar conexión** con API de Tradovate
@@ -2006,18 +2006,18 @@ GET /v1/chatMessage/list
 ---
 
 **📱 Desarrollador:** Matias Rouaux  
-**🎯 Propósito:** Integración completa con bot de trading  
-**📅 Fecha:** 21 de agosto de 2025  
-**📊 Estado:** ⚠️ **DOCUMENTACIÓN CORREGIDA TRAS VALIDACIÓN TRADEIFY**
+**Propósito:** Integración completa con bot de trading  
+**Fecha:** 21 de agosto de 2025  
+**Estado:** **DOCUMENTACIÓN CORREGIDA TRAS VALIDACIÓN TRADEIFY**
 
-## 🚨 **RESUMEN DE CORRECCIONES APLICADAS:**
+## **RESUMEN DE CORRECCIONES APLICADAS:**
 
-### **✅ CORRECCIONES IMPLEMENTADAS:**
+### **CORRECCIONES IMPLEMENTADAS:**
 1. **Plataformas:** Agregado soporte para TradingView y NinjaTrader
 2. **Instrumentos:** Expandida lista incluyendo ES, NQ, YM, RTY, agrícolas, divisas, EUREX
 3. **Verificación:** Agregados requisitos de propiedad exclusiva + video en vivo
 4. **Restricciones HFT:** Agregada prohibición de trades <5 segundos
 
-### **⚠️ ACCIÓN PENDIENTE:**
+### **ACCIÓN PENDIENTE:**
 - **Verificar todos los endpoints específicamente para cuentas Tradeify**
 - **Confirmar parámetros con soporte antes de implementación**

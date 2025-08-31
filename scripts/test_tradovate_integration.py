@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-🧪 TEST TRADOVATE INTEGRATION - SCRIPT DE PRUEBA COMPLETO
+TEST TRADOVATE INTEGRATION - SCRIPT DE PRUEBA COMPLETO
 Prueba todas las funcionalidades del conector Tradovate
 """
 
@@ -33,11 +33,11 @@ class TradovateIntegrationTester:
         self.connector = None
         self.test_results = {}
         
-        logger.info("🧪 Tradovate Integration Tester inicializado")
+        logger.info("Tradovate Integration Tester inicializado")
     
     def run_all_tests(self) -> Dict:
         """Ejecutar todas las pruebas"""
-        logger.info("🚀 INICIANDO PRUEBAS COMPLETAS DE INTEGRACIÓN")
+        logger.info("INICIANDO PRUEBAS COMPLETAS DE INTEGRACIÓN")
         logger.info("=" * 60)
         
         try:
@@ -68,12 +68,12 @@ class TradovateIntegrationTester:
             return self.test_results
             
         except Exception as e:
-            logger.error(f"❌ Error en pruebas: {e}")
+            logger.error(f"Error en pruebas: {e}")
             return self.test_results
     
     def test_initialization(self):
         """Prueba 1: Inicialización del conector"""
-        logger.info("🔧 PRUEBA 1: Inicialización del Conector")
+        logger.info("PRUEBA 1: Inicialización del Conector")
         logger.info("-" * 40)
         
         try:
@@ -84,7 +84,7 @@ class TradovateIntegrationTester:
             assert self.connector.credentials is not None, "Credenciales no configuradas"
             assert self.connector.api_config is not None, "Configuración de API no configurada"
             
-            logger.info("✅ Inicialización exitosa")
+            logger.info("Inicialización exitosa")
             logger.info(f"   Base URL: {self.connector.api_config.base_url}")
             logger.info(f"   API Version: {self.connector.api_config.api_version}")
             logger.info(f"   Username: {self.connector.credentials.name}")
@@ -100,7 +100,7 @@ class TradovateIntegrationTester:
             }
             
         except Exception as e:
-            logger.error(f"❌ Inicialización fallida: {e}")
+            logger.error(f"Inicialización fallida: {e}")
             self.test_results['initialization'] = {
                 'status': 'FAIL',
                 'message': f'Error en inicialización: {e}',
@@ -109,7 +109,7 @@ class TradovateIntegrationTester:
     
     def test_authentication(self):
         """Prueba 2: Autenticación con Tradovate"""
-        logger.info("🔐 PRUEBA 2: Autenticación con Tradovate")
+        logger.info("PRUEBA 2: Autenticación con Tradovate")
         logger.info("-" * 40)
         
         try:
@@ -120,7 +120,7 @@ class TradovateIntegrationTester:
             auth_result = self.connector.authenticate()
             
             if auth_result:
-                logger.info("✅ Autenticación exitosa")
+                logger.info("Autenticación exitosa")
                 logger.info(f"   Token: {self.connector.access_token[:20]}...")
                 logger.info(f"   Expiry: {self.connector.token_expiry}")
                 
@@ -133,7 +133,7 @@ class TradovateIntegrationTester:
                     }
                 }
             else:
-                logger.warning("⚠️ Autenticación fallida (puede ser esperado en demo)")
+                logger.warning("Autenticación fallida (puede ser esperado en demo)")
                 
                 self.test_results['authentication'] = {
                     'status': 'WARNING',
@@ -145,7 +145,7 @@ class TradovateIntegrationTester:
                 }
                 
         except Exception as e:
-            logger.error(f"❌ Error en autenticación: {e}")
+            logger.error(f"Error en autenticación: {e}")
             self.test_results['authentication'] = {
                 'status': 'FAIL',
                 'message': f'Error en autenticación: {e}',
@@ -154,7 +154,7 @@ class TradovateIntegrationTester:
     
     def test_account_endpoints(self):
         """Prueba 3: Endpoints de cuenta"""
-        logger.info("💰 PRUEBA 3: Endpoints de Cuenta")
+        logger.info("PRUEBA 3: Endpoints de Cuenta")
         logger.info("-" * 40)
         
         try:
@@ -163,7 +163,7 @@ class TradovateIntegrationTester:
             
             # Solo probar si está autenticado
             if not self.connector.access_token:
-                logger.info("⚠️ Saltando prueba de cuenta (no autenticado)")
+                logger.info("Saltando prueba de cuenta (no autenticado)")
                 self.test_results['account_endpoints'] = {
                     'status': 'SKIP',
                     'message': 'No autenticado',
@@ -173,7 +173,7 @@ class TradovateIntegrationTester:
             
             # Probar obtención de cuentas
             accounts = self.connector.get_accounts()
-            logger.info(f"✅ Cuentas obtenidas: {len(accounts)}")
+            logger.info(f"Cuentas obtenidas: {len(accounts)}")
             
             if accounts:
                 account_id = accounts[0]['id']
@@ -182,16 +182,16 @@ class TradovateIntegrationTester:
                 # Probar balance de efectivo
                 balance = self.connector.get_cash_balance_snapshot(account_id)
                 if balance:
-                    logger.info("✅ Balance de efectivo obtenido")
+                    logger.info("Balance de efectivo obtenido")
                 
                 # Probar snapshot de margen
                 margin = self.connector.get_margin_snapshot(account_id)
                 if margin:
-                    logger.info("✅ Snapshot de margen obtenido")
+                    logger.info("Snapshot de margen obtenido")
                 
                 # Probar posiciones
                 positions = self.connector.get_positions(account_id)
-                logger.info(f"✅ Posiciones obtenidas: {len(positions)}")
+                logger.info(f"Posiciones obtenidas: {len(positions)}")
                 
                 self.test_results['account_endpoints'] = {
                     'status': 'PASS',
@@ -205,7 +205,7 @@ class TradovateIntegrationTester:
                     }
                 }
             else:
-                logger.warning("⚠️ No se obtuvieron cuentas")
+                logger.warning("No se obtuvieron cuentas")
                 self.test_results['account_endpoints'] = {
                     'status': 'WARNING',
                     'message': 'No se obtuvieron cuentas',
@@ -213,7 +213,7 @@ class TradovateIntegrationTester:
                 }
                 
         except Exception as e:
-            logger.error(f"❌ Error en endpoints de cuenta: {e}")
+            logger.error(f"Error en endpoints de cuenta: {e}")
             self.test_results['account_endpoints'] = {
                 'status': 'FAIL',
                 'message': f'Error en endpoints de cuenta: {e}',
@@ -222,7 +222,7 @@ class TradovateIntegrationTester:
     
     def test_contract_endpoints(self):
         """Prueba 4: Endpoints de contratos"""
-        logger.info("📋 PRUEBA 4: Endpoints de Contratos")
+        logger.info("PRUEBA 4: Endpoints de Contratos")
         logger.info("-" * 40)
         
         try:
@@ -231,7 +231,7 @@ class TradovateIntegrationTester:
             
             # Solo probar si está autenticado
             if not self.connector.access_token:
-                logger.info("⚠️ Saltando prueba de contratos (no autenticado)")
+                logger.info("Saltando prueba de contratos (no autenticado)")
                 self.test_results['contract_endpoints'] = {
                     'status': 'SKIP',
                     'message': 'No autenticado',
@@ -243,7 +243,7 @@ class TradovateIntegrationTester:
             mnq_contract = self.connector.find_contract("MNQ")
             
             if mnq_contract:
-                logger.info("✅ Contrato MNQ encontrado")
+                logger.info("Contrato MNQ encontrado")
                 logger.info(f"   ID: {mnq_contract.get('id')}")
                 logger.info(f"   Nombre: {mnq_contract.get('name')}")
                 
@@ -257,7 +257,7 @@ class TradovateIntegrationTester:
                     }
                 }
             else:
-                logger.warning("⚠️ Contrato MNQ no encontrado")
+                logger.warning("Contrato MNQ no encontrado")
                 self.test_results['contract_endpoints'] = {
                     'status': 'WARNING',
                     'message': 'Contrato MNQ no encontrado',
@@ -267,7 +267,7 @@ class TradovateIntegrationTester:
                 }
                 
         except Exception as e:
-            logger.error(f"❌ Error en endpoints de contratos: {e}")
+            logger.error(f"Error en endpoints de contratos: {e}")
             self.test_results['contract_endpoints'] = {
                 'status': 'FAIL',
                 'message': f'Error en endpoints de contratos: {e}',
@@ -276,7 +276,7 @@ class TradovateIntegrationTester:
     
     def test_websocket_connection(self):
         """Prueba 5: Conexión WebSocket"""
-        logger.info("🔌 PRUEBA 5: Conexión WebSocket")
+        logger.info("PRUEBA 5: Conexión WebSocket")
         logger.info("-" * 40)
         
         try:
@@ -287,18 +287,18 @@ class TradovateIntegrationTester:
             ws_result = self.connector.connect_websocket()
             
             if ws_result:
-                logger.info("✅ WebSocket conectado exitosamente")
+                logger.info("WebSocket conectado exitosamente")
                 
                 # Esperar un poco para estabilizar
                 time.sleep(2)
                 
                 # Verificar estado
                 if self.connector.websocket_connected:
-                    logger.info("✅ Estado WebSocket: Conectado")
+                    logger.info("Estado WebSocket: Conectado")
                     
                     # Desconectar para la prueba
                     self.connector.disconnect_websocket()
-                    logger.info("✅ WebSocket desconectado")
+                    logger.info("WebSocket desconectado")
                     
                     self.test_results['websocket_connection'] = {
                         'status': 'PASS',
@@ -309,7 +309,7 @@ class TradovateIntegrationTester:
                         }
                     }
                 else:
-                    logger.warning("⚠️ WebSocket no se mantuvo conectado")
+                    logger.warning("WebSocket no se mantuvo conectado")
                     self.test_results['websocket_connection'] = {
                         'status': 'WARNING',
                         'message': 'WebSocket no se mantuvo conectado',
@@ -319,7 +319,7 @@ class TradovateIntegrationTester:
                         }
                     }
             else:
-                logger.warning("⚠️ Conexión WebSocket fallida")
+                logger.warning("Conexión WebSocket fallida")
                 self.test_results['websocket_connection'] = {
                     'status': 'WARNING',
                     'message': 'Conexión WebSocket fallida',
@@ -330,7 +330,7 @@ class TradovateIntegrationTester:
                 }
                 
         except Exception as e:
-            logger.error(f"❌ Error en WebSocket: {e}")
+            logger.error(f"Error en WebSocket: {e}")
             self.test_results['websocket_connection'] = {
                 'status': 'FAIL',
                 'message': f'Error en WebSocket: {e}',
@@ -339,7 +339,7 @@ class TradovateIntegrationTester:
     
     def test_order_endpoints(self):
         """Prueba 6: Endpoints de órdenes (simulada)"""
-        logger.info("📤 PRUEBA 6: Endpoints de Órdenes (Simulada)")
+        logger.info("PRUEBA 6: Endpoints de Órdenes (Simulada)")
         logger.info("-" * 40)
         
         try:
@@ -348,7 +348,7 @@ class TradovateIntegrationTester:
             
             # Solo probar si está autenticado
             if not self.connector.access_token:
-                logger.info("⚠️ Saltando prueba de órdenes (no autenticado)")
+                logger.info("Saltando prueba de órdenes (no autenticado)")
                 self.test_results['order_endpoints'] = {
                     'status': 'SKIP',
                     'message': 'No autenticado',
@@ -361,15 +361,15 @@ class TradovateIntegrationTester:
             if accounts:
                 account_id = accounts[0]['id']
                 orders = self.connector.get_orders(account_id)
-                logger.info(f"✅ Órdenes obtenidas: {len(orders)}")
+                logger.info(f"Órdenes obtenidas: {len(orders)}")
                 
                 # Probar obtención de fills
                 fills = self.connector.get_fills(account_id)
-                logger.info(f"✅ Fills obtenidos: {len(fills)}")
+                logger.info(f"Fills obtenidos: {len(fills)}")
                 
                 # Probar obtención de reportes de ejecución
                 reports = self.connector.get_execution_reports(account_id)
-                logger.info(f"✅ Reportes obtenidos: {len(reports)}")
+                logger.info(f"Reportes obtenidos: {len(reports)}")
                 
                 self.test_results['order_endpoints'] = {
                     'status': 'PASS',
@@ -381,7 +381,7 @@ class TradovateIntegrationTester:
                     }
                 }
             else:
-                logger.warning("⚠️ No hay cuentas para probar órdenes")
+                logger.warning("No hay cuentas para probar órdenes")
                 self.test_results['order_endpoints'] = {
                     'status': 'WARNING',
                     'message': 'No hay cuentas disponibles',
@@ -389,7 +389,7 @@ class TradovateIntegrationTester:
                 }
                 
         except Exception as e:
-            logger.error(f"❌ Error en endpoints de órdenes: {e}")
+            logger.error(f"Error en endpoints de órdenes: {e}")
             self.test_results['order_endpoints'] = {
                 'status': 'FAIL',
                 'message': f'Error en endpoints de órdenes: {e}',
@@ -398,7 +398,7 @@ class TradovateIntegrationTester:
     
     def test_market_data_endpoints(self):
         """Prueba 7: Endpoints de datos de mercado"""
-        logger.info("📊 PRUEBA 7: Endpoints de Datos de Mercado")
+        logger.info("PRUEBA 7: Endpoints de Datos de Mercado")
         logger.info("-" * 40)
         
         try:
@@ -407,7 +407,7 @@ class TradovateIntegrationTester:
             
             # Solo probar si está autenticado
             if not self.connector.access_token:
-                logger.info("⚠️ Saltando prueba de datos de mercado (no autenticado)")
+                logger.info("Saltando prueba de datos de mercado (no autenticado)")
                 self.test_results['market_data_endpoints'] = {
                     'status': 'SKIP',
                     'message': 'No autenticado',
@@ -429,7 +429,7 @@ class TradovateIntegrationTester:
                 )
                 
                 if chart_data:
-                    logger.info("✅ Datos de chart obtenidos")
+                    logger.info("Datos de chart obtenidos")
                     self.test_results['market_data_endpoints'] = {
                         'status': 'PASS',
                         'message': 'Endpoints de datos de mercado funcionando',
@@ -439,7 +439,7 @@ class TradovateIntegrationTester:
                         }
                     }
                 else:
-                    logger.warning("⚠️ No se obtuvieron datos de chart")
+                    logger.warning("No se obtuvieron datos de chart")
                     self.test_results['market_data_endpoints'] = {
                         'status': 'WARNING',
                         'message': 'No se obtuvieron datos de chart',
@@ -449,7 +449,7 @@ class TradovateIntegrationTester:
                         }
                     }
             else:
-                logger.warning("⚠️ No se pudo probar datos de mercado (contrato no encontrado)")
+                logger.warning("No se pudo probar datos de mercado (contrato no encontrado)")
                 self.test_results['market_data_endpoints'] = {
                     'status': 'WARNING',
                     'message': 'Contrato no encontrado para prueba',
@@ -457,7 +457,7 @@ class TradovateIntegrationTester:
                 }
                 
         except Exception as e:
-            logger.error(f"❌ Error en endpoints de datos de mercado: {e}")
+            logger.error(f"Error en endpoints de datos de mercado: {e}")
             self.test_results['market_data_endpoints'] = {
                 'status': 'FAIL',
                 'message': f'Error en endpoints de datos de mercado: {e}',
@@ -466,7 +466,7 @@ class TradovateIntegrationTester:
     
     def generate_test_summary(self):
         """Generar resumen de todas las pruebas"""
-        logger.info("📊 RESUMEN DE PRUEBAS")
+        logger.info("RESUMEN DE PRUEBAS")
         logger.info("=" * 60)
         
         total_tests = len(self.test_results)
@@ -475,33 +475,33 @@ class TradovateIntegrationTester:
         failed_tests = sum(1 for result in self.test_results.values() if result['status'] == 'FAIL')
         skipped_tests = sum(1 for result in self.test_results.values() if result['status'] == 'SKIP')
         
-        logger.info(f"📈 TOTAL DE PRUEBAS: {total_tests}")
-        logger.info(f"✅ EXITOSAS: {passed_tests}")
-        logger.info(f"⚠️ ADVERTENCIAS: {warning_tests}")
-        logger.info(f"❌ FALLIDAS: {failed_tests}")
-        logger.info(f"⏭️ OMITIDAS: {skipped_tests}")
+        logger.info(f"TOTAL DE PRUEBAS: {total_tests}")
+        logger.info(f"EXITOSAS: {passed_tests}")
+        logger.info(f"ADVERTENCIAS: {warning_tests}")
+        logger.info(f"FALLIDAS: {failed_tests}")
+        logger.info(f"OMITIDAS: {skipped_tests}")
         
         # Mostrar detalles de cada prueba
         for test_name, result in self.test_results.items():
             status_emoji = {
-                'PASS': '✅',
-                'WARNING': '⚠️',
-                'FAIL': '❌',
-                'SKIP': '⏭️'
+                'PASS': 'PASS',
+                'WARNING': 'WARN',
+                'FAIL': 'FAIL',
+                'SKIP': 'SKIP'
             }
             
-            logger.info(f"{status_emoji.get(result['status'], '❓')} {test_name.upper()}: {result['message']}")
+            logger.info(f"{status_emoji.get(result['status'], 'UNK')} {test_name.upper()}: {result['message']}")
         
         # Evaluación general
         if failed_tests == 0 and passed_tests > 0:
-            overall_status = "🎉 EXCELENTE - Todas las pruebas críticas pasaron"
+            overall_status = "EXCELENTE - Todas las pruebas críticas pasaron"
         elif failed_tests == 0:
-            overall_status = "⚠️ ADVERTENCIA - Algunas pruebas no se ejecutaron"
+            overall_status = "ADVERTENCIA - Algunas pruebas no se ejecutaron"
         else:
-            overall_status = "❌ PROBLEMAS - Algunas pruebas fallaron"
+            overall_status = "PROBLEMAS - Algunas pruebas fallaron"
         
         logger.info("=" * 60)
-        logger.info(f"🎯 EVALUACIÓN GENERAL: {overall_status}")
+        logger.info(f"EVALUACIÓN GENERAL: {overall_status}")
         logger.info("=" * 60)
         
         # Guardar resultados en archivo
@@ -518,24 +518,24 @@ class TradovateIntegrationTester:
             with open(results_file, 'w') as f:
                 json.dump(self.test_results, f, indent=2, default=str)
             
-            logger.info(f"💾 Resultados guardados en: {results_file}")
+            logger.info(f"Resultados guardados en: {results_file}")
             
         except Exception as e:
-            logger.error(f"❌ Error guardando resultados: {e}")
+            logger.error(f"Error guardando resultados: {e}")
     
     def cleanup(self):
         """Limpiar recursos"""
         try:
             if self.connector:
                 self.connector.cleanup()
-                logger.info("🧹 Recursos limpiados")
+                logger.info("Recursos limpiados")
         except Exception as e:
-            logger.error(f"❌ Error limpiando recursos: {e}")
+            logger.error(f"Error limpiando recursos: {e}")
 
 
 def main():
     """Función principal"""
-    print("🧪 TEST TRADOVATE INTEGRATION")
+    print("TEST TRADOVATE INTEGRATION")
     print("=" * 50)
     print("Este script prueba todas las funcionalidades del conector Tradovate")
     print("=" * 50)
@@ -550,13 +550,13 @@ def main():
         # Limpiar recursos
         tester.cleanup()
         
-        print("\n🎯 PRUEBAS COMPLETADAS")
+        print("\nPRUEBAS COMPLETADAS")
         print("Revisa los logs para detalles completos")
         
         return 0
         
     except Exception as e:
-        print(f"\n❌ Error crítico: {e}")
+        print(f"\nError crítico: {e}")
         return 1
 
 

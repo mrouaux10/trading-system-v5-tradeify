@@ -1,17 +1,17 @@
-# 🚀 Lightning 50K - Sistema de Trading Optimizado
+# Lightning 50K - Sistema de Trading Optimizado
 
-## ✅ SISTEMA COMPLETAMENTE LIMPIO Y OPTIMIZADO
+## SISTEMA COMPLETAMENTE LIMPIO Y OPTIMIZADO
 
 Sistema de trading Lightning 50K con **estrategia optimizada única** que logró resultados excepcionales.
 
-### 📊 Rendimiento Optimizado:
+### Rendimiento Optimizado:
 - **P&L Total**: $192,698 (+42% mejora)
 - **Drawdown Máximo**: $581 (-68% reducción)
 - **Win Rate**: 67.5% (+10.2% mejora)
 - **Trades Exitosos**: 14,084 en 422 días (33.4/día)
 - **Margen de Seguridad**: $1,419 (71% del límite Lightning 50K)
 
-### 🎯 Parámetros Optimizados:
+### Parámetros Optimizados:
 - **Stop Loss**: 1.0 puntos
 - **Break Even**: 1.5 puntos
 - **Trailing Trigger**: 4.0 puntos
@@ -20,7 +20,7 @@ Sistema de trading Lightning 50K con **estrategia optimizada única** que logró
 - **Take Profit Short**: 15 puntos
 - **EMA**: 9/21 (cruce de medias móviles)
 
-### 📁 Estructura Final del Sistema:
+### Estructura Final del Sistema:
 
 ```
 /scripts/
@@ -46,33 +46,33 @@ Sistema de trading Lightning 50K con **estrategia optimizada única** que logró
     └── README.md                                    # Documentación de resultados
 ```
 
-### 🚀 Activación del Sistema (macOS):
+### Activación del Sistema (macOS):
 
 ```bash
 # Desde la raíz del proyecto (macOS/Linux)
 python3 scripts/activate_lightning_50k.py
 ```
 
-**⚡ Lightning 50K Optimizado v1.0.0** - Sistema completo optimizado para **macOS** con parámetros validados que lograron $192,698 P&L con solo $581 drawdown en 422 días de trading.
+**Lightning 50K Optimizado v1.0.0** - Sistema completo optimizado para **macOS** con parámetros validados que lograron $192,698 P&L con solo $581 drawdown en 422 días de trading.
 
-### 💻 Plataforma:
+### Plataforma:
 - **Desarrollado y probado en**: macOS
 - **Compatible con**: macOS, Linux  
 - **Activación**: Un solo comando desde terminal
 
-### ⚠️ Requisitos:
+### Requisitos:
 1. **Cuenta Tradeify Lightning 50K** fondeada
 2. **API Access de Tradovate** ($25/mes)
-3. **Bot aprobado** por Tradeify ✅ (completado)
+3. **Bot aprobado** por Tradeify (completado)
 
-### 🧹 Limpieza Completada:
-- ❌ **ELIMINADO**: Todas las estrategias obsoletas (round numbers, EMA 200, etc.)
-- ❌ **ELIMINADO**: Archivos de desarrollo y análisis intermedios
-- ❌ **ELIMINADO**: Configuraciones duplicadas o experimentales
-- ❌ **ELIMINADO**: Backtester intermedios y versiones de prueba
-- ✅ **CONSERVADO**: Solo archivos esenciales de la estrategia final optimizada
+### Limpieza Completada:
+- ELIMINADO: Todas las estrategias obsoletas (round numbers, EMA 200, etc.)
+- ELIMINADO: Archivos de desarrollo y análisis intermedios
+- ELIMINADO: Configuraciones duplicadas o experimentales
+- ELIMINADO: Backtester intermedios y versiones de prueba
+- CONSERVADO: Solo archivos esenciales de la estrategia final optimizada
 
-### 🎯 Estado Actual:
+### Estado Actual:
 **SISTEMA 100% LIMPIO Y LISTO PARA TRADING EN VIVO**
 
 ---

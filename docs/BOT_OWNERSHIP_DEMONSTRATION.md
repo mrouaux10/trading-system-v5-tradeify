@@ -1,12 +1,12 @@
-# 🎯 **MI BOT DE TRADING - DEMOSTRACIÓN DE PROPIEDAD**
+# **MI BOT DE TRADING - DEMOSTRACIÓN DE PROPIEDAD**
 
-## 📋 **INFORMACIÓN PERSONAL**
+## **INFORMACIÓN PERSONAL**
 - **Mi nombre**: Matias Rouaux
 - **Mi cuenta Tradeify**: TDY030574
 - **Fecha**: 13 de Agosto, 2025
 - **Propósito**: Mostrar que soy el dueño del bot para Tradeify
 
-## 🔐 **SOY EL ÚNICO DUEÑO**
+## **SOY EL ÚNICO DUEÑO**
 
 ### **1. LO DESARROLLÉ YO SOLO**
 - **Solo yo**: Soy el único que escribió este código
@@ -26,7 +26,7 @@
 - **Gestión de riesgo**: Basado en mi experiencia de trading
 - **Monitoreo**: Lo hice para mis necesidades específicas
 
-## 📊 **QUÉ HACE MI BOT**
+## **QUÉ HACE MI BOT**
 
 ### **Sistema de Compliance Integrado**
 - **Microscalping**: Verifica que no haga trades muy cortos
@@ -56,7 +56,7 @@
 - **Velocidad**: No prioriza ser rápido sobre ser bueno
 - **Estrategia**: Es trading discrecional automatizado
 
-## 📁 **ESTRUCTURA DE MI PROYECTO**
+## **ESTRUCTURA DE MI PROYECTO**
 
 ### **Archivos Principales (que hice yo):**
 - `tradeify_bot_main.py` - Mi bot principal integrado
@@ -69,7 +69,7 @@
 - `start_tradeify_bot.bat` - Script para iniciar mi bot
 - `docs/tradeify_analysis.md` - Análisis que hice de las reglas
 
-## 🔍 **CÓMO PUEDEN VERIFICAR QUE ES MÍO**
+## **CÓMO PUEDEN VERIFICAR QUE ES MÍO**
 
 ### **Métodos de Verificación:**
 1. **Video en vivo**: Te muestro el código en mi PC
@@ -84,7 +84,7 @@
 - **Nombres de archivos**: Los puse como me gustó
 - **Configuración**: Parámetros específicos de mi estrategia
 
-## 📈 **MIS RESULTADOS PERSONALES**
+## **MIS RESULTADOS PERSONALES**
 
 ### **Backtesting de mi V5:**
 - **Win Rate**: 77.78% (lo fui optimizando yo)
@@ -98,7 +98,7 @@
 - **EMA Period**: 34 (lo elegí yo)
 - **ATR Threshold**: 0.0003 (lo definí según mi análisis)
 
-## ✅ **CONFIRMACIÓN FINAL**
+## **CONFIRMACIÓN FINAL**
 
 **Te confirmo que:**
 1. Soy el **único dueño** de este bot
@@ -114,7 +114,7 @@ Empecé a desarrollar este bot hace tiempo porque quería automatizar mi estrate
 
 El sistema de compliance lo implementé después de leer todas las reglas de Tradeify que me pasaste. Quería asegurarme de que mi bot nunca violara ninguna regla, así que lo hice automático.
 
-## 🎯 **EN RESUMEN**
+## **EN RESUMEN**
 
 Este bot es 100% mío. Lo desarrollé yo solo, lo probé yo solo, y lo optimicé yo solo. Está diseñado específicamente para cumplir con todas las reglas de Tradeify y para usar mi estrategia personal.
 
