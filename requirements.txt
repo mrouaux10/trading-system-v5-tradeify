@@ -1,28 +1,14 @@
-# Dependencias principales del sistema de trading
+# Lightning 50K Trading System - Dependencias Esenciales
+# Optimizado: 31/08/2025
+
+# API y WebSocket para Tradovate
 requests>=2.31.0
 websocket-client>=1.6.0
+
+# Análisis de datos para backtesting
 pandas>=2.0.0
 numpy>=1.24.0
-matplotlib>=3.7.0
-seaborn>=0.12.0
 
-# Logging y utilidades
+# Manejo de fechas y tiempo
 python-dateutil>=2.8.2
-pytz>=2023.3
-
-# Análisis técnico
-ta>=0.10.2
-scikit-learn>=1.3.0
-
-# Configuración y validación
-jsonschema>=4.19.0
-pyyaml>=6.0
-
-# Testing (opcional)
-pytest>=7.4.0
-pytest-cov>=4.1.0
-
-# Desarrollo (opcional)
-black>=23.7.0
-flake8>=6.0.0
-mypy>=1.5.0 
+pytz>=2023.3 
