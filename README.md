@@ -1,15 +1,15 @@
-# Lightning 50K - Sistema de Trading Optimizado
+# lightning_50k_strategy - Sistema de Trading Optimizado
 
 ## SISTEMA COMPLETAMENTE LIMPIO Y OPTIMIZADO
 
-Sistema de trading Lightning 50K con **estrategia optimizada única** que logró resultados excepcionales.
+Sistema de trading lightning_50k_strategy con **estrategia optimizada única** que logró resultados excepcionales.
 
 ### Rendimiento Optimizado:
 - **P&L Total**: $192,698 (+42% mejora)
 - **Drawdown Máximo**: $581 (-68% reducción)
 - **Win Rate**: 67.5% (+10.2% mejora)
 - **Trades Exitosos**: 14,084 en 422 días (33.4/día)
-- **Margen de Seguridad**: $1,419 (71% del límite Lightning 50K)
+- **Margen de Seguridad**: $1,419 (71% del límite lightning_50k_strategy)
 
 ### Parámetros Optimizados:
 - **Stop Loss**: 1.0 puntos
@@ -31,7 +31,7 @@ Sistema de trading Lightning 50K con **estrategia optimizada única** que logró
 └── test_tradovate_integration.py     # Pruebas de integración
 
 /config/
-└── lightning_50k_final_config.json   # Configuración única optimizada
+└── lightning_50k_strategy.json   # Configuración única optimizada
 
 /testing/newStrategyTest/
 ├── lightning_50k_drawdown_optimizer.py    # Optimizador usado
@@ -42,7 +42,7 @@ Sistema de trading Lightning 50K con **estrategia optimizada única** que logró
     ├── Lightning_50K_Complete_With_Daily_Summary.xlsx  # Excel con resumen
     ├── lightning_50k_optimized_generator.py         # Generador CSV
     ├── excel_optimized_generator.py                 # Generador Excel
-    ├── lightning_50k_final_config.json      # Configuración única optimizada
+    ├── lightning_50k_strategy.json      # Configuración única optimizada
     └── README.md                                    # Documentación de resultados
 ```
 
@@ -53,7 +53,7 @@ Sistema de trading Lightning 50K con **estrategia optimizada única** que logró
 python3 scripts/activate_lightning_50k.py
 ```
 
-**Lightning 50K Optimizado v1.0.0** - Sistema completo optimizado para **macOS** con parámetros validados que lograron $192,698 P&L con solo $581 drawdown en 422 días de trading.
+**lightning_50k_strategy Optimizado v1.0.0** - Sistema completo optimizado para **macOS** con parámetros validados que lograron $192,698 P&L con solo $581 drawdown en 422 días de trading.
 
 ### Plataforma:
 - **Desarrollado y probado en**: macOS
@@ -61,7 +61,7 @@ python3 scripts/activate_lightning_50k.py
 - **Activación**: Un solo comando desde terminal
 
 ### Requisitos:
-1. **Cuenta Tradeify Lightning 50K** fondeada
+1. **Cuenta Tradeify lightning_50k_strategy** fondeada
 2. **API Access de Tradovate** ($25/mes)
 3. **Bot aprobado** por Tradeify (completado)
 

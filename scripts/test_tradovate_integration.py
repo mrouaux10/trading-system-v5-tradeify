@@ -27,7 +27,7 @@ logger = logging.getLogger(__name__)
 class TradovateIntegrationTester:
     """Clase para probar la integración completa con Tradovate"""
     
-    def __init__(self, config_file: str = "config/lightning_50k_final_config.json"):
+    def __init__(self, config_file: str = "config/lightning_50k_strategy.json"):
         """Inicializar tester"""
         self.config_file = config_file
         self.connector = None

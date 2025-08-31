@@ -427,7 +427,7 @@ def main():
         
         # Guardar configuración optimizada
         import json
-        config_file = '../../config/lightning_50k_final_config.json'
+        config_file = '../../config/lightning_50k_strategy.json'
         with open(config_file, 'w') as f:
             json.dump(optimized_config, f, indent=2)
         

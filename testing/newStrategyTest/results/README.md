@@ -1,7 +1,7 @@
-# Lightning 50K - Estrategia Optimizada Final
+# lightning_50k_strategy - Estrategia Optimizada Final
 ## Archivos Esenciales
 
-Esta carpeta contiene únicamente los archivos esenciales de la **estrategia Lightning 50K optimizada** que logró resultados excepcionales.
+Esta carpeta contiene únicamente los archivos esenciales de la **estrategia lightning_50k_strategy optimizada** que logró resultados excepcionales.
 
 ### Archivos de Resultados:
 - **`Lightning_50K_Optimized_Complete.csv`** (1.0 MB)
@@ -26,7 +26,7 @@ Esta carpeta contiene únicamente los archivos esenciales de la **estrategia Lig
   - Sistema de colores y estadísticas
 
 ### Archivo de Configuración:
-- **`../../config/lightning_50k_final_config.json`** 
+- **`../../config/lightning_50k_strategy.json`** 
   - Configuración única unificada con parámetros optimizados
   - Métricas de rendimiento documentadas
 
@@ -47,7 +47,7 @@ Esta carpeta contiene únicamente los archivos esenciales de la **estrategia Lig
 - **Promedio**: 33.4 trades por día
 
 ## Capacidad de Escalamiento:
-Con este drawdown optimizado, la estrategia puede usar hasta **3 contratos** sin violar el límite de $2,000 de Lightning 50K.
+Con este drawdown optimizado, la estrategia puede usar hasta **3 contratos** sin violar el límite de $2,000 de lightning_50k_strategy.
 
 ---
-*Generado el 31/08/2025 - Estrategia Lightning 50K Optimizada*
+*Generado el 31/08/2025 - Estrategia lightning_50k_strategy Optimizada*

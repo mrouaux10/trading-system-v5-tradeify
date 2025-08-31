@@ -5,14 +5,14 @@
 **Estado:** **VALIDADO POR IA TRADEIFY - LISTO PARA IMPLEMENTACIÓN**  
 **Fecha:** 21 de agosto de 2025  
 **Criticidad:** **EXTREMADAMENTE CRÍTICO** - Consultar SIEMPRE antes de modificaciones  
-**Propósito:** Documento maestro con toda la información necesaria para operar Lightning 50K exitosamente
+**Propósito:** Documento maestro con toda la información necesaria para operar lightning_50k_strategy exitosamente
 
 ## **VALIDACIÓN COMPLETA POR IA TRADEIFY - AGOSTO 2025**
 
 **EXCELENTE NOTICIA:** Todas las reglas críticas han sido **CONFIRMADAS** por la IA oficial de Tradeify:
 
 ### **CONFIRMACIONES CRÍTICAS:**
-1. **Drawdown EOD:** Lightning 50K usa **exclusivamente EOD** (evaluado solo a las 5PM ET)
+1. **Drawdown EOD:** lightning_50k_strategy usa **exclusivamente EOD** (evaluado solo a las 5PM ET)
 2. **Bloqueo permanente:** Se confirma que el drawdown **SE BLOQUEA PERMANENTEMENTE** en $50,100 cuando alcanzas $52,100
 3. **Consistency Rule:** 20% confirmado, se resetea después de cada payout exitoso
 4. **Trading Hours:** 6PM-5PM confirmado
@@ -107,7 +107,7 @@
 - El drawdown level NUNCA disminuye, solo aumenta con nuevos peaks
 
 ##### **2. EVALUACIÓN EOD EXCLUSIVAMENTE** **CONFIRMADO POR IA TRADEIFY**
-- **Lightning 50K usa drawdown EOD exclusivamente**
+- **lightning_50k_strategy usa drawdown EOD exclusivamente**
 - Se evalúa SOLO al final del día (5:00 PM ET)
 - Las fluctuaciones intraday NO afectan el drawdown
 - Solo considera posiciones cerradas, ignora P&L no realizado
@@ -367,7 +367,7 @@ mejor_día ÷ 0.20 ≤ ganancias_totales_acumuladas
 ## **ARCHIVOS DE CONFIGURACIÓN**
 
 ### **CONFIGURACIÓN PRINCIPAL:**
-- **`config/lightning_50k_final_config.json`** - Configuración completa con parámetros exactos
+- **`config/lightning_50k_strategy.json`** - Configuración completa con parámetros exactos
 - **`config/lightning_50k_template.json`** - Template para futuras iteraciones
 
 ### **Config: HERRAMIENTAS DE OPTIMIZACIÓN:**
@@ -389,7 +389,7 @@ Esta estrategia ha demostrado matemáticamente que puede:
 - Sobrevivir el drawdown inicial
 - Llegar al lock ($52,100)
 - Generar $29,140 en 19 meses
-- Cumplir todas las reglas Lightning 50K
+- Cumplir todas las reglas lightning_50k_strategy
 
 ### **Tu única tarea ahora es:**
 1. Implementarla EXACTAMENTE como está
@@ -460,7 +460,7 @@ El optimizador debe implementar:
 **TODAS LAS DUDAS CRÍTICAS FUERON RESUELTAS POR IA TRADEIFY:**
 
 ### **CONFIRMACIONES FINALES:**
-1. **Drawdown EOD:** Lightning 50K usa exclusivamente EOD (5PM ET)
+1. **Drawdown EOD:** lightning_50k_strategy usa exclusivamente EOD (5PM ET)
 2. **Bloqueo permanente:** Se confirma bloqueo permanente en $50,100 al alcanzar $52,100
 3. **Flexibility intraday:** Puedes tener drawdowns temporales sin eliminación
 4. **Solo P&L cerrado:** Drawdown ignora P&L no realizado

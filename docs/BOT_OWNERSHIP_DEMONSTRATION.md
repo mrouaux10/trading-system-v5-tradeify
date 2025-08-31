@@ -41,7 +41,7 @@
 - **Posición**: Controla el tamaño automáticamente
 - **Exposición**: No deja que me exponga demasiado
 
-### **Mi Estrategia Lightning 50K Optimizada**
+### **Mi Estrategia lightning_50k_strategy Optimizada**
 - **Indicadores**: EMA 34, RSI 14, ATR 14
 - **Señales**: Se generan cuando se cumplen mis condiciones
 - **Filtros**: Sistema V6 para mejorar la calidad
@@ -65,7 +65,7 @@
 - `activate_lightning_50k.py` - Activación de mi estrategia V5
 
 ### **Configuración Personal:**
-- `lightning_50k_final_config.json` - Configuración de mi cuenta
+- `lightning_50k_strategy.json` - Configuración de mi cuenta
 - `start_tradeify_bot.bat` - Script para iniciar mi bot
 - `docs/tradeify_analysis.md` - Análisis que hice de las reglas
 

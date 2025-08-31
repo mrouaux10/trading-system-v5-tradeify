@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 """
 TRADEIFY BOT MAIN - ESTRATEGIA LIGHTNING 50K OPTIMIZADA
-==========================================================
+==            logger.info(f"Configuración lightning_50k_strategy cargada: {self.config['strategy_name']} v{self.config['version']}")
+        except FileNotFoundError:
+            logger.error("CRÍTICO: lightning_50k_strategy.json no encontrado")
+            raise FileNotFoundError("Configuración lightning_50k_strategy requerida")====================================================
 Bot principal con estrategia optimizada que logró:
 - P&L: $192,698 (+42% mejora)
 - Drawdown: $581 (-68% reducción) 
@@ -76,16 +79,16 @@ class TradeifyBotMain:
             raise
     
     def setup_strategy(self):
-        """Configurar estrategia Lightning 50K"""
-        # Cargar configuración Lightning 50K
-        config_path = os.path.join(os.path.dirname(__file__), '..', 'config', 'lightning_50k_final_config.json')
+        """Configurar estrategia lightning_50k_strategy"""
+        # Cargar configuración lightning_50k_strategy
+        config_path = os.path.join(os.path.dirname(__file__), '..', 'config', 'lightning_50k_strategy.json')
         
         try:
             with open(config_path, 'r') as f:
                 self.config = json.load(f)
             logger.info(f"Configuración Lightning 50K cargada: {self.config['strategy_name']} v{self.config['version']}")
         except FileNotFoundError:
-            logger.error("CRÍTICO: lightning_50k_final_config.json no encontrado")
+            logger.error("CRÍTICO: lightning_50k_strategy.json no encontrado")
             raise FileNotFoundError("Configuración Lightning 50K requerida")
         
         self.strategy_config = {
@@ -320,7 +323,7 @@ class TradeifyBotMain:
         """Obtener reporte de estado del bot"""
         return {
             'status': 'READY_OPTIMIZED',
-            'strategy': 'Lightning 50K Optimized',
+            'strategy': 'lightning_50k_strategy',
             'parameters_loaded': True,
             'compliance_verified': True,
             'optimization_applied': True

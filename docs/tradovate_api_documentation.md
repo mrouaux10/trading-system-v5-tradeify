@@ -170,7 +170,7 @@
 - **Clase:** `TradovateConnector`
 - **Métodos:** `authenticate()`, `get_balance()`, `place_order()`
 
-### **Estrategia Lightning 50K:**
+### **Estrategia lightning_50k_strategy:**
 - **Instrumento:** MNQ (Micro E-mini NASDAQ) - **NOTA:** Tradeify soporta muchos más instrumentos
 - **Instrumentos disponibles:** ES, NQ, YM, RTY, productos agrícolas, divisas, contratos EUREX
 - **Contratos:** 1 (conservador)
@@ -1879,7 +1879,7 @@ GET /v1/chatMessage/list
 
 ### **Archivos a Modificar:**
 1. **`scripts/tradovate_connector.py`** - Conector principal
-2. **`config/lightning_50k_final_config.json`** - Configuración de API
+2. **`config/lightning_50k_strategy.json`** - Configuración de API
 3. **`scripts/tradeify_bot_main.py`** - Integración principal
 
 ### **Próximos Pasos:**

@@ -52,7 +52,7 @@ class TradeifyConfigValidator:
     def validate_lightning_50k(self) -> bool:
         """Validar configuración de estrategia V5"""
         try:
-            config_file = self.config_dir / "lightning_50k_final_config.json"
+            config_file = self.config_dir / "lightning_50k_strategy.json"
             
             if not config_file.exists():
                 self.validation_results["errors"].append("Archivo lightning_50k.json no encontrado")
@@ -110,16 +110,16 @@ class TradeifyConfigValidator:
     def validate_lightning_50k_final_config(self) -> bool:
         """Validar configuración principal de Tradeify"""
         try:
-            config_file = self.config_dir / "lightning_50k_final_config.json"
+            config_file = self.config_dir / "lightning_50k_strategy.json"
             
             if not config_file.exists():
-                self.validation_results["errors"].append("Archivo lightning_50k_final_config.json no encontrado")
+                self.validation_results["errors"].append("Archivo lightning_50k_strategy.json no encontrado")
                 return False
             
             with open(config_file, 'r') as f:
                 config = json.load(f)
             
-            logger.info("Validando lightning_50k_final_config.json...")
+            logger.info("Validando lightning_50k_strategy.json...")
             
             # Verificar tipo de cuenta
             if config.get("tradeify_platform", {}).get("type") != "Lightning Funded":
@@ -129,7 +129,7 @@ class TradeifyConfigValidator:
             # Verificar límites de riesgo en trading_parameters.risk_management
             trading_params = config.get("trading_parameters", {})
             if not trading_params:
-                self.validation_results["errors"].append("Sección trading_parameters no encontrada en lightning_50k_final_config.json")
+                self.validation_results["errors"].append("Sección trading_parameters no encontrada en lightning_50k_strategy.json")
                 return False
             
             risk_mgmt = trading_params.get("risk_management", {})
@@ -168,7 +168,7 @@ class TradeifyConfigValidator:
             # Verificar reglas de compliance
             compliance = config.get("compliance_rules", {})
             if not compliance:
-                self.validation_results["errors"].append("Sección compliance_rules no encontrada en lightning_50k_final_config.json")
+                self.validation_results["errors"].append("Sección compliance_rules no encontrada en lightning_50k_strategy.json")
                 return False
             
             consistency_rules = compliance.get("consistency", {})
@@ -180,12 +180,12 @@ class TradeifyConfigValidator:
                 self.validation_results["errors"].append(f"Max daily profit percentage incorrecto: {consistency_rules.get('max_daily_profit_percentage')} (debe ser 0.20)")
                 return False
             
-            logger.info("lightning_50k_final_config.json validado correctamente")
+            logger.info("lightning_50k_strategy.json validado correctamente")
             self.validation_results["lightning_50k_final_config"] = True
             return True
             
         except Exception as e:
-            self.validation_results["errors"].append(f"Error validando lightning_50k_final_config.json: {e}")
+            self.validation_results["errors"].append(f"Error validando lightning_50k_strategy.json: {e}")
             return False
     
     def validate_compliance_system(self) -> bool:
@@ -230,8 +230,8 @@ class TradeifyConfigValidator:
             
             # Verificar que todos los archivos principales existan
             required_files = [
-                "config/lightning_50k_final_config.json",
-                "config/lightning_50k_final_config.json",
+                "config/lightning_50k_strategy.json",
+                "config/lightning_50k_strategy.json",
                 "scripts/tradeify_compliance_system.py",
                 "scripts/tradeify_bot_main.py"
             ]

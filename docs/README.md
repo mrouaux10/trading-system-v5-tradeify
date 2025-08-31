@@ -2,7 +2,7 @@
 
 **Estado:** UNIFICADA Y ACTUALIZADA  
 **Fecha:** 21 de agosto 2025  
-**Propósito:** Documentación completa y organizada para la estrategia perfecta Lightning 50K
+**Propósito:** Documentación completa y organizada para la estrategia perfecta lightning_50k_strategy
 
 ---
 
@@ -10,7 +10,7 @@
 
 ### DOCUMENTO MAESTRO UNIFICADO
 - **[`LIGHTNING_50K_RULES.md`](LIGHTNING_50K_RULES.md)** DOCUMENTO ÚNICO
-  - **Propósito:** TODA la información Lightning 50K en un solo lugar
+  - **Propósito:** TODA la información lightning_50k_strategy en un solo lugar
   - **Estado:** Documentación maestra completa y unificada
   - **Contenido:** 
     - Información específica de cuenta real
@@ -79,4 +79,4 @@ DUPLICADOS ELIMINADOS
 REFERENCIAS ACTUALIZADAS  
 LISTA PARA USO EN PRODUCCIÓN
 
-**La documentación está ahora perfectamente organizada para soportar la estrategia perfecta Lightning 50K.**
+**La documentación está ahora perfectamente organizada para soportar la estrategia perfecta lightning_50k_strategy.**

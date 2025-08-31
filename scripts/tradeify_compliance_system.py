@@ -32,7 +32,7 @@ class TradeifyComplianceSystem:
         """Inicializar sistema de compliance"""
         if config_file is None:
             # Ruta absoluta al archivo de configuración Lightning 50K
-            config_file = os.path.join(os.path.dirname(__file__), '..', 'config', 'lightning_50k_final_config.json')
+            config_file = os.path.join(os.path.dirname(__file__), '..', 'config', 'lightning_50k_strategy.json')
         self.config = self.load_config(config_file)
         self.trades_history = []
         self.daily_stats = {}
