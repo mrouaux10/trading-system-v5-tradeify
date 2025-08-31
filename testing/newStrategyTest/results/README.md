@@ -26,8 +26,8 @@ Esta carpeta contiene únicamente los archivos esenciales de la **estrategia Lig
   - Sistema de colores y estadísticas
 
 ### Archivo de Configuración:
-- **`lightning_50k_optimized_drawdown_config.json`** (550 B)
-  - Parámetros optimizados finales
+- **`../../config/lightning_50k_final_config.json`** 
+  - Configuración única unificada con parámetros optimizados
   - Métricas de rendimiento documentadas
 
 ## Parámetros Optimizados Finales:

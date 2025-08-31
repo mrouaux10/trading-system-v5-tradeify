@@ -42,7 +42,7 @@ Sistema de trading Lightning 50K con **estrategia optimizada única** que logró
     ├── Lightning_50K_Complete_With_Daily_Summary.xlsx  # Excel con resumen
     ├── lightning_50k_optimized_generator.py         # Generador CSV
     ├── excel_optimized_generator.py                 # Generador Excel
-    ├── lightning_50k_optimized_drawdown_config.json # Config optimizada
+    ├── lightning_50k_final_config.json      # Configuración única optimizada
     └── README.md                                    # Documentación de resultados
 ```
 

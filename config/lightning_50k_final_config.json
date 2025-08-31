@@ -1,7 +1,8 @@
 {
-  "strategy_name": "Lightning 50K Perfect Strategy",
-  "version": "1.0.0",
+  "strategy_name": "Lightning 50K Optimized Strategy",
+  "version": "1.1.0",
   "created": "2025-08-21",
+  "optimized": "2025-08-31",
   "status": "READY_FOR_PRODUCTION",
   
   "account_settings": {
@@ -116,6 +117,22 @@
     "Validar ejecución de órdenes"
   ],
   
+  "optimization_results": {
+    "optimization_date": "2025-08-31",
+    "total_trades": 14084,
+    "total_pnl": 192698.50,
+    "max_drawdown": 581.00,
+    "win_rate": 67.54,
+    "final_balance": 242698.50,
+    "drawdown_reduction": 1231.75,
+    "compliance_margin": 1419.00,
+    "performance_improvement": {
+      "drawdown_reduced_by": "68%",
+      "pnl_increased_by": "42%",
+      "win_rate_improved_by": "10.2%"
+    }
+  },
+
   "critical_reminders": [
     "NUNCA violar drawdown de $2,000 desde peak",
     "NUNCA exceder Daily Loss Limit de $1,250", 
