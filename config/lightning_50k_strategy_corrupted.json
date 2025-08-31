@@ -5,13 +5,6 @@
   "optimized": "2025-08-31",
   "status": "READY_FOR_PRODUCTION",
   
-  "tradeify_platform": {
-    "type": "Lightning Funded",
-    "account_size": 50000,
-    "platform": "Tradovate",
-    "symbol": "MNQ"
-  },
-  
   "account_settings": {
     "initial_balance": 50000,
     "account_type": "Lightning 50K Funded",
@@ -37,24 +30,26 @@
     "take_profit_short": 15
   },
   
-  "trading_parameters": {
-    "risk_management": {
-      "max_daily_loss": 1250,
-      "max_drawdown": 2000,
-      "consistency_threshold": 0.20,
-      "stop_loss_points": 1.0,
-      "break_even_trigger": 1.5,
-      "trailing_trigger": 4.0,
-      "trailing_distance": 3.0,
-      "take_profit_long": 22,
-      "take_profit_short": 15
-    },
-    "trading_hours": {
-      "start": "09:00",
-      "end": "16:00",
-      "timezone": "UTC",
-      "mandatory_close": "16:59"
-    }
+  "trading_hours": {
+    "start": "18:00:00",
+    "end": "16:59:00",
+    "timezone": "America/New_York",
+    "no_overnight": true
+  },
+  
+  "compliance_rules": {
+    "microscalping_min_seconds": 30,
+    "minimum_trading_days": 7,
+    "consistency_rule_percentage": 20,
+    "max_daily_trades": 100
+  },
+  
+  "trailing_drawdown": {
+    "enabled": true,
+    "max_allowed": 2000,
+    "current": 0,
+    "peak_balance": 50000,
+    "lock_threshold": 52100
   },
   
   "position_sizing": {
@@ -85,32 +80,6 @@
     "no_overnight_positions": true,
     "minimum_trading_days": 7,
     "consistency_rule_percentage": 20
-  },
-  
-  "trading_hours": {
-    "start": "18:00:00",
-    "end": "16:59:00",
-    "timezone": "America/New_York",
-    "no_overnight": true
-  },
-  
-  "compliance_rules": {
-    "microscalping_min_seconds": 30,
-    "minimum_trading_days": 7,
-    "consistency_rule_percentage": 20,
-    "max_daily_trades": 100,
-    "consistency": {
-      "max_daily_profit_percentage": 0.20,
-      "consistency_threshold": 0.20
-    }
-  },
-  
-  "trailing_drawdown": {
-    "enabled": true,
-    "max_allowed": 2000,
-    "current": 0,
-    "peak_balance": 50000,
-    "lock_threshold": 52100
   },
   
   "backtest_results": {

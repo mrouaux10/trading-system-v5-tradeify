@@ -49,62 +49,54 @@ class TradeifyConfigValidator:
         
         logger.info("Validador de configuración Tradeify Lightning Funded inicializado")
     
-    def validate_lightning_50k(self) -> bool:
-        """Validar configuración de estrategia V5"""
+    def validate_lightning_50k_strategy(self) -> bool:
+        """Validar configuración Lightning 50K Strategy"""
         try:
             config_file = self.config_dir / "lightning_50k_strategy.json"
             
             if not config_file.exists():
-                self.validation_results["errors"].append("Archivo lightning_50k.json no encontrado")
+                self.validation_results["errors"].append("Archivo lightning_50k_strategy.json no encontrado")
                 return False
             
             with open(config_file, 'r') as f:
                 config = json.load(f)
             
-            logger.info("Validando lightning_50k.json...")
+            logger.info("Validando lightning_50k_strategy.json...")
             
             # Verificar campos críticos en risk_management
             risk_mgmt = config.get("risk_management", {})
             if not risk_mgmt:
-                self.validation_results["errors"].append("Sección risk_management no encontrada en lightning_50k.json")
+                self.validation_results["errors"].append("Sección risk_management no encontrada en lightning_50k_strategy.json")
                 return False
             
             # Verificar valores críticos en risk_management
-            if risk_mgmt.get("consistency_threshold") != 0.20:
-                self.validation_results["errors"].append(f"Consistency threshold incorrecto: {risk_mgmt.get('consistency_threshold')} (debe ser 0.20)")
+            if risk_mgmt.get("daily_loss_limit") != 1250:
+                self.validation_results["errors"].append(f"Daily loss limit incorrecto: {risk_mgmt.get('daily_loss_limit')} (debe ser 1250)")
                 return False
             
-            if risk_mgmt.get("max_daily_loss") != 1250:
-                self.validation_results["errors"].append(f"Max daily loss incorrecto: {risk_mgmt.get('max_daily_loss')} (debe ser 1250)")
+            if risk_mgmt.get("max_drawdown") != 2000:
+                self.validation_results["errors"].append(f"Max drawdown incorrecto: {risk_mgmt.get('max_drawdown')} (debe ser 2000)")
                 return False
             
-            if risk_mgmt.get("trailing_drawdown") != 2000:
-                self.validation_results["errors"].append(f"Trailing drawdown incorrecto: {risk_mgmt.get('trailing_drawdown')} (debe ser 2000)")
+            # Verificar account settings
+            account_settings = config.get("account_settings", {})
+            if account_settings.get("account_type") != "Lightning 50K Funded":
+                self.validation_results["errors"].append(f"Tipo de cuenta incorrecto: {account_settings.get('account_type')} (debe ser Lightning 50K Funded)")
                 return False
             
-            # Verificar horarios en trading_constraints
-            trading_constraints = config.get("trading_constraints", {})
-            if not trading_constraints:
-                self.validation_results["errors"].append("Sección trading_constraints no encontrada en lightning_50k.json")
+            # Verificar trading rules
+            trading_rules = config.get("trading_rules", {})
+            consistency_percentage = trading_rules.get("consistency_rule_percentage")
+            if consistency_percentage != 20:
+                self.validation_results["errors"].append(f"Consistency threshold incorrecto: {consistency_percentage/100 if consistency_percentage else None} (debe ser 0.20)")
                 return False
             
-            if trading_constraints.get("timezone") != "UTC":
-                self.validation_results["errors"].append(f"Timezone incorrecto: {trading_constraints.get('timezone')} (debe ser UTC)")
-                return False
-            
-            # Verificar horarios
-            if trading_constraints.get("trading_hours_start") != "09:00":
-                self.validation_results["warnings"].append(f"Horario de inicio: {trading_constraints.get('trading_hours_start')} (recomendado: 09:00)")
-            
-            if trading_constraints.get("trading_hours_end") != "16:00":
-                self.validation_results["warnings"].append(f"Horario de fin: {trading_constraints.get('trading_hours_end')} (recomendado: 16:00)")
-            
-            logger.info("lightning_50k.json validado correctamente")
+            logger.info("lightning_50k_strategy.json validado correctamente")
             self.validation_results["lightning_50k"] = True
             return True
             
         except Exception as e:
-            self.validation_results["errors"].append(f"Error validando lightning_50k.json: {e}")
+            self.validation_results["errors"].append(f"Error validando lightning_50k_strategy.json: {e}")
             return False
     
     def validate_lightning_50k_final_config(self) -> bool:
@@ -269,7 +261,7 @@ class TradeifyConfigValidator:
             logger.info("=" * 70)
             
             # Validar cada componente
-            strategy_ok = self.validate_lightning_50k()
+            strategy_ok = self.validate_lightning_50k_strategy()
             config_ok = self.validate_lightning_50k_final_config()
             compliance_ok = self.validate_compliance_system()
             
