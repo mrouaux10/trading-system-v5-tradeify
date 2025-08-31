@@ -33,7 +33,7 @@ Sistema de trading lightning_50k_strategy con **estrategia optimizada única** q
 /config/
 └── lightning_50k_strategy.json   # Configuración única optimizada
 
-/testing/newStrategyTest/
+/testing/lightning50kStrategyTest/
 ├── lightning_50k_drawdown_optimizer.py    # Optimizador usado
 ├── lightning_50k_custom_format.py         # Generador CSV final
 ├── excel_complete_generator.py            # Generador Excel final

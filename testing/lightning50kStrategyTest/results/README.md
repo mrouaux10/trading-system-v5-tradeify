@@ -1,4 +1,4 @@
-# lightning_50k_strategy - Estrategia Optimizada Final
+# lightning_50k_strategy - Resultados Finales
 ## Archivos Esenciales
 
 Esta carpeta contiene únicamente los archivos esenciales de la **estrategia lightning_50k_strategy optimizada** que logró resultados excepcionales.

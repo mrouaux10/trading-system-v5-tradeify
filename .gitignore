@@ -51,9 +51,9 @@ backtesting/historical/tick/
 *.Last.txt
 
 # Permitir archivos de resultados importantes
-!testing/newStrategyTest/results/*.csv
-!testing/newStrategyTest/results/*.xlsx  
-!testing/newStrategyTest/results/*.json
+!testing/lightning50kStrategyTest/results/*.csv
+!testing/lightning50kStrategyTest/results/*.xlsx  
+!testing/lightning50kStrategyTest/results/*.json
 !config/*.json
 !requirements.txt
 !README.md
