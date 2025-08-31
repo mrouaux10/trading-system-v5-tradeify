@@ -46,14 +46,19 @@ Sistema de trading Lightning 50K con **estrategia optimizada única** que logró
     └── README.md                                    # Documentación de resultados
 ```
 
-### 🚀 Activación del Sistema:
+### 🚀 Activación del Sistema (macOS):
 
 ```bash
-# Desde la raíz del proyecto
+# Desde la raíz del proyecto (macOS/Linux)
 python3 scripts/activate_lightning_50k.py
 ```
 
-**⚡ Lightning 50K Optimizado v1.0.0** - Sistema completo con parámetros validados que lograron $192,698 P&L con solo $581 drawdown en 422 días de trading.
+**⚡ Lightning 50K Optimizado v1.0.0** - Sistema completo optimizado para **macOS** con parámetros validados que lograron $192,698 P&L con solo $581 drawdown en 422 días de trading.
+
+### 💻 Plataforma:
+- **Desarrollado y probado en**: macOS
+- **Compatible con**: macOS, Linux  
+- **Activación**: Un solo comando desde terminal
 
 ### ⚠️ Requisitos:
 1. **Cuenta Tradeify Lightning 50K** fondeada
