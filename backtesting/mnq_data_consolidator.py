@@ -16,7 +16,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 logger = logging.getLogger(__name__)
 
 class MNQDataConsolidator:
-    def __init__(self, data_dir="../backtesting/historical/"):
+    def __init__(self, data_dir="./historical/"):
         self.data_dir = data_dir
         self.consolidated_data = None
         

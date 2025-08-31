@@ -371,9 +371,9 @@ mejor_día ÷ 0.20 ≤ ganancias_totales_acumuladas
 - **`config/lightning_50k_template.json`** - Template para futuras iteraciones
 
 ### **Config: HERRAMIENTAS DE OPTIMIZACIÓN:**
-- **`testing/lightning_perfect_strategy_finder.py`** - Buscador que encontró la estrategia perfecta
-- **`testing/lightning_50k_realistic_optimizer.py`** - Optimizador realista
-- **`testing/lightning_implementation_system.py`** - Sistema de implementación
+- **`backtesting/lightning_perfect_strategy_finder.py`** - Buscador que encontró la estrategia perfecta
+- **`backtesting/lightning_50k_realistic_optimizer.py`** - Optimizador realista
+- **`backtesting/lightning_implementation_system.py`** - Sistema de implementación
 
 ### **System: SISTEMA DE COMPLIANCE:**
 - **`scripts/tradeify_compliance_system.py`** - Reglas de Tradeify
