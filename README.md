@@ -1,30 +1,29 @@
-# lightning_50k_strategy - Sistema de Trading Optimizado
+# Lightning 50K Trading System
 
-## SISTEMA COMPLETAMENTE LIMPIO Y OPTIMIZADO
+Sistema automatizado de trading para la plataforma Tradeify con estrategia optimizada Lightning 50K.
 
-Sistema de trading lightning_50k_strategy con **estrategia optimizada única** que logró resultados excepcionales.
+## Rendimiento del Sistema
 
-### Rendimiento Optimizado:
-- **P&L Total**: $192,698 (+42% mejora)
-- **Drawdown Máximo**: $581 (-68% reducción)
-- **Win Rate**: 67.5% (+10.2% mejora)
-- **Trades Exitosos**: 14,084 en 422 días (33.4/día)
-- **Margen de Seguridad**: $1,419 (71% del límite lightning_50k_strategy)
+- **P&L Total**: $192,698.50 
+- **Win Rate**: 67.5%
+- **Max Drawdown**: $581.00
+- **Trades Totales**: 14,084 en 422 días
+- **Promedio**: 33.4 trades/día
 
-### Parámetros Optimizados:
+## Parámetros de Trading
+
 - **Stop Loss**: 1.0 puntos
-- **Break Even**: 1.5 puntos
-- **Trailing Trigger**: 4.0 puntos
-- **Trailing Distance**: 3.0 puntos
+- **Break Even**: 1.5 puntos  
+- **Trailing Stop**: Trigger 4.0pts, Distance 3.0pts
 - **Take Profit Long**: 22 puntos
 - **Take Profit Short**: 15 puntos
-- **EMA**: 9/21 (cruce de medias móviles)
+- **Indicadores**: EMA 9/21 crossover
 
-### Estructura Final del Sistema:
+## Estructura del Proyecto
 
 ```
 /scripts/
-├── tradeify_bot_main.py              # Bot principal optimizado
+├── tradeify_bot_main.py              # Bot principal
 ├── activate_lightning_50k.py         # Script de activación
 ├── tradeify_compliance_system.py     # Sistema de compliance
 ├── tradovate_connector.py            # Conector API
@@ -33,27 +32,28 @@ Sistema de trading lightning_50k_strategy con **estrategia optimizada única** q
 └── validate_config_consistency.py   # Validador de configuración
 
 /config/
-└── lightning_50k_strategy.json      # Configuración única completa
+└── lightning_50k_strategy.json      # Configuración del sistema
 
 /docs/
-├── LIGHTNING_50K_RULES.md           # Reglas de la estrategia
+├── LIGHTNING_50K_RULES.md           # Reglas de trading
 ├── BOT_OWNERSHIP_DEMONSTRATION.md   # Demostración de autoría
 ├── TRADOVATE_API_DOCUMENTATION.md   # Documentación API
-└── ROUND_NUMBERS_STRATEGY_ADOPTED.md # Estrategia Round Numbers adoptada
+└── ROUND_NUMBERS_STRATEGY_ADOPTED.md # Estrategia Round Numbers
 
 /.venv/                               # Entorno virtual Python
-└── (dependencies isolated)
-
-/logs/                                # Archivos de registro del sistema
 
 /backtesting/lightning50kStrategyTest/
-├── lightning_50k_drawdown_optimizer.py    # Optimizador (CORREGIDO)
-├── lightning_50k_custom_format.py         # Generador CSV (12 columnas)
+├── lightning_50k_drawdown_optimizer.py    # Optimizador de parámetros
+├── lightning_50k_custom_format.py         # Generador de resultados
 └── results/
-    ├── lightning_50k_results.csv              # Archivo maestro único (14,084 trades)
-    └── README.md                               # Documentación de resultados
+    └── lightning_50k_results.csv          # Resultados del backtest
+```
 
-### Estructura del CSV Maestro (12 columnas):
+## Resultados de Backtesting
+
+**Archivo**: `backtesting/lightning50kStrategyTest/results/lightning_50k_results.csv`
+
+### Estructura del CSV (12 columnas):
 1. Date - Fecha del trade
 2. Time - Hora del trade  
 3. MNQ Price - Precio del MNQ
@@ -66,24 +66,55 @@ Sistema de trading lightning_50k_strategy con **estrategia optimizada única** q
 10. Balance - Balance acumulado
 11. Day - Número del día de trading
 12. Daily P&L Total - P&L total diario
-
-**Nota**: Este archivo CSV es el único formato de resultados y será sobrescrito automáticamente en futuras regeneraciones.
-
-### Estructura del CSV Maestro (12 columnas):
-1. Date - Fecha del trade
-2. Time - Hora del trade  
-3. MNQ Price - Precio del MNQ
-4. Operation type - Tipo de operación (Long/Short)
-5. Contracts - Cantidad de contratos
 6. Trade duration - Duración del trade
 7. Close Reason - Razón de cierre (Stop Loss/Break Even/Round Number)
 8. Net P&L - P&L neto del trade
 9. Daily P&L - P&L del trade individual
 10. Balance - Balance acumulado
 11. Day - Número del día de trading
-12. Daily P&L Total - P&L total diario
+## Activación del Sistema
 
-**Nota**: Este archivo CSV es el único formato de resultados y será sobrescrito automáticamente en futuras regeneraciones.
+```bash
+# Activar Lightning 50K
+python3 scripts/activate_lightning_50k.py
+```
+
+## Requisitos
+
+- **Cuenta Tradeify Lightning 50K** fondeada
+- **API Tradovate** ($25/mes)
+- **Python 3.9+** con entorno virtual
+- **Aprobación del bot** en Tradeify
+
+## Instalación
+
+```bash
+# Instalar dependencias
+pip install -r requirements.txt
+
+# Configurar entorno virtual
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+## Configuración
+
+El sistema usa `config/lightning_50k_strategy.json` que contiene:
+- Parámetros de trading optimizados
+- Configuración de la plataforma Tradeify
+- Reglas de compliance del lightning_50k_strategy
+- Configuración del conector Tradovate
+
+## Generación de Resultados
+
+Para generar/actualizar resultados de backtesting:
+```bash
+cd backtesting/lightning50kStrategyTest
+python lightning_50k_custom_format.py
+```
+
+Esto sobrescribe automáticamente `results/lightning_50k_results.csv` con los datos actualizados.
 ```
 
 ### Activación del Sistema (macOS):
