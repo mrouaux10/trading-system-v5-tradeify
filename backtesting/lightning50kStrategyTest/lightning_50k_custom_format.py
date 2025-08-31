@@ -280,7 +280,9 @@ def format_custom_csv(trades):
         trades_by_date[date].append(trade)
     
     # Procesar cada día ordenadamente
+    day_counter = 0
     for date in sorted(trades_by_date.keys()):
+        day_counter += 1
         daily_trades = trades_by_date[date]
         
         # Procesar trades del día
@@ -312,7 +314,9 @@ def format_custom_csv(trades):
                 'Close Reason': trade['exit_reason'],
                 'Net P&L': f"${trade['net_pnl']:.2f}",
                 'Daily P&L': f"${daily_pnl_accumulator[date]:.2f}",
-                'Balance': f"${running_balance:.2f}"
+                'Balance': f"${running_balance:.2f}",
+                'Day': day_counter,
+                'Daily P&L Total': f"${daily_pnl_accumulator[date]:.2f}"
             }
             
             custom_trades.append(custom_trade)
@@ -328,7 +332,9 @@ def format_custom_csv(trades):
             'Close Reason': '',
             'Net P&L': '',
             'Daily P&L': '',
-            'Balance': ''
+            'Balance': '',
+            'Day': '',
+            'Daily P&L Total': ''
         }
         custom_trades.append(separator_row)
     
@@ -387,7 +393,7 @@ def main():
             logger.info(f"Deleted: Eliminado: {old_file}")
     
     # Guardar CSV con formato personalizado
-    output_file = 'results/Lightning_50K_Optimized_Complete.csv'
+    output_file = 'results/lightning_50k_results.csv'
     custom_df.to_csv(output_file, index=False)
     
     # Estadísticas finales

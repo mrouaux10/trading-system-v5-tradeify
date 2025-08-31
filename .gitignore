@@ -31,6 +31,7 @@ wheels/
 MANIFEST
 
 # Virtual environments
+.venv/
 venv/
 env/
 ENV/
@@ -52,7 +53,6 @@ backtesting/historical/tick/
 
 # Permitir archivos de resultados importantes
 !backtesting/lightning50kStrategyTest/results/*.csv
-!backtesting/lightning50kStrategyTest/results/*.xlsx  
 !backtesting/lightning50kStrategyTest/results/*.json
 !config/*.json
 !requirements.txt

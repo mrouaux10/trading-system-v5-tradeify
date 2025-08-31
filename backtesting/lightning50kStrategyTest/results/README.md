@@ -5,14 +5,11 @@ Esta carpeta contiene únicamente los archivos esenciales de la **estrategia lig
 
 ### Archivos de Resultados:
 - **`Lightning_50K_Optimized_Complete.csv`** (1.0 MB)
-  - CSV con 14,084 trades individuales + 422 separadores diarios
+  - CSV ÚNICO con 14,084 trades individuales + 422 separadores diarios
   - Estrategia optimizada con parámetros finales
-  - Balance running correcto y Daily P&L
-
-- **`Lightning_50K_Complete_With_Daily_Summary.xlsx`** (722 KB)
-  - Excel con doble tabla: trades individuales + resumen diario
-  - Formato coloreado y estadísticas completas
-  - 422 días de trading resumidos
+  - Estructura: Date, Time, MNQ Price, Operation type, Contracts, Trade duration, Close Reason, Net P&L, Daily P&L, Balance, Day, Daily P&L
+  - Balance running correcto y Daily P&L por día
+  - **ARCHIVO MASTER** - Se actualiza automáticamente con nuevos resultados
 
 ### Config: Archivos de Código:
 - **`lightning_50k_optimized_generator.py`** (19 KB)

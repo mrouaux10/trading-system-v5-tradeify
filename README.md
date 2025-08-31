@@ -28,22 +28,62 @@ Sistema de trading lightning_50k_strategy con **estrategia optimizada única** q
 ├── activate_lightning_50k.py         # Script de activación
 ├── tradeify_compliance_system.py     # Sistema de compliance
 ├── tradovate_connector.py            # Conector API
-└── test_tradovate_integration.py     # Pruebas de integración
+├── test_tradovate_integration.py     # Pruebas de integración
+├── simple_validator.py              # Validador del sistema
+└── validate_config_consistency.py   # Validador de configuración
 
 /config/
-└── lightning_50k_strategy.json   # Configuración única optimizada
+└── lightning_50k_strategy.json      # Configuración única completa
+
+/docs/
+├── LIGHTNING_50K_RULES.md           # Reglas de la estrategia
+├── BOT_OWNERSHIP_DEMONSTRATION.md   # Demostración de autoría
+├── TRADOVATE_API_DOCUMENTATION.md   # Documentación API
+└── ROUND_NUMBERS_STRATEGY_ADOPTED.md # Estrategia Round Numbers adoptada
+
+/.venv/                               # Entorno virtual Python
+└── (dependencies isolated)
+
+/logs/                                # Archivos de registro del sistema
 
 /backtesting/lightning50kStrategyTest/
-├── lightning_50k_drawdown_optimizer.py    # Optimizador usado
-├── lightning_50k_custom_format.py         # Generador CSV final
-├── excel_complete_generator.py            # Generador Excel final
+├── lightning_50k_drawdown_optimizer.py    # Optimizador (CORREGIDO)
+├── lightning_50k_custom_format.py         # Generador CSV (12 columnas)
 └── results/
-    ├── Lightning_50K_Optimized_Complete.csv         # CSV final (14,084 trades)
-    ├── Lightning_50K_Complete_With_Daily_Summary.xlsx  # Excel con resumen
-    ├── lightning_50k_optimized_generator.py         # Generador CSV
-    ├── excel_optimized_generator.py                 # Generador Excel
-    ├── lightning_50k_strategy.json      # Configuración única optimizada
-    └── README.md                                    # Documentación de resultados
+    ├── lightning_50k_results.csv              # Archivo maestro único (14,084 trades)
+    └── README.md                               # Documentación de resultados
+
+### Estructura del CSV Maestro (12 columnas):
+1. Date - Fecha del trade
+2. Time - Hora del trade  
+3. MNQ Price - Precio del MNQ
+4. Operation type - Tipo de operación (Long/Short)
+5. Contracts - Cantidad de contratos
+6. Trade duration - Duración del trade
+7. Close Reason - Razón de cierre (Stop Loss/Break Even/Round Number)
+8. Net P&L - P&L neto del trade
+9. Daily P&L - P&L del trade individual
+10. Balance - Balance acumulado
+11. Day - Número del día de trading
+12. Daily P&L Total - P&L total diario
+
+**Nota**: Este archivo CSV es el único formato de resultados y será sobrescrito automáticamente en futuras regeneraciones.
+
+### Estructura del CSV Maestro (12 columnas):
+1. Date - Fecha del trade
+2. Time - Hora del trade  
+3. MNQ Price - Precio del MNQ
+4. Operation type - Tipo de operación (Long/Short)
+5. Contracts - Cantidad de contratos
+6. Trade duration - Duración del trade
+7. Close Reason - Razón de cierre (Stop Loss/Break Even/Round Number)
+8. Net P&L - P&L neto del trade
+9. Daily P&L - P&L del trade individual
+10. Balance - Balance acumulado
+11. Day - Número del día de trading
+12. Daily P&L Total - P&L total diario
+
+**Nota**: Este archivo CSV es el único formato de resultados y será sobrescrito automáticamente en futuras regeneraciones.
 ```
 
 ### Activación del Sistema (macOS):
