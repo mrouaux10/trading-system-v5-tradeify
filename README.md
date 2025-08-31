@@ -46,13 +46,19 @@ Sistema de trading Lightning 50K con **estrategia optimizada única** que logró
     └── README.md                                    # Documentación de resultados
 ```
 
-### 🚀 Uso:
+### 🚀 Activación del Sistema:
 
 ```bash
-# Activar el sistema optimizado
-cd scripts
-python3 activate_lightning_50k.py
+# Desde la raíz del proyecto
+python3 scripts/activate_lightning_50k.py
 ```
+
+**⚡ Lightning 50K Optimizado v1.0.0** - Sistema completo con parámetros validados que lograron $192,698 P&L con solo $581 drawdown en 422 días de trading.
+
+### ⚠️ Requisitos:
+1. **Cuenta Tradeify Lightning 50K** fondeada
+2. **API Access de Tradovate** ($25/mes)
+3. **Bot aprobado** por Tradeify ✅ (completado)
 
 ### 🧹 Limpieza Completada:
 - ❌ **ELIMINADO**: Todas las estrategias obsoletas (round numbers, EMA 200, etc.)
