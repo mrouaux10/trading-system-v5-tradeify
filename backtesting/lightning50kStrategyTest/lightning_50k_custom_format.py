@@ -321,9 +321,9 @@ def format_custom_csv(trades):
             
             custom_trades.append(custom_trade)
         
-        # Agregar fila separadora al final de cada día
+        # Agregar fila separadora en blanco al final de cada día
         separator_row = {
-            'Date': f"Final P&L Day: {daily_pnl_accumulator[date]:.2f}",
+            'Date': '',
             'Time': '',
             'MNQ Price': '',
             'Operation type': '',
@@ -398,8 +398,8 @@ def main():
     
     # Estadísticas finales
     if len(custom_df) > 0:
-        # Filtrar solo filas de trades (excluir separadores)
-        trade_rows = custom_df[~custom_df['Date'].str.startswith('Final P&L Day:', na=False)]
+        # Filtrar solo filas de trades (excluir separadores en blanco)
+        trade_rows = custom_df[custom_df['Date'] != '']
         total_trades = len(trade_rows)
         
         # Convertir Net P&L de string a float para cálculos
@@ -440,7 +440,7 @@ def main():
         logger.info(f"   - {col}")
     
     # Contar días únicos y filas separadoras
-    separator_rows = len([row for _, row in custom_df.iterrows() if row['Date'].startswith('Final P&L Day:')])
+    separator_rows = len([row for _, row in custom_df.iterrows() if row['Date'] == ''])
     total_trade_rows = len(custom_df) - separator_rows
     
     logger.info("")
@@ -452,7 +452,7 @@ def main():
     # Mostrar ejemplo de Daily P&L y Balance diario
     if len(custom_df) > 0:
         # Obtener solo filas de trades (no separadoras)
-        trade_rows = custom_df[~custom_df['Date'].str.startswith('Final P&L Day:', na=False)]
+        trade_rows = custom_df[custom_df['Date'] != '']
         
         # Agrupar por fecha para mostrar totales diarios
         daily_totals = {}
