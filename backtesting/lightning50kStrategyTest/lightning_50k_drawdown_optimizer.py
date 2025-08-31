@@ -407,29 +407,75 @@ def main():
     if best_result:
         logger.info("\nAPLICANDO PARÁMETROS OPTIMIZADOS...")
         
-        # Crear archivo con los nuevos parámetros
-        optimized_config = {
-            "strategy_name": "Lightning 50K - Optimized Drawdown",
-            "optimization_date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-            "parameters": best_result['params'],
-            "performance": {
-                "total_trades": best_result['total_trades'],
-                "total_pnl": best_result['total_pnl'],
-                "max_drawdown": best_result['max_drawdown'],
-                "win_rate": best_result['win_rate'],
-                "final_balance": best_result['final_balance']
-            },
-            "improvement": {
-                "drawdown_reduction": 1812.75 - best_result['max_drawdown'],
-                "compliance_margin": 2000 - best_result['max_drawdown']
+        # CARGAR configuración existente para preservarla
+        import json
+        config_file = '../../config/lightning_50k_strategy.json'
+        
+        # Leer configuración actual completa
+        try:
+            with open(config_file, 'r') as f:
+                existing_config = json.load(f)
+            logger.info("Configuración existente cargada correctamente")
+        except:
+            existing_config = {}
+            logger.warning("No se pudo cargar configuración existente, creando nueva")
+        
+        # ACTUALIZAR solo los parámetros optimizados en la configuración existente
+        existing_config["optimized"] = datetime.now().strftime("%Y-%m-%d")
+        existing_config["status"] = "OPTIMIZED_PARAMETERS"
+        
+        # Actualizar parámetros en strategy_parameters
+        if "strategy_parameters" in existing_config:
+            params = best_result['params']
+            existing_config["strategy_parameters"]["stop_loss_points"] = params['stop_loss_points']
+            existing_config["strategy_parameters"]["break_even_trigger"] = params['break_even_trigger']
+            existing_config["strategy_parameters"]["trailing_trigger"] = params['trailing_trigger']
+            existing_config["strategy_parameters"]["trailing_distance"] = params['trailing_distance']
+            existing_config["strategy_parameters"]["take_profit_long"] = params['tp_near_rn']
+            existing_config["strategy_parameters"]["take_profit_short"] = params['tp_normal']
+        
+        # Actualizar parámetros en trading_parameters.risk_management
+        if "trading_parameters" in existing_config and "risk_management" in existing_config["trading_parameters"]:
+            params = best_result['params']
+            risk_mgmt = existing_config["trading_parameters"]["risk_management"]
+            risk_mgmt["stop_loss_points"] = params['stop_loss_points']
+            risk_mgmt["break_even_trigger"] = params['break_even_trigger'] 
+            risk_mgmt["trailing_trigger"] = params['trailing_trigger']
+            risk_mgmt["trailing_distance"] = params['trailing_distance']
+            risk_mgmt["take_profit_long"] = params['tp_near_rn']
+            risk_mgmt["take_profit_short"] = params['tp_normal']
+        
+        # Actualizar parámetros en risk_management
+        if "risk_management" in existing_config:
+            params = best_result['params']
+            risk_mgmt = existing_config["risk_management"]
+            risk_mgmt["stop_loss_points"] = params['stop_loss_points']
+            risk_mgmt["break_even_trigger"] = params['break_even_trigger']
+            risk_mgmt["trailing_trigger"] = params['trailing_trigger']
+            risk_mgmt["trailing_distance"] = params['trailing_distance']
+            risk_mgmt["take_profit_long"] = params['tp_near_rn']
+            risk_mgmt["take_profit_short"] = params['tp_normal']
+        
+        # Actualizar resultados de optimización
+        existing_config["optimization_results"] = {
+            "optimization_date": datetime.now().strftime("%Y-%m-%d"),
+            "total_trades": best_result['total_trades'],
+            "total_pnl": best_result['total_pnl'],
+            "max_drawdown": best_result['max_drawdown'],
+            "win_rate": best_result['win_rate'],
+            "final_balance": best_result['final_balance'],
+            "drawdown_reduction": 1812.75 - best_result['max_drawdown'],
+            "compliance_margin": 2000 - best_result['max_drawdown'],
+            "performance_improvement": {
+                "drawdown_reduced_by": f"{((1812.75 - best_result['max_drawdown']) / 1812.75 * 100):.1f}%",
+                "pnl_increased_by": f"{((best_result['total_pnl'] - 135000) / 135000 * 100):.1f}%",
+                "win_rate_improved_by": f"{best_result['win_rate'] - 60:.1f}%"
             }
         }
         
-        # Guardar configuración optimizada
-        import json
-        config_file = '../../config/lightning_50k_strategy.json'
+        # GUARDAR configuración COMPLETA con parámetros actualizados
         with open(config_file, 'w') as f:
-            json.dump(optimized_config, f, indent=2)
+            json.dump(existing_config, f, indent=2)
         
         logger.info(f"File: Configuración guardada: {config_file}")
         
