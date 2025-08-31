@@ -1,0 +1,23 @@
+{
+  "strategy_name": "Lightning 50K - Optimized Drawdown",
+  "optimization_date": "2025-08-31 03:32:16",
+  "parameters": {
+    "stop_loss_points": 1.0,
+    "break_even_trigger": 1.5,
+    "trailing_trigger": 4.0,
+    "trailing_distance": 3.0,
+    "tp_near_rn": 22,
+    "tp_normal": 15
+  },
+  "performance": {
+    "total_trades": 14084,
+    "total_pnl": 192698.5,
+    "max_drawdown": 581.0,
+    "win_rate": 67.53763135472877,
+    "final_balance": 242698.5
+  },
+  "improvement": {
+    "drawdown_reduction": 1231.75,
+    "compliance_margin": 1419.0
+  }
+}

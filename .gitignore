@@ -45,18 +45,19 @@ ENV/
 .DS_Store
 Thumbs.db
 
-# Trading system specific
-*.csv
-*.xlsx
-*.json
+# Trading system specific - Excluir archivos grandes de datos
+backtesting/historical/*.csv
+backtesting/historical/tick/
+*.Last.txt
+
+# Permitir archivos de resultados importantes
+!testing/newStrategyTest/results/*.csv
+!testing/newStrategyTest/results/*.xlsx  
+!testing/newStrategyTest/results/*.json
 !config/*.json
 !requirements.txt
 !README.md
 !testing/*.json
-
-# Datos históricos pesados (mantener en local)
-backtesting/historical/tick/
-*.Last.txt
 
 # Archivos temporales
 *.tmp
