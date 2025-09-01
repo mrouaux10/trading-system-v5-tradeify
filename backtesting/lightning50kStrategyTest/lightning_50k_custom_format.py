@@ -343,10 +343,10 @@ def format_custom_csv(trades):
 def main():
     """Función principal"""
     
-    # Cargar datos consolidados
-    data_file = "/Users/matiasrouaux/Documents/projects/My trading system/backtesting/historical/MNQ_consolidated_2024-2025.csv"
+    # Cargar datos consolidados CORREGIDOS (con datos recuperados)
+    data_file = "/Users/matiasrouaux/Documents/projects/My trading system/backtesting/historical/MNQ_consolidated_2024-2025_CORRECTED.csv"
     
-    logger.info(f"Loading: Cargando archivo: {data_file}")
+    logger.info(f"Loading: Cargando archivo CORREGIDO: {data_file}")
     df = pd.read_csv(data_file)
     
     # Convertir datetime
