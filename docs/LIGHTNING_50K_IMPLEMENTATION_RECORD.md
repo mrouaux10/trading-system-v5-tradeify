@@ -28,18 +28,27 @@
 - **Data Points**: 245,952 1-minute bars
 
 ## Data Sources
-- **Primary**: MNQ_consolidated_2024-2025.csv
+- **Primary**: MNQ_consolidated_2024-2025.csv (14MB)
 - **Location**: `/backtesting/historical/MNQ_consolidated_2024-2025.csv`
 - **Format**: CSV with OHLC 1-minute bars
 - **Contracts Included**: MNQ 03-24, 06-24, 09-24, 12-24, 03-25, 06-25, 09-25
+- **Original Files**: `/backtesting/historical/minute/` (31MB individual contract files)
+- **Note**: Tick data removed (23GB saved) - only 1-minute OHLC data retained
 
 ## File Structure (Current)
 ```
-/backtesting/lightning50kStrategyTest/
-├── lightning_50k_custom_format.py  # MAIN STRATEGY FILE
-├── monthly_analysis.py             # Analysis tools
-└── results/
-    └── lightning_50k_results.csv   # BACKTEST RESULTS
+/backtesting/
+├── historical/
+│   ├── MNQ_consolidated_2024-2025.csv     # 14MB - MAIN DATA SOURCE
+│   └── minute/                             # 31MB - Individual contract files
+│       ├── MNQ 03-24.Last.txt
+│       ├── MNQ 06-24.Last.txt
+│       └── [other contract files...]
+└── lightning50kStrategyTest/
+    ├── lightning_50k_custom_format.py     # MAIN STRATEGY FILE
+    ├── monthly_analysis.py                # Analysis tools
+    └── results/
+        └── lightning_50k_results.csv      # BACKTEST RESULTS
 ```
 
 ## API Integration Requirements (Tradovate/Tradeify)
@@ -73,9 +82,10 @@
 ## Implementation Notes
 1. **Commission Calculation**: Fixed at $3.00 per trade (equal to contract count)
 2. **Break Even Logic**: Mathematically validated - moves to +$1.50 profit after commission
-3. **Data Reliability**: Confirmed with real MNQ 1-minute historical data
-4. **Profitability**: Strategy shows consistent profits over 20-month period
-5. **Compliance**: Fully adheres to Lightning 50K challenge rules
+3. **Data Reliability**: Confirmed with real MNQ 1-minute historical data (45MB total)
+4. **Data Optimization**: Tick data removed (23GB freed) - only relevant 1-minute OHLC retained
+5. **Profitability**: Strategy shows consistent profits over 20-month period
+6. **Compliance**: Fully adheres to Lightning 50K challenge rules
 
 ## Critical Success Factors
 - Use exactly 3 contracts (user requirement)
