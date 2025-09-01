@@ -47,8 +47,8 @@ def round_numbers_strategy_backtest(df):
     initial_balance = 50000
     balance = initial_balance
     position = None
-    position_size = 1
-    commission = 1.0
+    position_size = 3  # USANDO 3 CONTRATOS como acordado
+    commission = 3.0   # Comisión = número de contratos (3 contratos = $3.00)
     
     # Parámetros del sistema BE Protection - OPTIMIZADOS
     stop_loss_points = 1.0     # Optimizado (era 1.5)
@@ -185,9 +185,9 @@ def round_numbers_strategy_backtest(df):
             # Ejecutar salida si hay trigger
             if exit_price is not None:
                 if direction == 'long':
-                    gross_pnl = (exit_price - entry_price) * position_size * 5
+                    gross_pnl = (exit_price - entry_price) * position_size * 2.0  # MNQ = $2 por punto
                 else:
-                    gross_pnl = (entry_price - exit_price) * position_size * 5
+                    gross_pnl = (entry_price - exit_price) * position_size * 2.0  # MNQ = $2 por punto
                 
                 net_pnl = gross_pnl - commission
                 balance += net_pnl
